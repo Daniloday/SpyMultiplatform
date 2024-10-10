@@ -1,0 +1,21 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:height="174.14635dp" android:viewportHeight="175" android:viewportWidth="205" android:width="204dp">
+      
+    <path android:fillColor="#00000000" android:pathData="M38.99,14.26L27.43,61.26H150.72L138.39,13.48" android:strokeColor="#FFFBE7" android:strokeWidth="3"/>
+      
+    <path android:fillColor="#00000000" android:pathData="M38.99,14.26V14.26C40.65,7.4 47.8,3.41 54.51,5.6L73.57,11.81C76.15,12.66 78.91,12.78 81.56,12.18L121.35,3.1C128.9,1.37 136.46,5.98 138.39,13.48V13.48" android:strokeColor="#FFFBE7" android:strokeWidth="3"/>
+      
+    <path android:fillColor="#00000000" android:pathData="M168.44,66.65H8.94C5.1,66.65 2,69.76 2,73.59C2,77.42 5.1,80.52 8.94,80.52H168.44C172.27,80.52 175.38,77.42 175.38,73.59C175.38,69.76 172.27,66.65 168.44,66.65Z" android:strokeColor="#FFFBE7" android:strokeWidth="3"/>
+      
+    <path android:fillColor="#00000000" android:pathData="M30.13,52.01H148.02" android:strokeColor="#FFFBE7" android:strokeWidth="2"/>
+      
+    <path android:fillColor="#00000000" android:pathData="M96.55,88.74L137.5,159.53C141.33,166.15 150.89,166.19 154.77,159.59L196.45,88.74" android:strokeColor="#FFFBE7" android:strokeWidth="3"/>
+      
+    <path android:fillColor="#00000000" android:pathData="M161.55,85C157.31,88.47 152.04,90.42 146.57,90.54C141.1,90.66 135.75,88.95 131.36,85.68" android:strokeColor="#FFFBE7" android:strokeWidth="3"/>
+      
+    <path android:fillColor="#00000000" android:pathData="M151.34,42.08C156.15,43.15 160.52,45.64 163.9,49.23C167.27,52.82 169.48,57.34 170.25,62.21" android:strokeColor="#FFFBE7" android:strokeWidth="3"/>
+      
+    <path android:fillColor="#00000000" android:pathData="M143.11,6.64C153.11,5.94 163.11,7.94 172.07,12.43C181.04,16.91 188.63,23.73 194.06,32.15C199.49,40.57 202.57,50.3 202.96,60.32C203.35,70.33 201.04,80.27 196.28,89.09" android:strokeColor="#FFFBE7" android:strokeWidth="3"/>
+      
+    <path android:fillColor="#00000000" android:pathData="M98.7,92.48C97.82,91.09 97,89.66 96.25,88.2" android:strokeColor="#FFFBE7" android:strokeWidth="3"/>
+    
+</vector>
