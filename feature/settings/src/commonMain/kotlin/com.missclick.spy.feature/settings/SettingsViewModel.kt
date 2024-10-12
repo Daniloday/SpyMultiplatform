@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.missclick.spy.core.data.OptionsRepo
 import com.missclick.spy.core.data.WordRepo
 import com.missclick.spy.core.domain.GetOptionsUseCase
+import com.missclick.spy.core.domain.SetLanguageUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,9 +13,10 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+
 class SettingsViewModel(
     private val getOptionsUseCase: GetOptionsUseCase,
-    private val optionsRepo: OptionsRepo,
+    private val setLanguageUseCase: SetLanguageUseCase,
     private val wordRepo: WordRepo,
 ): ViewModel() {
 
@@ -23,7 +25,6 @@ class SettingsViewModel(
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-//            wordRepo.preload()
             val languages = wordRepo.getLanguages()
             getOptionsUseCase().collect { options ->
                 _viewState.update { state ->
@@ -45,7 +46,7 @@ class SettingsViewModel(
         selectedLanguage: LanguageView,
     ) {
         viewModelScope.launch {
-            optionsRepo.setLanguage(selectedLanguage.code)
+            setLanguageUseCase(selectedLanguage.code)
         }
     }
 

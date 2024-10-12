@@ -1,12 +1,12 @@
 import SwiftUI
 import ComposeApp
+import GoogleMobileAds
 
 @main
 struct iOSApp: App {
 
-    init() {
-        KoinIosKt.StartKoin()
-    }
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

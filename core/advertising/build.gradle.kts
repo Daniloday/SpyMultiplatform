@@ -1,11 +1,17 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
+}
+
+val secretKeyProperties by lazy {
+    val secretKeyPropertiesFile = rootProject.file("secrets.properties")
+    Properties().apply { secretKeyPropertiesFile.inputStream().use { secret -> load(secret) } }
 }
 
 kotlin {
@@ -23,34 +29,34 @@ kotlin {
 
 
     sourceSets {
+        androidMain.dependencies {
+            api(libs.play.services.ads)
+        }
         commonMain.dependencies {
-            implementation(projects.core.ui)
-            implementation(projects.core.domain)
-            implementation(projects.core.data)
-            implementation(projects.core.model)
-            implementation(projects.core.advertising)
-
-            //koin
             implementation(libs.koin.core)
-            implementation(libs.koin.compose.viewmodel)
+            implementation(libs.koin.compose)
+            implementation(projects.core.ui)
 
-//            implementation(libs.androidx.lifecycle.runtime.compose)
-
-            implementation(libs.kotlinx.coroutines.core)
-
-            implementation(libs.kotlinx.datetime)
         }
     }
 }
 
 android {
-    namespace = "com.missclick.spy.feature.game"
+    namespace = "com.missclick.spy.core.advertising"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
+
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
+        buildConfigField("String", "ADMOB_BANNER_ID", "\"${secretKeyProperties["ADMOB_BANNER_ID"]}\"")
+        buildConfigField("String", "ADMOB_REWARDED_INTERSTITIAL_ID", "\"${secretKeyProperties["ADMOB_REWARDED_INTERSTITIAL_ID"]}\"")
+    }
+    buildFeatures {
+        buildConfig = true
     }
 }

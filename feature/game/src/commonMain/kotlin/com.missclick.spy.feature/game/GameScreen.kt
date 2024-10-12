@@ -41,6 +41,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.missclick.spy.core.advertising.InterstitialAdManager
 import com.missclick.spy.core.ui.theme.AppTheme
 import com.missclick.spy.core.ui.kit.buttons.PrimaryButton
 import com.missclick.spy.resources.Res
@@ -68,24 +69,21 @@ internal fun GameRoute(
     modifier: Modifier = Modifier,
     onBackClick: () -> Unit,
     vm: GameViewModel = koinViewModel(),
-//    interstitialAdManager: InterstitialAdManager = koinInject(),
+    interstitialAdManager: InterstitialAdManager = koinInject(),
 ) {
 
     val viewState by vm.viewState.collectAsState()
-//    val currentActivity = LocalContext.current as Activity
 
     GameScreen(
         modifier = modifier,
         viewState = viewState,
         onBackClick = {
-//            if (viewState is GameViewState.End) {
-//                interstitialAdManager.showAd(currentActivity) {
-//                    onBackClick()
-//                }
-//            } else {
-//                onBackClick()
-//            }
-            onBackClick()
+            if (viewState is GameViewState.End) {
+                interstitialAdManager.showAd(onAdClosed = onBackClick)
+            } else {
+                onBackClick()
+            }
+//            onBackClick()
         },
         onCardClick = vm::onCardClick,
         onFindOutClick = vm::showSpies,

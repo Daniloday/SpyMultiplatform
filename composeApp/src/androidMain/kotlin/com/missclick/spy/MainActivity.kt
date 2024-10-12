@@ -1,33 +1,54 @@
 package com.missclick.spy
 
+import android.app.Activity
 import android.app.LocaleManager
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.os.LocaleList
+import android.view.View
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.core.view.WindowCompat
+import androidx.lifecycle.lifecycleScope
+import com.missclick.spy.core.domain.SetActualLanguageUseCase
+import com.missclick.spy.di.appModule
+import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
+import org.koin.dsl.module
 import java.util.Locale
 
 class MainActivity : ComponentActivity() {
 
+    val setActualLanguageUseCase by inject<SetActualLanguageUseCase>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            App(onChangeLanguage = ::setLanguage)
+        startKoin {
+            androidLogger()
+            androidContext(applicationContext)
+            modules(
+                appModule,
+                module {
+                    single<Activity> { this@MainActivity }
+                }
+            )
+        }
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.dark(Color.TRANSPARENT),
+            navigationBarStyle = SystemBarStyle.dark(Color.TRANSPARENT)
+        )
+        lifecycleScope.launch {
+            setActualLanguageUseCase()
+            setContent {
+                App()
+            }
         }
     }
 
-    private fun setLanguage(languageCode: String) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            getSystemService(LocaleManager::class.java)
-                .applicationLocales = LocaleList.forLanguageTags(languageCode)
-        } else {
-            val locale = Locale(languageCode)
-            Locale.setDefault(locale)
-            val configuration = resources.configuration
-            configuration.setLocale(locale)
-            resources.updateConfiguration(configuration, resources.displayMetrics)
-        }
-    }
 }

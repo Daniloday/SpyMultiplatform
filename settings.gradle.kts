@@ -38,6 +38,7 @@ include(":core:database")
 include(":core:datastore")
 include(":core:common")
 include(":core:device")
+include(":core:advertising")
 
 include(":feature:words")
 include(":feature:rules")

@@ -10,4 +10,8 @@ internal class DeviceRepoImpl(
         return deviceDataSource.getCurrentLanguageCode()
     }
 
+    override suspend fun setLanguage(languageCode: String) {
+        deviceDataSource.setLanguage(languageCode)
+    }
+
 }
