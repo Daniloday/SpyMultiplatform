@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Spy.Starting" parent="Theme.SplashScreen">
+        <item name="android:windowBackground">@drawable/ic_background</item>
+        <item name="windowSplashScreenBackground">@color/background_bottom</item>
+        <item name="postSplashScreenTheme">@style/Theme.Spy</item>
+    </style>
+
+    <style name="Theme.Spy" parent="@android:style/Theme.Material.NoActionBar">
+    </style>
+
+</resources>

@@ -19,7 +19,7 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-public struct BannerAdView: UIViewRepresentable {
+private struct BannerAdView: UIViewRepresentable {
 
     public func makeUIView(context: Context) -> GADBannerView {
         let bannerView = GADBannerView()
@@ -37,6 +37,7 @@ public struct BannerAdView: UIViewRepresentable {
     public func updateUIView(_ uiView: GADBannerView, context: Context) {
         
     }
+    
 }
 
 class InterstitialAdManager: NSObject {
@@ -90,7 +91,7 @@ extension InterstitialAdManager: GADFullScreenContentDelegate {
 }
 
 func getAdMob(context: ComposeView.Context) -> AdvertisingAdMobIos {
-    let bannerController = UIHostingController(rootView: BannerAdView().frame(width: 320, height: 50))
+    let bannerController = UIHostingController(rootView: BannerAdView().frame(width: 320, height: 50).background(Color.gray.opacity(0)))
     return AdvertisingAdMobIos(
         bannerViewController: { () -> UIViewController in
             return bannerController

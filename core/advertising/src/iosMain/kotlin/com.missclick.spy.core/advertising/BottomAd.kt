@@ -22,6 +22,9 @@ actual fun BottomAds(
 
     UIKitViewController(
         modifier = Modifier.height(50.dp).width(320.dp).background(Color.Transparent),
-        factory = adMobIos.bannerViewController
+        factory = {
+
+            adMobIos.bannerViewController()
+        }
     )
 }

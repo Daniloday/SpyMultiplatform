@@ -12,8 +12,10 @@
 		0F2FBAAF7F5C52F2A6A7F6F7 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FCC4A1675708A7E5ACC01E /* Pods_iosApp.framework */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
+		8FA80BDF2CBAA3A3004961CB /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 8FA80BDE2CBAA3A3004961CB /* InfoPlist.xcstrings */; };
 		8FC7BBCF2CB7E1A6002AEFE7 /* spy-database-preload.db in Resources */ = {isa = PBXBuildFile; fileRef = 8FC7BBCE2CB7E1A6002AEFE7 /* spy-database-preload.db */; };
 		8FC7BBD12CB88DC1002AEFE7 /* AdMob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC7BBD02CB88DC1002AEFE7 /* AdMob.swift */; };
+		8FD70FB22CBC211100D28FBA /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FD70FB12CBC211100D28FBA /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,12 +24,14 @@
 		08FCC4A1675708A7E5ACC01E /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		6453D29156E4903D0F4BCC27 /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
-		7555FF7B242A565900829871 /* SpyMultiplatform.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpyMultiplatform.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7555FF7B242A565900829871 /* Spy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82E94E0054C8A2540902BDCF /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
+		8FA80BDD2CBAA31F004961CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8FA80BDE2CBAA3A3004961CB /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		8FC7BBCE2CB7E1A6002AEFE7 /* spy-database-preload.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = "spy-database-preload.db"; path = "Resources/spy-database-preload.db"; sourceTree = "<group>"; };
 		8FC7BBD02CB88DC1002AEFE7 /* AdMob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMob.swift; sourceTree = "<group>"; };
+		8FD70FB12CBC211100D28FBA /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		AB3632DC29227652001CCB65 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,7 +87,7 @@
 		7555FF7C242A565900829871 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7555FF7B242A565900829871 /* SpyMultiplatform.app */,
+				7555FF7B242A565900829871 /* Spy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,10 +97,12 @@
 			children = (
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				7555FF82242A565900829871 /* ContentView.swift */,
-				7555FF8C242A565B00829871 /* Info.plist */,
+				8FA80BDD2CBAA31F004961CB /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 				8FC7BBD02CB88DC1002AEFE7 /* AdMob.swift */,
+				8FA80BDE2CBAA3A3004961CB /* InfoPlist.xcstrings */,
+				8FD70FB12CBC211100D28FBA /* Launch Screen.storyboard */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -129,7 +135,7 @@
 			);
 			name = iosApp;
 			productName = iosApp;
-			productReference = 7555FF7B242A565900829871 /* SpyMultiplatform.app */;
+			productReference = 7555FF7B242A565900829871 /* Spy.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -155,6 +161,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
+				uk,
 			);
 			mainGroup = 7555FF72242A565900829871;
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
@@ -173,6 +181,8 @@
 			files = (
 				8FC7BBCF2CB7E1A6002AEFE7 /* spy-database-preload.db in Resources */,
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
+				8FA80BDF2CBAA3A3004961CB /* InfoPlist.xcstrings in Resources */,
+				8FD70FB22CBC211100D28FBA /* Launch Screen.storyboard in Resources */,
 				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

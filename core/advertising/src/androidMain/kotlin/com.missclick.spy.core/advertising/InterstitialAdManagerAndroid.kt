@@ -9,7 +9,7 @@ import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 
-class InterstitialAdManagerAndroid(
+internal class InterstitialAdManagerAndroid(
     private val context: Context,
     private val activity: Lazy<Activity>
 ): InterstitialAdManager {

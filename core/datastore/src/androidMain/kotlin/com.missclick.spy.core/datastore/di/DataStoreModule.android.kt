@@ -8,22 +8,19 @@ import com.missclick.spy.core.datastore.preferences.OptionsPreferences
 import com.missclick.spy.core.datastore.preferences.OptionsPreferencesSerializer
 import okio.FileSystem
 import okio.Path.Companion.toPath
+import org.koin.core.module.Module
 import org.koin.dsl.module
 
 
-actual val dataStoreModule = module {
-    single { OptionsPreferencesSerializer() }
+internal actual fun platformModule(): Module = module {
     single { provideDataStore(get(), get()) }
-    single<OptionsDataSource> {
-        OptionsDataSourceImpl(get())
-    }
-
 }
 
 private fun provideDataStore(
     context: Context,
     optionsPreferencesSerializer: OptionsPreferencesSerializer,
 ): DataStore<OptionsPreferences> {
+
     val producePath = { context.filesDir.resolve(DATA_STORE_FILE_NAME).absolutePath.toPath() }
 
     return createDataStore(

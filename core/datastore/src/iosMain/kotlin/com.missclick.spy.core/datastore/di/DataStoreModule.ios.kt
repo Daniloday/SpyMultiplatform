@@ -8,6 +8,7 @@ import com.missclick.spy.core.datastore.preferences.OptionsPreferencesSerializer
 import kotlinx.cinterop.ExperimentalForeignApi
 import okio.FileSystem
 import okio.Path.Companion.toPath
+import org.koin.core.module.Module
 import org.koin.dsl.module
 import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager
@@ -15,12 +16,8 @@ import platform.Foundation.NSURL
 import platform.Foundation.NSUserDomainMask
 
 
-actual val dataStoreModule = module {
-    single { OptionsPreferencesSerializer() }
+internal actual fun platformModule(): Module = module {
     single { provideDataStore(get()) }
-    single<OptionsDataSource> {
-        OptionsDataSourceImpl(get())
-    }
 }
 
 @OptIn(ExperimentalForeignApi::class)

@@ -9,6 +9,8 @@ import com.missclick.spy.core.database.enity.LanguageEntity
 import com.missclick.spy.core.database.enity.WordEntity
 import com.missclick.spy.core.database.enity.SetEntity
 
+internal const val DB_NAME = "spy-database"
+internal const val PRELOAD_DB_NAME = "spy-database-preload.db"
 
 @Database(
     entities = [

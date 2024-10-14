@@ -9,6 +9,8 @@ import com.missclick.spy.core.database.WordDataSourceImpl
 import com.missclick.spy.core.database.enity.LanguageEntity
 import com.missclick.spy.core.database.enity.SetEntity
 import com.missclick.spy.core.database.enity.WordEntity
+import com.missclick.spy.core.database.room.DB_NAME
+import com.missclick.spy.core.database.room.PRELOAD_DB_NAME
 import com.missclick.spy.core.database.room.SpyDatabase
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.coroutines.CoroutineScope
@@ -24,15 +26,14 @@ import platform.Foundation.NSFileManager
 import platform.Foundation.NSHomeDirectory
 import platform.Foundation.NSUserDomainMask
 
-actual val databaseModule: Module = module {
+internal actual fun platformModule(): Module = module {
     single { getDatabaseBuilder() }
     single { provideDatabase(get()) }
-    single<WordDataSource> { WordDataSourceImpl(get()) }
 }
 
 
 private fun getDatabaseBuilder(): RoomDatabase.Builder<SpyDatabase> {
-    val dbFilePath = documentDirectory() + "/spy-database-preload.db"
+    val dbFilePath = documentDirectory() + "/" + DB_NAME
     return Room.databaseBuilder<SpyDatabase>(
         name = dbFilePath,
     )
@@ -64,11 +65,8 @@ fun copyDatabaseIfNeeded() {
     val fileManager = NSFileManager.defaultManager()
 
     // Путь к базе данных в папке ресурсов
-    println(NSBundle.mainBundle.pathForResource(name = "spy-database-preload", ofType = "db"))
     val bundlePath = NSBundle.mainBundle.pathForResource(name = "spy-database-preload", ofType = "db")
-    println("bundlePath")
-    println(bundlePath)
-    val databasePath = documentDirectory() + "/spy-database-preload.db"
+    val databasePath = documentDirectory() + "/" + DB_NAME
 
     // Если файл базы данных уже существует, пропускаем копирование
     if (!fileManager.fileExistsAtPath(databasePath)) {

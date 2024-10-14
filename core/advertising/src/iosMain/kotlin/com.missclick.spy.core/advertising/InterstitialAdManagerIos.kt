@@ -1,7 +1,7 @@
 package com.missclick.spy.core.advertising
 
 
-class InterstitialAdManagerIos(
+internal class InterstitialAdManagerIos(
     private val adMobIos: AdMobIos
 ): InterstitialAdManager {
 
