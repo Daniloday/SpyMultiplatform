@@ -27,8 +27,8 @@ ksp = "2.0.20-1.0.25"
 kotlinxSerialization = "2.0.0"
 kotlinxSerializationJson = "1.6.3"
 sqlite = "2.4.0"
-playServicesAds = "23.4.0"
-playServicesAdsLite = "23.4.0"
+playServicesAds = "23.3.0"
+playServicesAdsLite = "23.3.0"
 uiAndroid = "1.7.3"
 
 [libraries]
