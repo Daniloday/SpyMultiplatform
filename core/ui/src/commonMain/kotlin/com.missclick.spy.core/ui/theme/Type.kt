@@ -31,7 +31,7 @@ private val fontKellySlab: Font
     @Composable
     get() = Font(resource = Res.font.kelly_slab)
 
-val spyTypography: SpyTypography
+internal val spyTypography: SpyTypography
     @Composable
     get() = SpyTypography(
         h18 = TextStyle(
@@ -82,6 +82,6 @@ val spyTypography: SpyTypography
 
 
 
-val LocalTypography = staticCompositionLocalOf<SpyTypography> {
+internal val LocalTypography = staticCompositionLocalOf<SpyTypography> {
     error("No typography provided")
 }

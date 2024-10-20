@@ -4,6 +4,9 @@ package com.missclick.spy.core.database.room
 import androidx.room.ConstructedBy
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.missclick.spy.core.database.dao.LanguageDao
+import com.missclick.spy.core.database.dao.SetDao
+import com.missclick.spy.core.database.dao.WordDao
 import com.missclick.spy.core.database.di.AppDatabaseConstructor
 import com.missclick.spy.core.database.enity.LanguageEntity
 import com.missclick.spy.core.database.enity.WordEntity
@@ -27,4 +30,6 @@ internal const val PRELOAD_DB_NAME = "spy-database-preload.db"
 @ConstructedBy(AppDatabaseConstructor::class)
 internal abstract class SpyDatabase : RoomDatabase() {
     abstract fun wordDao(): WordDao
+    abstract fun setDao(): SetDao
+    abstract fun languageDao(): LanguageDao
 }

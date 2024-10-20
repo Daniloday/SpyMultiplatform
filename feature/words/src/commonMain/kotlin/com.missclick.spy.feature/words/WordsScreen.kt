@@ -31,7 +31,6 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.missclick.spy.core.common.Constant.LOCATION_NAME_MAX_LENGTH
 import com.missclick.spy.core.common.Constant.MIN_LOCATIONS_TO_PLAY
 import com.missclick.spy.core.ui.kit.AppDivider
 import com.missclick.spy.core.ui.kit.AppTextField
@@ -49,6 +48,8 @@ import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
+
+private const val LOCATION_NAME_MAX_LENGTH = 20
 
 @Composable
 internal fun WordsRoute(

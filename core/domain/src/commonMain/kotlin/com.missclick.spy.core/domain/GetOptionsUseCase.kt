@@ -1,8 +1,9 @@
 package com.missclick.spy.core.domain
 
 import com.missclick.spy.core.common.Constant.MIN_LOCATIONS_TO_PLAY
-import com.missclick.spy.core.data.DeviceRepo
+import com.missclick.spy.core.data.LanguageRepo
 import com.missclick.spy.core.data.OptionsRepo
+import com.missclick.spy.core.data.SetRepo
 import com.missclick.spy.core.data.WordRepo
 import com.missclick.spy.core.model.Options
 import kotlinx.coroutines.Dispatchers
@@ -14,20 +15,21 @@ import kotlinx.coroutines.flow.map
 
 class GetOptionsUseCase(
     private val optionsRepo: OptionsRepo,
-    private val deviceRepo: DeviceRepo,
+    private val languageRepo: LanguageRepo,
     private val wordsRepo: WordRepo,
+    private val setRepo: SetRepo,
 ) {
 
     operator fun invoke(): Flow<Options> = optionsRepo.options.map { optionsRaw ->
         val options = if (optionsRaw.selectedLanguageCode.isNotEmpty()) {
             optionsRaw
         } else {
-            val currentLanguage = deviceRepo.getCurrentLanguageCode()
-            val isExistCurrentLanguage = wordsRepo.checkIsExistLanguage(currentLanguage)
+            val currentLanguage = languageRepo.getCurrentLanguageCode()
+            val isExistCurrentLanguage = languageRepo.checkIsExistLanguage(currentLanguage)
             val newLanguageCode = if (isExistCurrentLanguage) {
                 currentLanguage
             } else {
-                wordsRepo.getDefaultLanguage()
+                languageRepo.getDefaultLanguage()
             }
             optionsRaw.copy(
                 selectedLanguageCode = newLanguageCode
@@ -40,11 +42,11 @@ class GetOptionsUseCase(
             options.collectionLanguageCode != options.selectedLanguageCode
             || words.size < MIN_LOCATIONS_TO_PLAY
         ) {
-            val defaultCollection = wordsRepo.getDefaultCollection(options.selectedLanguageCode)
+            val defaultCollection = setRepo.getDefaultSet(options.selectedLanguageCode)
             return@map options.copy(collectionName = defaultCollection)
         }
 
         options
-    }.flowOn(Dispatchers.IO)
+    }
 
 }

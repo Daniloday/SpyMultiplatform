@@ -27,13 +27,13 @@ private val triangle: Shape = GenericShape { size, _ ->
     addPath(path)
 }
 
-val spyShapes = SpyShapes(
+internal val spyShapes = SpyShapes(
     button = RoundedCornerShape(16.dp),
     frame = RoundedCornerShape(4.dp),
     rectangle = RoundedCornerShape(0.dp),
     triangle = triangle
 )
 
-val LocalShapes = staticCompositionLocalOf<SpyShapes> {
+internal val LocalShapes = staticCompositionLocalOf<SpyShapes> {
     error("No shapes provided")
 }

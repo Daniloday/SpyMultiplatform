@@ -13,13 +13,13 @@ data class SpyDimens(
     val topBarHeight: Dp,
 )
 
-val spyDimens = SpyDimens(
+internal val spyDimens = SpyDimens(
     primaryButtonHeight = 56.dp,
     secondaryButtonHeight = 56.dp,
     horizontalPadding = 16.dp,
     topBarHeight = 56.dp,
 )
 
-val LocalDimens = staticCompositionLocalOf<SpyDimens> {
+internal val LocalDimens = staticCompositionLocalOf<SpyDimens> {
     error("No dimens provided")
 }

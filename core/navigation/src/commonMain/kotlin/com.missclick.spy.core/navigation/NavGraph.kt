@@ -1,14 +1,12 @@
 package com.missclick.spy.core.navigation
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.missclick.spy.feature.collections.navigation.collectionsScreen
-import com.missclick.spy.feature.collections.navigation.navigateBackToCollections
-import com.missclick.spy.feature.collections.navigation.navigateToCollections
+import com.missclick.spy.feature.sets.navigation.collectionsScreen
+import com.missclick.spy.feature.sets.navigation.navigateBackToCollections
+import com.missclick.spy.feature.sets.navigation.navigateToCollections
 import com.missclick.spy.feature.game.navigation.gameScreen
 import com.missclick.spy.feature.game.navigation.navigateToGame
 import com.missclick.spy.feature.game_options.navigation.gameOptionsScreen
@@ -22,9 +20,6 @@ import com.missclick.spy.feature.settings.navigation.navigateToSettings
 import com.missclick.spy.feature.settings.navigation.settingsScreen
 import com.missclick.spy.feature.words.navigation.navigateToWords
 import com.missclick.spy.feature.words.navigation.wordsScreen
-import com.missclick.spy.resources.Res
-import com.missclick.spy.resources.app_name
-import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun NavGraph(

@@ -1,14 +1,11 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.util.Properties
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
-    alias(libs.plugins.jetbrainsCompose)
-    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.spy.composeMultiplatform)
 }
 
 val secretKeyProperties: Properties by lazy {
@@ -24,14 +21,6 @@ kotlin {
         }
     }
 
-    jvm("desktop")
-
-    @OptIn(ExperimentalWasmDsl::class)
-    wasmJs {
-        browser()
-        binaries.executable()
-    }
-    
     listOf(
         iosX64(),
         iosArm64(),
@@ -61,20 +50,17 @@ kotlin {
             implementation(projects.core.database)
             implementation(projects.core.datastore)
             implementation(projects.core.device)
-            implementation(projects.core.device)
             implementation(projects.core.advertising)
+            implementation(projects.core.common)
 
             implementation(projects.feature.rules)
             implementation(projects.feature.gameOptions)
             implementation(projects.feature.game)
             implementation(projects.feature.guide)
             implementation(projects.feature.settings)
-            implementation(projects.feature.collections)
+            implementation(projects.feature.sets)
             implementation(projects.feature.words)
 
-
-            implementation(libs.koin.core)
-            implementation(libs.koin.compose)
         }
     }
 }
@@ -119,17 +105,4 @@ android {
     }
 
 }
-
-compose.desktop {
-    application {
-        mainClass = "MainKt"
-
-        nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "com.missclick.spy"
-            packageVersion = "1.0.0"
-        }
-    }
-}
-
 

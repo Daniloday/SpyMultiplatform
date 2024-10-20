@@ -18,13 +18,13 @@ actual fun BottomAds(
     modifier: Modifier,
 ) {
 
-    val adMobIos: AdMobIos = koinInject()
-
-    UIKitViewController(
-        modifier = Modifier.height(50.dp).width(320.dp).background(Color.Transparent),
-        factory = {
-
-            adMobIos.bannerViewController()
-        }
-    )
+//    val adMobIos: AdMobIos = koinInject()
+//
+//    UIKitViewController(
+//        modifier = Modifier.height(50.dp).width(320.dp).background(Color.Transparent),
+//        factory = {
+//
+//            adMobIos.bannerViewController()
+//        }
+//    )
 }

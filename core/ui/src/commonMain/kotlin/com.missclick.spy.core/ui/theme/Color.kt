@@ -15,7 +15,7 @@ data class SpyColorScheme(
 )
 
 
-val spyDarkColorPalette = SpyColorScheme(
+internal val spyDarkColorPalette = SpyColorScheme(
     primary = Color(0xFFFFFBE7),
     secondary = Color(0xFFF07665),
     onSecondary = Color(0x54F07665),
@@ -29,6 +29,6 @@ val spyDarkColorPalette = SpyColorScheme(
 )
 
 
-val LocalColorScheme = staticCompositionLocalOf<SpyColorScheme> {
+internal val LocalColorScheme = staticCompositionLocalOf<SpyColorScheme> {
     error("No colors provided")
 }

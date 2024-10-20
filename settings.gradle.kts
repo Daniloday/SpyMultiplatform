@@ -2,6 +2,7 @@ rootProject.name = "SpyMultiplatform"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google {
             mavenContent {
@@ -45,6 +46,6 @@ include(":feature:words")
 include(":feature:rules")
 include(":feature:game")
 include(":feature:game_options")
-include(":feature:collections")
+include(":feature:sets")
 include(":feature:guide")
 include(":feature:settings")

@@ -2,6 +2,7 @@ package com.missclick.spy.feature.settings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.missclick.spy.core.data.LanguageRepo
 import com.missclick.spy.core.data.OptionsRepo
 import com.missclick.spy.core.data.WordRepo
 import com.missclick.spy.core.domain.GetOptionsUseCase
@@ -18,6 +19,7 @@ class SettingsViewModel(
     private val getOptionsUseCase: GetOptionsUseCase,
     private val setLanguageUseCase: SetLanguageUseCase,
     private val wordRepo: WordRepo,
+    private val languageRepo: LanguageRepo,
 ): ViewModel() {
 
     private val _viewState = MutableStateFlow(SettingsViewState())
@@ -25,7 +27,7 @@ class SettingsViewModel(
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            val languages = wordRepo.getLanguages()
+            val languages = languageRepo.getLanguages()
             getOptionsUseCase().collect { options ->
                 _viewState.update { state ->
                     state.copy(

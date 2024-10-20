@@ -3,9 +3,6 @@ package com.missclick.spy.core.database.di
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.sqlite.driver.bundled.BundledSQLiteDriver
-import com.missclick.spy.core.database.WordDataSource
-import com.missclick.spy.core.database.WordDataSourceImpl
 import com.missclick.spy.core.database.room.DB_NAME
 import com.missclick.spy.core.database.room.PRELOAD_DB_NAME
 import com.missclick.spy.core.database.room.SpyDatabase

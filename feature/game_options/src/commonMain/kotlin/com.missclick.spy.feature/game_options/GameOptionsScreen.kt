@@ -190,6 +190,7 @@ private fun CollectionSelector(
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {
+            Spacer(modifier = Modifier.size(48.dp))
             FrameText(
 //                modifier = Modifier.defaultMinSize(minWidth = 100.dp),
                 text = value

@@ -11,24 +11,24 @@ internal class OptionsDataSourceImpl(
     override val options = optionsPreferences.data.map { it.asModel() }
 
     override suspend fun setPlayersCount(playersCount: Int) {
-        optionsPreferences.updateData {
-            it.copy(
+        optionsPreferences.updateData { currentData ->
+            currentData.copy(
                 playersCount = playersCount
             )
         }
     }
 
     override suspend fun setSpiesCount(spiesCount: Int) {
-        optionsPreferences.updateData {
-            it.copy(
+        optionsPreferences.updateData { currentData ->
+            currentData.copy(
                 spiesCount = spiesCount
             )
         }
     }
 
     override suspend fun setTime(time: Int) {
-        optionsPreferences.updateData {
-            it.copy(
+        optionsPreferences.updateData { currentData ->
+            currentData.copy(
                 time = time
             )
         }
@@ -38,8 +38,8 @@ internal class OptionsDataSourceImpl(
         collectionName: String,
         languageCode: String,
     ) {
-        optionsPreferences.updateData {
-            it.copy(
+        optionsPreferences.updateData { currentData ->
+            currentData.copy(
                 collectionName = collectionName,
                 collectionLanguageCode = languageCode
             )
@@ -47,8 +47,8 @@ internal class OptionsDataSourceImpl(
     }
 
     override suspend fun setLanguage(languageCode: String) {
-        optionsPreferences.updateData {
-            it.copy(
+        optionsPreferences.updateData { currentData ->
+            currentData.copy(
                 selectedLanguageCode = languageCode,
             )
         }

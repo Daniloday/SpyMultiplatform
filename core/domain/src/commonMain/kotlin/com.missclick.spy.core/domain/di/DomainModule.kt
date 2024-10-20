@@ -6,7 +6,7 @@ import com.missclick.spy.core.domain.SetLanguageUseCase
 import org.koin.dsl.module
 
 val domainModule = module {
-    single { GetOptionsUseCase(get(), get(), get()) }
+    single { GetOptionsUseCase(get(), get(), get(), get()) }
     single { SetLanguageUseCase(get(), get()) }
     single { SetActualLanguageUseCase(get(), get()) }
 }

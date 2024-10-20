@@ -8,6 +8,7 @@ import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
+import com.missclick.spy.advertising.BuildConfig
 
 internal class InterstitialAdManagerAndroid(
     private val context: Context,
