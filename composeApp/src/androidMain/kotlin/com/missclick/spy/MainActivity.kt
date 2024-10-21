@@ -8,13 +8,16 @@ import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.lifecycleScope
 import com.missclick.spy.core.domain.SetActualLanguageUseCase
 import com.missclick.spy.di.appModule
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
 import org.koin.dsl.module
 
 class MainActivity : ComponentActivity() {
@@ -48,6 +51,18 @@ class MainActivity : ComponentActivity() {
                 }
             )
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        runBlocking {
+            setActualLanguageUseCase()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+//        stopKoin()
     }
 
 }
