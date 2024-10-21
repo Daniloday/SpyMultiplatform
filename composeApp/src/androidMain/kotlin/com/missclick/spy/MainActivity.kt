@@ -53,16 +53,9 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        runBlocking {
-            setActualLanguageUseCase()
-        }
-    }
-
     override fun onDestroy() {
         super.onDestroy()
-//        stopKoin()
+        stopKoin()
     }
 
 }
