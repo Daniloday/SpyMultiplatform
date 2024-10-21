@@ -9,7 +9,8 @@ import org.koin.java.KoinJavaComponent.inject
 internal actual fun platformModule(): Module = module {
     single<DeviceDataSource> {
         DeviceDataSourceAndroid(
-            activity = inject()
+            activity = inject(),
+            context = get()
         )
     }
 }

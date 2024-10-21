@@ -31,6 +31,7 @@ playServicesAds = "23.3.0"
 playServicesAdsLite = "23.3.0"
 uiAndroid = "1.7.3"
 jetbrainsKotlinJvm = "1.9.0"
+playReview = "2.0.1"
 
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
@@ -69,6 +70,8 @@ koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = 
 koin-compose-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmodel", version.ref = "koin" }
 
 play-services-ads-lite = { group = "com.google.android.gms", name = "play-services-ads-lite", version.ref = "playServicesAdsLite" }
+google-playReview = { group = "com.google.android.play", name = "review-ktx", version.ref = "playReview" }
+
 androidx-ui-android = { group = "androidx.compose.ui", name = "ui-android", version.ref = "uiAndroid" }
 
 [plugins]

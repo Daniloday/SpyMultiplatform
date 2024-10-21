@@ -11,6 +11,8 @@ dependencies {
     compileOnly(libs.plugins.jetbrainsCompose.toDep())
     compileOnly(libs.plugins.compose.compiler.toDep())
     compileOnly(libs.plugins.kotlin.serialization.toDep())
+    compileOnly(libs.plugins.room.toDep())
+    compileOnly(libs.plugins.ksp.toDep())
 }
 
 fun Provider<PluginDependency>.toDep() = map {

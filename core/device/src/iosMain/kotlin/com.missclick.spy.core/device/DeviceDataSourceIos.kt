@@ -21,4 +21,8 @@ internal class DeviceDataSourceIos() : DeviceDataSource {
         )
     }
 
+    override suspend fun requestRateUs() {
+
+    }
+
 }

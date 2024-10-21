@@ -33,6 +33,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,6 +43,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.missclick.spy.core.advertising.InterstitialAdManager
+import com.missclick.spy.core.common.extentions.randomByTime
+import com.missclick.spy.core.data.AppStoreRepo
 import com.missclick.spy.core.ui.theme.AppTheme
 import com.missclick.spy.core.ui.kit.buttons.PrimaryButton
 import com.missclick.spy.resources.Res
@@ -59,6 +62,7 @@ import com.missclick.spy.resources.you_local
 import com.missclick.spy.resources.you_spy
 import com.missclick.spy.resources.you_spy_hint
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
@@ -70,20 +74,32 @@ internal fun GameRoute(
     onBackClick: () -> Unit,
     vm: GameViewModel = koinViewModel(),
     interstitialAdManager: InterstitialAdManager = koinInject(),
+    appStoreRepo: AppStoreRepo = koinInject()
 ) {
 
     val viewState by vm.viewState.collectAsState()
+    val coroutineScope = rememberCoroutineScope()
 
     GameScreen(
         modifier = modifier,
         viewState = viewState,
         onBackClick = {
             if (viewState is GameViewState.End) {
-                interstitialAdManager.showAd(onAdClosed = onBackClick)
+                if ((0..4).randomByTime() == 0) {
+                    coroutineScope.launch {
+                        appStoreRepo.requestRateUs()
+                        onBackClick()
+                    }
+                } else {
+                    interstitialAdManager.showAd(onAdClosed = {
+                        coroutineScope.launch {
+                            onBackClick()
+                        }
+                    })
+                }
             } else {
                 onBackClick()
             }
-//            onBackClick()
         },
         onCardClick = vm::onCardClick,
         onFindOutClick = vm::showSpies,

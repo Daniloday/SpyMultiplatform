@@ -29,6 +29,7 @@ internal fun Project.configureKotlinMultiplatform(
 
         commonMain.dependencies {
             implementation(libs.findLibrary("kotlinx.coroutines.core").get())
+            implementation(libs.findLibrary("kotlinx.datetime").get())
             implementation(libs.findLibrary("koin.core").get())
         }
     }
