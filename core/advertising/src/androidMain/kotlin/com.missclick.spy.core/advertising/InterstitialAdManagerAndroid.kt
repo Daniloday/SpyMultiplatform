@@ -6,6 +6,8 @@ import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import com.missclick.spy.advertising.BuildConfig
@@ -15,7 +17,7 @@ internal class InterstitialAdManagerAndroid(
     private val activity: Lazy<Activity>
 ): InterstitialAdManager {
 
-    private var interstitialAd: RewardedAd? = null
+    private var interstitialAd: InterstitialAd? = null
 
     init {
         loadAd()
@@ -23,8 +25,8 @@ internal class InterstitialAdManagerAndroid(
 
     private fun loadAd() {
         val adRequest = AdRequest.Builder().build()
-        RewardedAd.load(context, BuildConfig.ADMOB_REWARDED_INTERSTITIAL_ID, adRequest, object : RewardedAdLoadCallback() {
-            override fun onAdLoaded(ad: RewardedAd) {
+        InterstitialAd.load(context, BuildConfig.ADMOB_REWARDED_INTERSTITIAL_ID, adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdLoaded(ad: InterstitialAd) {
                 interstitialAd = ad
             }
 
@@ -51,7 +53,7 @@ internal class InterstitialAdManagerAndroid(
                     interstitialAd = null
                 }
             }
-            interstitialAd?.show(activity.value){}
+            interstitialAd?.show(activity.value)
         } else{
             onAdClosed()
             loadAd()
