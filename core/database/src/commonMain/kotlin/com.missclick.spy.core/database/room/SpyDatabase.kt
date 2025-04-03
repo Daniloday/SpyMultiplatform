@@ -1,6 +1,7 @@
 package com.missclick.spy.core.database.room
 
 
+import androidx.room.AutoMigration
 import androidx.room.ConstructedBy
 import androidx.room.Database
 import androidx.room.RoomDatabase
@@ -21,7 +22,7 @@ internal const val PRELOAD_DB_NAME = "spy-database-preload.db"
         SetEntity::class,
         LanguageEntity::class,
     ],
-    version = 1,
+    version = 3,
     autoMigrations = [
 
     ],

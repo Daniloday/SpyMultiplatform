@@ -7,4 +7,5 @@ data class Options(
     val collectionName: String,
     val collectionLanguageCode: String,
     val selectedLanguageCode: String,
+    val isPremium: Boolean,
 )

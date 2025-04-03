@@ -11,6 +11,7 @@ internal data class OptionsPreferences(
     val selectedLanguageCode: String,
     val collectionLanguageCode: String,
     val collectionName: String,
+    val isPremium: Boolean = false,
 )
 
 internal fun OptionsPreferences.asModel() = Options(
@@ -19,5 +20,6 @@ internal fun OptionsPreferences.asModel() = Options(
     time = time,
     selectedLanguageCode = selectedLanguageCode,
     collectionName = collectionName,
-    collectionLanguageCode = collectionLanguageCode
+    collectionLanguageCode = collectionLanguageCode,
+    isPremium = isPremium
 )

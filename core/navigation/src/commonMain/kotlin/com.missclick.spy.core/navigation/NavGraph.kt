@@ -14,6 +14,8 @@ import com.missclick.spy.feature.game_options.navigation.navigateBackToGameOptio
 import com.missclick.spy.feature.game_options.navigation.navigateToGameOptions
 import com.missclick.spy.feature.guide.navigation.guideScreen
 import com.missclick.spy.feature.guide.navigation.navigateToGuide
+import com.missclick.spy.feature.premium.navigation.navigateToPremium
+import com.missclick.spy.feature.premium.navigation.premiumScreen
 import com.missclick.spy.feature.rules.navigation.RULES_ROUTE
 import com.missclick.spy.feature.rules.navigation.rulesScreen
 import com.missclick.spy.feature.settings.navigation.navigateToSettings
@@ -39,6 +41,7 @@ fun NavGraph(
             onGuideClick = navController::navigateToGuide,
             onSettingsClick = navController::navigateToSettings,
             onSelectSetClick = navController::navigateToCollections,
+            onPremiumClick = navController::navigateToPremium
         )
         gameScreen(onBackClick = navController::navigateBackToGameOptions)
         guideScreen(onBackClick = navController::navigateBackToGameOptions)
@@ -52,6 +55,9 @@ fun NavGraph(
         wordsScreen(
             onBackClick = navController::navigateBackToCollections,
             onSelectCollection = navController::navigateBackToGameOptions,
+        )
+        premiumScreen(
+            onBackClick = {}
         )
 
     }

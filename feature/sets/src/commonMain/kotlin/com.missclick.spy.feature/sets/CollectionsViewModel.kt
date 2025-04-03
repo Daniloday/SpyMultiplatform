@@ -27,10 +27,10 @@ class CollectionsViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             val options = getOptionsUseCase().first()
             val selectedCollection = options.collectionName
-            setRepo.getSets(options.selectedLanguageCode).collect { collections ->
+            setRepo.getSets(options.selectedLanguageCode).collect { sets ->
                 initSuccess(
                     selectedCollection = selectedCollection,
-                    collectionNames = collections
+                    sets = sets
                 )
             }
         }
@@ -38,13 +38,14 @@ class CollectionsViewModel(
 
 
     private fun initSuccess(
-        collectionNames: List<String>,
+        sets: List<Set>,
         selectedCollection: String,
     ) {
-        val collectionViews = collectionNames.map { collectionName ->
+        val collectionViews = sets.map { set ->
             CollectionView(
-                name = collectionName,
-                isSelected = collectionName == selectedCollection
+                name = set.name,
+                isSelected = set.name == selectedCollection,
+                isPremium = set.isPremium
             )
         }
         val successState = viewState.value as? CollectionsViewState.Success
@@ -72,7 +73,8 @@ class CollectionsViewModel(
         if (successState.newCollection.isNotBlank()) {
             val newSet = Set(
                 name = successState.newCollection,
-                isCustom = true
+                isCustom = true,
+                isPremium = false,
             )
             viewModelScope.launch(Dispatchers.IO) {
                 val options = getOptionsUseCase().first()
@@ -112,5 +114,6 @@ sealed class CollectionsViewState {
 
 data class CollectionView(
     val name: String,
-    val isSelected: Boolean
+    val isSelected: Boolean,
+    val isPremium: Boolean,
 )

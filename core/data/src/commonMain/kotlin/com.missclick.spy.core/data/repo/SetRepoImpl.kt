@@ -12,7 +12,7 @@ internal class SetRepoImpl(
     private val setDataSource: SetDataSource,
     private val ioDispatcher: CoroutineDispatcher,
 ) : SetRepo {
-    override fun getSets(languageCode: String): Flow<List<String>> {
+    override fun getSets(languageCode: String): Flow<List<Set>> {
         return setDataSource.getSets(languageCode).flowOn(ioDispatcher)
     }
 

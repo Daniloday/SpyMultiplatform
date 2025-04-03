@@ -36,7 +36,9 @@ import com.missclick.spy.resources.Res
 import com.missclick.spy.resources.add_set
 import com.missclick.spy.resources.enter_set_name
 import com.missclick.spy.resources.ic_back
+import com.missclick.spy.resources.ic_book
 import com.missclick.spy.resources.ic_ok
+import com.missclick.spy.resources.ic_premium
 import com.missclick.spy.resources.ic_triangle
 import com.missclick.spy.resources.ic_triangle_border
 import org.jetbrains.compose.resources.painterResource
@@ -133,7 +135,8 @@ private fun CollectionsScreenSuccess(
                     onCollectionClick(collection.name)
                 },
                 collectionName = collection.name,
-                isSelected = collection.isSelected
+                isSelected = collection.isSelected,
+                isPremium = collection.isPremium
             )
         }
         item {
@@ -216,6 +219,7 @@ private fun CollectionCard(
     modifier: Modifier = Modifier,
     collectionName: String,
     isSelected: Boolean,
+    isPremium: Boolean,
     onCollectionClick: () -> Unit,
 ) {
     Card(
@@ -242,6 +246,16 @@ private fun CollectionCard(
                     color = if (isSelected) AppTheme.colors.secondary else AppTheme.colors.primary
                 )
                 Spacer(modifier = Modifier.weight(1f))
+                if (isPremium) {
+                    Icon(
+                        modifier = Modifier
+                            .padding(horizontal = 8.dp)
+                            .size(48.dp),
+                        tint = AppTheme.colors.tertiary,
+                        painter = painterResource(Res.drawable.ic_premium),
+                        contentDescription = null
+                    )
+                }
                 TriangleIcon(isSelected = isSelected)
             }
 

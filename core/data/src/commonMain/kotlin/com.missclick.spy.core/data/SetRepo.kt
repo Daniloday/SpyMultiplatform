@@ -5,7 +5,7 @@ import com.missclick.spy.core.model.Set
 
 interface SetRepo {
     
-    fun getSets(languageCode: String): Flow<List<String>>
+    fun getSets(languageCode: String): Flow<List<Set>>
     suspend fun getDefaultSet(languageCode: String): String
     suspend fun getSet(setName: String, languageCode: String): Set
     suspend fun deleteSet(setName: String, languageCode: String)

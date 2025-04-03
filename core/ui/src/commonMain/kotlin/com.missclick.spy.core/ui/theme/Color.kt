@@ -9,6 +9,7 @@ import androidx.compose.ui.graphics.Color
 data class SpyColorScheme(
     val primary: Color,
     val secondary: Color,
+    val tertiary: Color,
     val onPrimary: Color,
     val onSecondary: Color,
     val background: Brush,
@@ -18,6 +19,7 @@ data class SpyColorScheme(
 internal val spyDarkColorPalette = SpyColorScheme(
     primary = Color(0xFFFFFBE7),
     secondary = Color(0xFFF07665),
+    tertiary = Color(0xffffae00),
     onSecondary = Color(0x54F07665),
     onPrimary = Color(0x80FFFBE7),
     background = Brush.verticalGradient(

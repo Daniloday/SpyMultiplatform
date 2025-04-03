@@ -20,10 +20,8 @@ class RoomConventionPlugin: Plugin<Project> {
         extensions.configure<KotlinMultiplatformExtension> {
             sourceSets.apply {
                 commonMain.dependencies {
-                    implementation(libs.findLibrary("androidx.room.runtime").get())
-                }
-                iosMain.dependencies {
                     implementation(libs.findLibrary("sqlite.bundled").get())
+                    implementation(libs.findLibrary("androidx.room.runtime").get())
                 }
             }
         }

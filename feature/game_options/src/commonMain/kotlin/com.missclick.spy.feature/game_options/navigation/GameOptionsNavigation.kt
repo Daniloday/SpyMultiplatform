@@ -12,6 +12,7 @@ fun NavGraphBuilder.gameOptionsScreen(
     onGuideClick: () -> Unit,
     onSettingsClick: () -> Unit,
     onSelectSetClick: () -> Unit,
+    onPremiumClick: () -> Unit,
 ) {
 
     composable(
@@ -22,6 +23,7 @@ fun NavGraphBuilder.gameOptionsScreen(
             onSettingsClick = onSettingsClick,
             onStartClick = onStartClick,
             onSelectSetClick = onSelectSetClick,
+            onPremiumClick = onPremiumClick,
         )
     }
 

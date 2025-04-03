@@ -8,13 +8,18 @@ import com.missclick.spy.core.database.enity.asModel
 import com.missclick.spy.core.database.room.SpyDatabase
 import kotlinx.coroutines.flow.Flow
 import com.missclick.spy.core.model.Set
+import kotlinx.coroutines.flow.map
 
 internal class SetDataSourceImpl(
     private val setDao: SetDao,
     private val languageDao: LanguageDao,
 ) : SetDataSource {
-    override fun getSets(languageCode: String): Flow<List<String>> {
-        return setDao.getSets(languageCode)
+    override fun getSets(languageCode: String): Flow<List<Set>> {
+        return setDao.getSets(languageCode).map { setEntities ->
+            setEntities.map { set ->
+                set.asModel()
+            }
+        }
     }
 
     override suspend fun getSet(setName: String, languageCode: String): Set {

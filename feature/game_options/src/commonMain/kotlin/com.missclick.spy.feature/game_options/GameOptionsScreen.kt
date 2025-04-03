@@ -36,6 +36,7 @@ import com.missclick.spy.core.ui.kit.buttons.PrimaryButton
 import com.missclick.spy.core.ui.theme.AppTheme
 import com.missclick.spy.resources.Res
 import com.missclick.spy.resources.ic_book
+import com.missclick.spy.resources.ic_premium
 import com.missclick.spy.resources.ic_settings
 import com.missclick.spy.resources.min
 import com.missclick.spy.resources.players
@@ -55,6 +56,7 @@ internal fun GameOptionsRoute(
     onGuideClick: () -> Unit,
     onStartClick: () -> Unit,
     onSelectSetClick: () -> Unit,
+    onPremiumClick: () -> Unit,
     vm: GameOptionsViewModel = koinViewModel(),
 ) {
 
@@ -68,6 +70,7 @@ internal fun GameOptionsRoute(
         vm = vm,
         viewState = viewState,
         onSelectSetClick = onSelectSetClick,
+        onPremiumClick = onPremiumClick,
     )
 
 }
@@ -79,6 +82,7 @@ private fun GameOptionsScreen(
     onSettingsClick: () -> Unit,
     onGuideClick: () -> Unit,
     onSelectSetClick: () -> Unit,
+    onPremiumClick: () -> Unit,
     viewState: GameOptionsViewState,
     vm: GameOptionsViewModel,
 ) {
@@ -90,6 +94,7 @@ private fun GameOptionsScreen(
         TopBar(
             onGuideClick = onGuideClick,
             onSettingsClick = onSettingsClick,
+            onPremiumClick = onPremiumClick
         )
         when (viewState){
             is GameOptionsViewState.Success -> GameOptionsSuccess(
@@ -249,6 +254,7 @@ private fun TopBar(
     modifier: Modifier = Modifier,
     onGuideClick: () -> Unit,
     onSettingsClick: () -> Unit,
+    onPremiumClick: () -> Unit,
 ) {
     Box(
         modifier = modifier
@@ -259,6 +265,15 @@ private fun TopBar(
             modifier = Modifier.align(Alignment.Center)
         ) {
             Spacer(modifier = Modifier.weight(1f))
+            IconButton(onClick = onPremiumClick) {
+                Icon(
+                    modifier = Modifier.size(48.dp),
+                    painter = painterResource(resource = Res.drawable.ic_premium),
+                    contentDescription = null,
+                    tint = AppTheme.colors.tertiary
+                )
+            }
+            Spacer(modifier = Modifier.width(8.dp))
             IconButton(onClick = onGuideClick) {
                 Icon(
                     modifier = Modifier.size(32.dp),

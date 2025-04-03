@@ -14,25 +14,17 @@ import platform.Foundation.NSFileManager
 import platform.Foundation.NSUserDomainMask
 
 internal actual fun platformModule(): Module = module {
-    single { getDatabaseBuilder() }
-    single { provideDatabase(get()) }
+    single { provideDatabaseBuilder() }
 }
 
 
-private fun getDatabaseBuilder(): RoomDatabase.Builder<SpyDatabase> {
+private fun provideDatabaseBuilder(): RoomDatabase.Builder<SpyDatabase> {
+    copyDatabaseIfNeeded()
     val dbFilePath = documentDirectory() + "/" + DB_NAME
     return Room.databaseBuilder<SpyDatabase>(
         name = dbFilePath,
     )
-}
-private fun provideDatabase(
-    builder: RoomDatabase.Builder<SpyDatabase>
-): SpyDatabase {
-    copyDatabaseIfNeeded()
-    return builder
         .setDriver(BundledSQLiteDriver())
-        .build()
-
 }
 
 @OptIn(ExperimentalForeignApi::class)

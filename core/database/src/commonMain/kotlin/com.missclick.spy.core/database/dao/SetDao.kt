@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 internal interface SetDao {
 
     @Query("""
-       SELECT * FROM `set` 
+       SELECT * FROM `set`
         WHERE language_id IN (
            SELECT id FROM language WHERE code = :languageCode
        ) AND `set`.name = :setName
@@ -22,13 +22,13 @@ internal interface SetDao {
     ): SetEntity
 
     @Query("""
-       SELECT DISTINCT `set`.name FROM `set`
+       SELECT * FROM `set`
         INNER JOIN language ON `set`.language_id = language.id
         WHERE code = :languageCode
     """)
     fun getSets(
         languageCode: String,
-    ): Flow<List<String>>
+    ): Flow<List<SetEntity>>
 
     @Query("""
        SELECT DISTINCT `set`.name FROM `set`

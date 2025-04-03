@@ -32,6 +32,7 @@ playServicesAdsLite = "23.3.0"
 uiAndroid = "1.7.3"
 jetbrainsKotlinJvm = "1.9.0"
 playReview = "2.0.1"
+sqliteKtx = "2.4.0"
 
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
@@ -73,6 +74,7 @@ play-services-ads-lite = { group = "com.google.android.gms", name = "play-servic
 google-playReview = { group = "com.google.android.play", name = "review-ktx", version.ref = "playReview" }
 
 androidx-ui-android = { group = "androidx.compose.ui", name = "ui-android", version.ref = "uiAndroid" }
+androidx-sqlite-ktx = { group = "androidx.sqlite", name = "sqlite-ktx", version.ref = "sqliteKtx" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

@@ -21,6 +21,7 @@ internal class OptionsPreferencesSerializer(
         collectionName = "",
         selectedLanguageCode = "",
         collectionLanguageCode = "",
+        isPremium = false,
     )
 ) : OkioSerializer<OptionsPreferences> {
 
