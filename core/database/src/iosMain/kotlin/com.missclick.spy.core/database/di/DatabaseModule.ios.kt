@@ -19,12 +19,12 @@ internal actual fun platformModule(): Module = module {
 
 
 private fun provideDatabaseBuilder(): RoomDatabase.Builder<SpyDatabase> {
-    copyDatabaseIfNeeded()
+//    copyDatabaseIfNeeded()
     val dbFilePath = documentDirectory() + "/" + DB_NAME
     return Room.databaseBuilder<SpyDatabase>(
         name = dbFilePath,
     )
-        .setDriver(BundledSQLiteDriver())
+//        .setDriver(BundledSQLiteDriver())
 }
 
 @OptIn(ExperimentalForeignApi::class)

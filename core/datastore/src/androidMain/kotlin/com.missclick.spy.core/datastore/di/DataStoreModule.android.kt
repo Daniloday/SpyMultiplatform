@@ -2,23 +2,27 @@ package com.missclick.spy.core.datastore.di
 
 import android.content.Context
 import androidx.datastore.core.DataStore
+import com.missclick.spy.core.common.di.SpyDispatchers
 import com.missclick.spy.core.datastore.OptionsDataSource
 import com.missclick.spy.core.datastore.preferences.OptionsDataSourceImpl
 import com.missclick.spy.core.datastore.preferences.OptionsPreferences
 import com.missclick.spy.core.datastore.preferences.OptionsPreferencesSerializer
+import kotlinx.coroutines.CoroutineDispatcher
 import okio.FileSystem
 import okio.Path.Companion.toPath
 import org.koin.core.module.Module
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 
 internal actual fun platformModule(): Module = module {
-    single { provideDataStore(get(), get()) }
+    single { provideDataStore(get(), get(), ioDispatcher = get(named(SpyDispatchers.IO))) }
 }
 
 private fun provideDataStore(
     context: Context,
     optionsPreferencesSerializer: OptionsPreferencesSerializer,
+    ioDispatcher: CoroutineDispatcher,
 ): DataStore<OptionsPreferences> {
 
     val producePath = { context.filesDir.resolve(DATA_STORE_FILE_NAME).absolutePath.toPath() }
@@ -26,6 +30,7 @@ private fun provideDataStore(
     return createDataStore(
         fileSystem = FileSystem.SYSTEM,
         producePath = producePath,
-        optionsPreferencesSerializer = optionsPreferencesSerializer
+        optionsPreferencesSerializer = optionsPreferencesSerializer,
+        ioDispatcher = ioDispatcher
     )
 }
