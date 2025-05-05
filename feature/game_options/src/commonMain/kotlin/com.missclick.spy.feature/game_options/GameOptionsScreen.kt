@@ -265,14 +265,14 @@ private fun TopBar(
             modifier = Modifier.align(Alignment.Center)
         ) {
             Spacer(modifier = Modifier.weight(1f))
-            IconButton(onClick = onPremiumClick) {
-                Icon(
-                    modifier = Modifier.size(48.dp),
-                    painter = painterResource(resource = Res.drawable.ic_premium),
-                    contentDescription = null,
-                    tint = AppTheme.colors.tertiary
-                )
-            }
+//            IconButton(onClick = onPremiumClick) {
+//                Icon(
+//                    modifier = Modifier.size(48.dp),
+//                    painter = painterResource(resource = Res.drawable.ic_premium),
+//                    contentDescription = null,
+//                    tint = AppTheme.colors.tertiary
+//                )
+//            }
             Spacer(modifier = Modifier.width(8.dp))
             IconButton(onClick = onGuideClick) {
                 Icon(
