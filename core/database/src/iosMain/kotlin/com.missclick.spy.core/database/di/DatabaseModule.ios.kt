@@ -24,7 +24,7 @@ private fun provideDatabaseBuilder(): RoomDatabase.Builder<SpyDatabase> {
     return Room.databaseBuilder<SpyDatabase>(
         name = dbFilePath,
     )
-//        .setDriver(BundledSQLiteDriver())
+        .setDriver(BundledSQLiteDriver())
 }
 
 @OptIn(ExperimentalForeignApi::class)

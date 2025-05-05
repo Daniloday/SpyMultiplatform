@@ -79,7 +79,7 @@ android {
         versionName = "2.1.3"
         manifestPlaceholders["ADMOB_APPLICATION_ID"] = secretKeyProperties.getProperty("ADMOB_APPLICATION_ID")
 
-        resourceConfigurations += listOf("en", "ru", "uk")
+        androidResources.localeFilters += listOf("en", "ru", "uk")
     }
     packaging {
         resources {
