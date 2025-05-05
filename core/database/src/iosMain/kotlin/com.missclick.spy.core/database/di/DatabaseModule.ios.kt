@@ -19,7 +19,7 @@ internal actual fun platformModule(): Module = module {
 
 
 private fun provideDatabaseBuilder(): RoomDatabase.Builder<SpyDatabase> {
-//    copyDatabaseIfNeeded()
+    copyDatabaseIfNeeded()
     val dbFilePath = documentDirectory() + "/" + DB_NAME
     return Room.databaseBuilder<SpyDatabase>(
         name = dbFilePath,
@@ -44,7 +44,8 @@ private fun copyDatabaseIfNeeded() {
     val fileManager = NSFileManager.defaultManager()
 
     // Путь к базе данных в папке ресурсов
-    val bundlePath = NSBundle.mainBundle.pathForResource(name = "spy-database-preload", ofType = "db")
+    val bundlePath =
+        NSBundle.mainBundle.pathForResource(name = "spy-database-preload", ofType = "db")
     val databasePath = documentDirectory() + "/" + DB_NAME
 
     // Если файл базы данных уже существует, пропускаем копирование
