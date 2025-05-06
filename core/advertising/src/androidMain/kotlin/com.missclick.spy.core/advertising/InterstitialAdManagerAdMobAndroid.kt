@@ -2,19 +2,23 @@ package com.missclick.spy.core.advertising
 
 import android.app.Activity
 import android.content.Context
+import androidx.compose.ui.text.intl.Locale
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
-import com.google.android.gms.ads.rewarded.RewardedAd
-import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import com.missclick.spy.advertising.BuildConfig
+import com.unity3d.ads.IUnityAdsLoadListener
+import com.unity3d.ads.IUnityAdsShowListener
+import com.unity3d.ads.UnityAds
+import com.unity3d.ads.UnityAdsShowOptions
 
-internal class InterstitialAdManagerAndroid(
+
+internal class InterstitialAdManagerAdMobAndroid(
     private val context: Context,
-    private val activity: Lazy<Activity>
+    private val activity: Lazy<Activity>,
 ): InterstitialAdManager {
 
     private var interstitialAd: InterstitialAd? = null
@@ -25,7 +29,7 @@ internal class InterstitialAdManagerAndroid(
 
     private fun loadAd() {
         val adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(context, BuildConfig.ADMOB_REWARDED_INTERSTITIAL_ID, adRequest, object : InterstitialAdLoadCallback() {
+        InterstitialAd.load(context, BuildConfig.ADMOB_INTERSTITIAL_ID, adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdLoaded(ad: InterstitialAd) {
                 interstitialAd = ad
             }
@@ -54,7 +58,7 @@ internal class InterstitialAdManagerAndroid(
                 }
             }
             interstitialAd?.show(activity.value)
-        } else{
+        } else {
             onAdClosed()
             loadAd()
         }

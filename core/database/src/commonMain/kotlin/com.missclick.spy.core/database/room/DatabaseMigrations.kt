@@ -21,10 +21,10 @@ internal object DatabaseMigrations {
         }
     }
 
-    val MIGRATION_2_3 = object : Migration(2, 3) {
-        override fun migrate(connection: SQLiteConnection) {
-            connection.execSQL("INSERT INTO `set` (name, language_id, is_custom, is_premium) VALUES ('Test', 0, 0, 1)")
-        }
-    }
+//    val MIGRATION_2_3 = object : Migration(2, 3) {
+//        override fun migrate(connection: SQLiteConnection) {
+//            connection.execSQL("INSERT INTO `set` (name, language_id, is_custom, is_premium) VALUES ('Test', 0, 0, 1)")
+//        }
+//    }
 
 }

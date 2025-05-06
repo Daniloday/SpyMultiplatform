@@ -45,7 +45,6 @@ private fun provideDatabase(
     return builder
         .addMigrations(
             DatabaseMigrations.MIGRATION_1_2,
-            DatabaseMigrations.MIGRATION_2_3,
             )
         .build()
 }

@@ -1,5 +1,6 @@
 [versions]
 accompanistSystemuicontroller = "0.36.0"
+adsIdentifier = "1.0.0-alpha05"
 agp = "8.9.2"
 android-compileSdk = "35"
 android-minSdk = "24"
@@ -33,9 +34,11 @@ uiAndroid = "1.8.0"
 jetbrainsKotlinJvm = "1.9.0"
 playReview = "2.0.2"
 sqliteKtx = "2.5.0"
+unityAds = "4.7.1"
 
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
+androidx-ads-identifier = { module = "androidx.ads:ads-identifier", version.ref = "adsIdentifier" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-datastore = { module = "androidx.datastore:datastore", version.ref = "datastore" }
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
@@ -75,6 +78,7 @@ google-playReview = { group = "com.google.android.play", name = "review-ktx", ve
 
 androidx-ui-android = { group = "androidx.compose.ui", name = "ui-android", version.ref = "uiAndroid" }
 androidx-sqlite-ktx = { group = "androidx.sqlite", name = "sqlite-ktx", version.ref = "sqliteKtx" }
+unity-ads = { module = "com.unity3d.ads:unity-ads", version.ref = "unityAds" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

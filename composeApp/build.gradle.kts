@@ -79,7 +79,7 @@ android {
         versionCode = 16
         versionName = "2.1.3"
         manifestPlaceholders["ADMOB_APPLICATION_ID"] = secretKeyProperties.getProperty("ADMOB_APPLICATION_ID")
-
+        buildConfigField("String", "UNITY_GAME_ID", "\"${secretKeyProperties["UNITY_GAME_ID"]}\"")
         androidResources.localeFilters += listOf("en", "ru", "uk")
     }
     packaging {

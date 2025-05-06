@@ -1,7 +1,6 @@
 package com.missclick.spy.buildlogic
 
 import org.gradle.api.Project
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
@@ -11,7 +10,6 @@ internal fun Project.configureKotlinMultiplatform(
 ) = extension.apply {
 
     androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_17)
         }
