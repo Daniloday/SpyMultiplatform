@@ -1,13 +1,15 @@
 package com.missclick.spy.core.datastore.di
 
 import androidx.datastore.core.DataStore
+import androidx.datastore.core.DataStoreFactory
+import androidx.datastore.core.okio.OkioStorage
 import com.missclick.spy.core.common.di.SpyDispatchers
-import com.missclick.spy.core.datastore.OptionsDataSource
-import com.missclick.spy.core.datastore.preferences.OptionsDataSourceImpl
+import com.missclick.spy.core.datastore.OptionsPreferencesSerializer
 import com.missclick.spy.core.datastore.preferences.OptionsPreferences
-import com.missclick.spy.core.datastore.preferences.OptionsPreferencesSerializer
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
 import okio.FileSystem
 import okio.Path.Companion.toPath
 import org.koin.core.module.Module
@@ -20,6 +22,7 @@ import platform.Foundation.NSUserDomainMask
 
 
 internal actual fun platformModule(): Module = module {
+    single { OptionsPreferencesSerializer() }
     single { provideDataStore(get(), ioDispatcher = get(named(SpyDispatchers.IO))) }
 }
 
@@ -37,13 +40,15 @@ private fun provideDataStore(
             create = false,
             error = null,
         )
-        requireNotNull(documentDirectory).path + "/$DATA_STORE_FILE_NAME"
+        requireNotNull(documentDirectory).path + "/datastore/$DATA_STORE_FILE_NAME"
     }
 
-    return createDataStore(
-        fileSystem = FileSystem.SYSTEM,
-        producePath = { producePath().toPath() },
-        optionsPreferencesSerializer = optionsPreferencesSerializer,
-        ioDispatcher = ioDispatcher
+    return DataStoreFactory.create(
+        storage = OkioStorage(
+            fileSystem = FileSystem.SYSTEM,
+            producePath = { producePath().toPath() },
+            serializer = optionsPreferencesSerializer,
+        ),
+        scope = CoroutineScope(SupervisorJob() + ioDispatcher)
     )
 }

@@ -1,16 +1,19 @@
 package com.missclick.spy.core.datastore.preferences
 
+import com.missclick.spy.core.common.Constant.PLAYERS_DEFAULT
+import com.missclick.spy.core.common.Constant.SPIES_DEFAULT
+import com.missclick.spy.core.common.Constant.TIMER_DEFAULT
 import com.missclick.spy.core.model.Options
 import kotlinx.serialization.Serializable
 
 @Serializable
 internal data class OptionsPreferences(
-    val playersCount: Int,
-    val spiesCount: Int,
-    val time: Int,
-    val selectedLanguageCode: String,
-    val collectionLanguageCode: String,
-    val collectionName: String,
+    val playersCount: Int = PLAYERS_DEFAULT,
+    val spiesCount: Int = SPIES_DEFAULT,
+    val time: Int = TIMER_DEFAULT,
+    val selectedLanguageCode: String = "",
+    val collectionLanguageCode: String = "",
+    val collectionName: String = "",
     val isPremium: Boolean = false,
 )
 

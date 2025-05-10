@@ -1,10 +1,8 @@
-package com.missclick.spy.core.datastore.preferences
+package com.missclick.spy.core.datastore
 
 import androidx.datastore.core.CorruptionException
 import androidx.datastore.core.okio.OkioSerializer
-import com.missclick.spy.core.common.Constant.PLAYERS_DEFAULT
-import com.missclick.spy.core.common.Constant.SPIES_DEFAULT
-import com.missclick.spy.core.common.Constant.TIMER_DEFAULT
+import com.missclick.spy.core.datastore.preferences.OptionsPreferences
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.withContext
@@ -14,15 +12,7 @@ import okio.BufferedSink
 import okio.BufferedSource
 
 internal class OptionsPreferencesSerializer(
-    override val defaultValue: OptionsPreferences = OptionsPreferences(
-        playersCount = PLAYERS_DEFAULT,
-        spiesCount = SPIES_DEFAULT,
-        time = TIMER_DEFAULT,
-        collectionName = "",
-        selectedLanguageCode = "",
-        collectionLanguageCode = "",
-        isPremium = false,
-    )
+    override val defaultValue: OptionsPreferences = OptionsPreferences()
 ) : OkioSerializer<OptionsPreferences> {
 
     override suspend fun readFrom(source: BufferedSource): OptionsPreferences {
