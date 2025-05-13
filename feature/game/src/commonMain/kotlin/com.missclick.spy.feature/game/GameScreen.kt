@@ -37,6 +37,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.style.TextAlign
@@ -320,7 +321,9 @@ private fun GameCard(
                 this.rotationY = rotationY
                 this.rotationZ = rotationZ
                 cameraDistance = 8 * density
-            },
+            }
+            .alpha(if (offset == 560.dp) 0f else 1f)
+        ,
         border = BorderStroke(
             width = 2.dp,
             color = animateBorderColor

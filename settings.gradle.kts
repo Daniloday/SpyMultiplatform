@@ -27,6 +27,10 @@ dependencyResolutionManagement {
         }
         mavenCentral()
         maven("https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental")
+        maven { url = uri("https://maven.google.com") }
+        maven {
+            url = uri("https://android-sdk.is.com/")
+        }
     }
 }
 

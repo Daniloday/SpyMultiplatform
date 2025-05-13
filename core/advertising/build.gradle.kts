@@ -16,6 +16,10 @@ kotlin {
         androidMain.dependencies {
             api(libs.play.services.ads)
             api(libs.unity.ads)
+            api(libs.admob.unity)
+            api(libs.admob.applovin)
+            api(libs.admob.ironsource)
+//            api(libs.admob.meta)
         }
     }
 }
