@@ -43,7 +43,10 @@ class GetOptionsUseCase(
             || words.size < MIN_LOCATIONS_TO_PLAY
         ) {
             val defaultCollection = setRepo.getDefaultSet(options.selectedLanguageCode)
-            return@map options.copy(collectionName = defaultCollection)
+            return@map options.copy(
+                collectionName = defaultCollection,
+                isSelectedCollectionPremium = false
+            )
         }
 
         options

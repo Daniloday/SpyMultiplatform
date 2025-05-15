@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.missclick.spy.core.ui.kit.AppDivider
+import com.missclick.spy.core.ui.kit.TopBar
 import com.missclick.spy.core.ui.kit.buttons.PrimaryButton
 import com.missclick.spy.core.ui.theme.AppTheme
 import com.missclick.spy.resources.Res
@@ -119,25 +120,3 @@ private fun Guide(
     }
 }
 
-@Composable
-private fun TopBar(
-    modifier: Modifier = Modifier,
-    onBackClick: () -> Unit,
-) {
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .height(AppTheme.dimens.topBarHeight),
-        contentAlignment = Alignment.CenterStart
-    ) {
-        IconButton(onClick = onBackClick) {
-            Icon(
-                modifier = Modifier.size(32.dp),
-                painter = painterResource(resource = Res.drawable.ic_back),
-                tint = AppTheme.colors.primary,
-                contentDescription = null
-            )
-        }
-        AppDivider(modifier = Modifier.align(Alignment.BottomCenter))
-    }
-}

@@ -22,3 +22,4 @@
 
 -dontwarn android.media.LoudnessCodecController$OnLoudnessCodecUpdateListener
 -dontwarn android.media.LoudnessCodecController
+-keep class com.adapty.** { *; }

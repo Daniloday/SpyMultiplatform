@@ -58,6 +58,7 @@ kotlin {
             implementation(projects.core.device)
             implementation(projects.core.advertising)
             implementation(projects.core.common)
+            implementation(projects.core.purchase)
 
             implementation(projects.feature.rules)
             implementation(projects.feature.gameOptions)
@@ -85,6 +86,7 @@ android {
         versionName = "2.1.3"
         manifestPlaceholders["ADMOB_APPLICATION_ID"] = secretKeyProperties.getProperty("ADMOB_APPLICATION_ID")
         buildConfigField("String", "UNITY_GAME_ID", "\"${secretKeyProperties["UNITY_GAME_ID"]}\"")
+        buildConfigField("String", "ADAPTY_API_KEY", "\"${secretKeyProperties["ADAPTY_API_KEY"]}\"")
         androidResources.localeFilters += listOf("en", "ru", "uk")
     }
     packaging {

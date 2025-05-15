@@ -14,7 +14,7 @@ import com.unity3d.ads.IUnityAdsShowListener
 import com.unity3d.ads.UnityAds
 import com.unity3d.ads.UnityAdsShowOptions
 
-class InterstitialAdManagerUnityAndroid(
+internal class InterstitialAdManagerUnityAndroid(
     private val context: Context,
     private val activity: Lazy<Activity>,
 ) : InterstitialAdManager {

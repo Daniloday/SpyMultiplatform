@@ -37,11 +37,13 @@ internal class OptionsDataSourceImpl(
     override suspend fun setCollectionName(
         collectionName: String,
         languageCode: String,
+        isCollectionPremium: Boolean,
     ) {
         optionsPreferences.updateData { currentData ->
             currentData.copy(
                 collectionName = collectionName,
-                collectionLanguageCode = languageCode
+                collectionLanguageCode = languageCode,
+                isSelectedCollectionPremium = isCollectionPremium
             )
         }
     }

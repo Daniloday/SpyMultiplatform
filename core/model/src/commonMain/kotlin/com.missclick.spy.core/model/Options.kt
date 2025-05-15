@@ -6,6 +6,7 @@ data class Options(
     val time: Int,
     val collectionName: String,
     val collectionLanguageCode: String,
+    val isSelectedCollectionPremium: Boolean,
     val selectedLanguageCode: String,
     val isPremium: Boolean,
 )

@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 data class SpyShapes(
     val button: Shape,
     val frame: Shape,
+    val dialog: Shape,
     val rectangle: Shape,
     val triangle: Shape,
 )
@@ -30,6 +31,7 @@ private val triangle: Shape = GenericShape { size, _ ->
 internal val spyShapes = SpyShapes(
     button = RoundedCornerShape(16.dp),
     frame = RoundedCornerShape(4.dp),
+    dialog = RoundedCornerShape(16.dp),
     rectangle = RoundedCornerShape(0.dp),
     triangle = triangle
 )

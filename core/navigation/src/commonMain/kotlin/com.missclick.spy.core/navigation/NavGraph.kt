@@ -57,7 +57,7 @@ fun NavGraph(
             onSelectCollection = navController::navigateBackToGameOptions,
         )
         premiumScreen(
-            onBackClick = {}
+            onBackClick = navController::navigateUp
         )
 
     }

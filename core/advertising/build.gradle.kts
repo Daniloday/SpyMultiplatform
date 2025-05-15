@@ -28,6 +28,7 @@ android {
     defaultConfig {
         buildConfigField("String", "ADMOB_BANNER_ID", "\"${secretKeyProperties["ADMOB_BANNER_ID"]}\"")
         buildConfigField("String", "ADMOB_INTERSTITIAL_ID", "\"${secretKeyProperties["ADMOB_INTERSTITIAL_ID"]}\"")
+        buildConfigField("String", "ADMOB_REWARDED_ID", "\"${secretKeyProperties["ADMOB_REWARDED_ID"]}\"")
     }
     buildFeatures {
         buildConfig = true

@@ -125,5 +125,15 @@
 
     <string name="find">Дізнатися, хто шпигун</string>
 
+    <string name="it_is_premium_set">Ви обрали Преміум набір. Щоб грати, придбайте Преміум або перегляньте рекламу</string>
+    <string name="buy_premium">Придбати</string>
+    <string name="watch_ad">Переглянути</string>
+
+    <string name="no_ads">— Без реклами</string>
+    <string name="premium_sets">— Преміум-набори</string>
+    <string name="all_future_sets">— Усі майбутні набори включено</string>
+    <string name="all_future_features">— Усі майбутні функції розблоковано</string>
+    <string name="forever">— Назавжди</string>
+
 
 </resources>

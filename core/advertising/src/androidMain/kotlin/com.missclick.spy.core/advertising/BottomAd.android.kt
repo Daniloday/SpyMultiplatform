@@ -21,17 +21,9 @@ actual fun BottomAds(
     AndroidView(
         modifier = modifier.fillMaxWidth(),
         factory = {
-//            if (Locale.current.region.lowercase() == "ru") {
 //                BannerView(activity, "Banner_Android", UnityBannerSize.standard).apply {
 //                    load()
 //                }
-//            } else {
-//                AdView(activity).apply {
-//                    setAdSize(AdSize.BANNER)
-//                    adUnitId = BuildConfig.ADMOB_BANNER_ID
-//                    loadAd(AdRequest.Builder().build())
-//                }
-//            }
             AdView(activity).apply {
                 setAdSize(AdSize.BANNER)
                 adUnitId = BuildConfig.ADMOB_BANNER_ID

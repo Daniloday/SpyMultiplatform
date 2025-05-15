@@ -125,5 +125,16 @@
 
 
     <string name="find">Узнать, кто шпион</string>
+    <string name="it_is_premium_set">Вы выбрали Премиум набор. Чтобы играть, купите Премиум или посмотрите рекламу</string>
+    <string name="buy_premium">Купить</string>
+    <string name="watch_ad">Посмотреть</string>
+
+    <string name="no_ads">— Без рекламы</string>
+    <string name="premium_sets">— Премиум-наборы</string>
+    <string name="all_future_sets">— Все будущие наборы включены</string>
+    <string name="all_future_features">— Все будущие функции разблокированы</string>
+    <string name="forever">— Навсегда</string>
+
+
 
 </resources>

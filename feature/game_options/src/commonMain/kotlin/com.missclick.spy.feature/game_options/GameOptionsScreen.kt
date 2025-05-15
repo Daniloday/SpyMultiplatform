@@ -1,5 +1,8 @@
 package com.missclick.spy.feature.game_options
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,13 +19,16 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
+import com.missclick.spy.core.advertising.RewardedAdManager
 import com.missclick.spy.core.common.Constant.PLAYERS_MAX
 import com.missclick.spy.core.common.Constant.PLAYERS_MIN
 import com.missclick.spy.core.common.Constant.SPIES_MAX
@@ -35,15 +41,18 @@ import com.missclick.spy.core.ui.kit.buttons.TriangleButton
 import com.missclick.spy.core.ui.kit.buttons.PrimaryButton
 import com.missclick.spy.core.ui.theme.AppTheme
 import com.missclick.spy.resources.Res
+import com.missclick.spy.resources.buy_premium
 import com.missclick.spy.resources.ic_book
 import com.missclick.spy.resources.ic_premium
 import com.missclick.spy.resources.ic_settings
+import com.missclick.spy.resources.it_is_premium_set
 import com.missclick.spy.resources.min
 import com.missclick.spy.resources.players
 import com.missclick.spy.resources.set
 import com.missclick.spy.resources.spies
 import com.missclick.spy.resources.start
 import com.missclick.spy.resources.timer
+import com.missclick.spy.resources.watch_ad
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
@@ -58,9 +67,24 @@ internal fun GameOptionsRoute(
     onSelectSetClick: () -> Unit,
     onPremiumClick: () -> Unit,
     vm: GameOptionsViewModel = koinViewModel(),
+    rewardedAdManager: RewardedAdManager = koinInject(),
 ) {
 
-    val viewState by vm.viewState.collectAsState()
+    val viewStateOptions by vm.viewStateOptions.collectAsState()
+    val viewStateScreen by vm.viewStateScreen.collectAsState()
+
+    if (viewStateScreen.isShowPremiumSetDialog) {
+        PremiumSetDialog(
+            onCloseClick = vm::onClosePremiumSetDialog,
+            onPremiumClick = onPremiumClick,
+            onShowAdClick = {
+                rewardedAdManager.showAd(
+                    onAdSkipped = vm::onClosePremiumSetDialog,
+                    onAdWatched = onStartClick
+                )
+            }
+        )
+    }
 
     GameOptionsScreen(
         modifier = modifier,
@@ -68,7 +92,7 @@ internal fun GameOptionsRoute(
         onGuideClick = onGuideClick,
         onSettingsClick = onSettingsClick,
         vm = vm,
-        viewState = viewState,
+        viewState = viewStateOptions,
         onSelectSetClick = onSelectSetClick,
         onPremiumClick = onPremiumClick,
     )
@@ -83,7 +107,7 @@ private fun GameOptionsScreen(
     onGuideClick: () -> Unit,
     onSelectSetClick: () -> Unit,
     onPremiumClick: () -> Unit,
-    viewState: GameOptionsViewState,
+    viewState: GameOptionsViewStateOptions,
     vm: GameOptionsViewModel,
 ) {
     Column(
@@ -96,14 +120,63 @@ private fun GameOptionsScreen(
             onSettingsClick = onSettingsClick,
             onPremiumClick = onPremiumClick
         )
-        when (viewState){
-            is GameOptionsViewState.Success -> GameOptionsSuccess(
-                onStart = onStart,
+        when (viewState) {
+            is GameOptionsViewStateOptions.Success -> GameOptionsSuccess(
+                onStart = {
+                    if (viewState.isSelectedCollectionPremium && !viewState.isPremium) {
+                        vm.onShowPremiumSetDialog()
+                    } else {
+                        onStart()
+                    }
+                },
                 onSelectSetClick = onSelectSetClick,
                 vm = vm,
                 viewState = viewState
             )
-            is GameOptionsViewState.Loading -> Unit
+
+            is GameOptionsViewStateOptions.Loading -> Unit
+        }
+    }
+}
+
+@Composable
+private fun PremiumSetDialog(
+    onPremiumClick: () -> Unit,
+    onShowAdClick: () -> Unit,
+    onCloseClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Dialog(
+        onDismissRequest = onCloseClick
+    ) {
+        Box(
+            modifier = modifier
+                .fillMaxWidth(0.95f)
+                .clip(AppTheme.shapes.dialog)
+                .background(AppTheme.colors.background)
+                .border(
+                    border = BorderStroke(1.dp, AppTheme.colors.primary),
+                    shape = AppTheme.shapes.dialog
+                ),
+        ) {
+            Column(
+                modifier = Modifier.padding(16.dp).align(Alignment.Center),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                Text(
+                    modifier = Modifier.padding(vertical = 8.dp),
+                    text = stringResource(Res.string.it_is_premium_set),
+                    style = AppTheme.types.h24,
+                    textAlign = TextAlign.Center,
+                    color = AppTheme.colors.primary
+                )
+                PrimaryButton(
+                    onClick = onPremiumClick,
+                    text = stringResource(Res.string.buy_premium)
+                )
+                PrimaryButton(onClick = onShowAdClick, text = stringResource(Res.string.watch_ad))
+            }
         }
     }
 }
@@ -113,7 +186,7 @@ private fun ColumnScope.GameOptionsSuccess(
     modifier: Modifier = Modifier,
     onStart: () -> Unit,
     onSelectSetClick: () -> Unit,
-    viewState: GameOptionsViewState.Success,
+    viewState: GameOptionsViewStateOptions.Success,
     vm: GameOptionsViewModel,
 ) {
     Box(
@@ -138,7 +211,7 @@ private fun ColumnScope.GameOptionsSuccess(
 @Composable
 private fun Options(
     modifier: Modifier = Modifier,
-    viewState: GameOptionsViewState.Success,
+    viewState: GameOptionsViewStateOptions.Success,
     onSelectSetClick: () -> Unit,
     vm: GameOptionsViewModel,
 ) {

@@ -47,7 +47,8 @@ class WordsViewModel(
                 isEnteringNewWord = successState?.isEnteringNewWord ?: false,
                 newWord = successState?.newWord ?: "",
                 collectionName = selectedSet.name,
-                isEditable = selectedSet.isCustom
+                isEditable = selectedSet.isCustom,
+                isPremium = selectedSet.isPremium
             )
         }
     }
@@ -56,7 +57,11 @@ class WordsViewModel(
         withContext(Dispatchers.IO) {
             val successState = viewState.value as? WordsViewState.Success ?: return@withContext
             val options = getOptionsUseCase().first()
-            optionsRepo.setCollectionName(successState.collectionName, options.selectedLanguageCode)
+            optionsRepo.setCollectionName(
+                collectionName = successState.collectionName,
+                languageCode = options.selectedLanguageCode,
+                isCollectionPremium = successState.isPremium
+            )
         }
     }
 
@@ -123,5 +128,6 @@ sealed class WordsViewState {
         val newWord: String = "",
         val isEditable: Boolean,
         val words: List<String>,
+        val isPremium: Boolean
     ): WordsViewState()
 }

@@ -42,6 +42,7 @@ admob-ironsource = "8.8.0.0"
 admob-meta = "6.20.0.0"
 firebase-bom = "33.13.0"
 firebase-crashlytics = "3.0.3"
+adaptyBom = "3.4.0"
 
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
@@ -98,6 +99,10 @@ admob-applovin = { module = "com.google.ads.mediation:applovin", version.ref = "
 admob-ironsource = { module = "com.google.ads.mediation:ironsource", version.ref = "admob-ironsource" }
 admob-meta = { module = "com.google.ads.mediation:facebook", version.ref = "admob-meta" }
 
+adapty-bom = { module = "io.adapty:adapty-bom", version.ref = "adaptyBom" }
+adapty = { module = "io.adapty:android-sdk" }
+adapty-ui = { module = "io.adapty:android-ui" }
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
@@ -122,3 +127,4 @@ spy-kotlinMultiplatform = { id = "com.missclick.spy.kotlinMultiplatform", versio
 spy-feature = { id = "com.missclick.spy.feature", version = "unspecified" }
 spy-room = { id = "com.missclick.spy.room", version = "unspecified" }
 spy-serialization = { id = "com.missclick.spy.serialization", version = "unspecified" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

@@ -1,0 +1,109 @@
+{
+  "languages": [
+    {
+      "language_id": 0,
+      "sets": [
+        {
+          "name": "Entertainment",
+          "is_premium": true,
+          "is_pro": false,
+          "words": [
+            "Cinema", "Night Club", "Circus", "Water Park", "Theater", "Casino", "Karaoke", "Zoo",
+            "Bowling", "Museum", "Amusement Park", "Planetarium", "Billiards Room", "Ice Rink",
+            "Concert Hall", "Festival", "Trampoline Center", "Game Room", "Escape Room"
+          ]
+        },
+        {
+          "name": "Nature",
+          "is_premium": true,
+          "is_pro": false,
+          "words": [
+            "Beach", "Forest", "Mountains", "Lake", "Desert", "Field", "Island", "Volcano", "Cave",
+            "Savanna", "River", "Waterfall", "Swamp", "Jungle", "Arctic", "Tundra", "Garden", "Park",
+            "Steppe", "Canyon"
+          ]
+        },
+        {
+          "name": "Expert",
+          "is_premium": true,
+          "is_pro": false,
+          "words": [
+            "Crypto Farm", "Modern Art Museum", "Sleep Lab", "Interrogation Room", "Drone Control Center",
+            "Skyscraper Roof", "Private Jet", "Truck Cabin", "TV Center", "Call Center", "Recording Studio",
+            "Underground Parking", "Haunted House", "Data Storage", "Nuclear Bunker", "Print Shop"
+          ]
+        }
+      ]
+    },
+    {
+      "language_id": 1,
+      "sets": [
+        {
+          "name": "Развлечения",
+          "is_premium": true,
+          "is_pro": false,
+          "words": [
+            "Кинотеатр", "Ночной клуб", "Цирк", "Аквапарк", "Театр", "Казино", "Караоке", "Зоопарк",
+            "Боулинг", "Музей", "Лунапарк", "Планетарий", "Бильярдная", "Каток", "Концертный зал",
+            "Фестиваль", "Батутный центр", "Игровая комната", "Квест-комната"
+          ]
+        },
+        {
+          "name": "Природа",
+          "is_premium": true,
+          "is_pro": false,
+          "words": [
+            "Пляж", "Лес", "Горы", "Озеро", "Пустыня", "Поле", "Остров", "Вулкан", "Пещера", "Саванна",
+            "Река", "Водопад", "Болото", "Джунгли", "Арктика", "Тундра", "Сад", "Парк", "Степь", "Каньон"
+          ]
+        },
+        {
+          "name": "Эксперт",
+          "is_premium": true,
+          "is_pro": false,
+          "words": [
+            "Криптоферма", "Музей современного искусства", "Лаборатория сна", "Комната допросов",
+            "Центр управления дронами", "Крыша небоскрёба", "Борт частного самолёта", "Кабина грузовика",
+            "Телецентр", "Колл-центр", "Студия звукозаписи", "Подземная парковка", "Дом с привидениями",
+            "Хранилище данных", "Ядерный бункер", "Типография"
+          ]
+        }
+      ]
+    },
+    {
+      "language_id": 2,
+      "sets": [
+        {
+          "name": "Розваги",
+          "is_premium": true,
+          "is_pro": false,
+          "words": [
+            "Кінотеатр", "Нічний клуб", "Цирк", "Аквапарк", "Театр", "Казино", "Караоке", "Зоопарк",
+            "Боулінг", "Музей", "Лунапарк", "Планетарій", "Більярдна", "Ковзанка", "Концертний зал",
+            "Фестиваль", "Батутний центр", "Ігрова кімната", "Квест-кімната"
+          ]
+        },
+        {
+          "name": "Природа",
+          "is_premium": true,
+          "is_pro": false,
+          "words": [
+            "Пляж", "Ліс", "Гори", "Озеро", "Пустеля", "Поле", "Острів", "Вулкан", "Печера", "Саванна",
+            "Річка", "Водоспад", "Болото", "Джунглі", "Арктика", "Тундра", "Сад", "Парк", "Степ", "Каньйон"
+          ]
+        },
+        {
+          "name": "Експерт",
+          "is_premium": true,
+          "is_pro": false,
+          "words": [
+            "Криптоферма", "Музей сучасного мистецтва", "Лабораторія сну", "Кімната допитів",
+            "Центр управління дронами", "Дах хмарочоса", "Борт приватного літака", "Кабіна вантажівки",
+            "Телецентр", "Кол-центр", "Студія звукозапису", "Підземна парковка", "Будинок з привидами",
+            "Сховище даних", "Ядерний бункер", "Друкарня"
+          ]
+        }
+      ]
+    }
+  ]
+}

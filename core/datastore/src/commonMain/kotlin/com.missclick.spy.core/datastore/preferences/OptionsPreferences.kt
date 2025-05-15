@@ -12,6 +12,7 @@ internal data class OptionsPreferences(
     val spiesCount: Int = SPIES_DEFAULT,
     val time: Int = TIMER_DEFAULT,
     val selectedLanguageCode: String = "",
+    val isSelectedCollectionPremium: Boolean = false,
     val collectionLanguageCode: String = "",
     val collectionName: String = "",
     val isPremium: Boolean = false,
@@ -24,5 +25,6 @@ internal fun OptionsPreferences.asModel() = Options(
     selectedLanguageCode = selectedLanguageCode,
     collectionName = collectionName,
     collectionLanguageCode = collectionLanguageCode,
-    isPremium = isPremium
+    isPremium = isPremium,
+    isSelectedCollectionPremium = isSelectedCollectionPremium,
 )

@@ -117,5 +117,16 @@ by chance, so your role only depends on your luck!
 
     <string name="find">Find out who the spy is</string>
 
+    <string name="it_is_premium_set">You've selected a Premium set. To play, please buy Premium or watch an ad</string>
+    <string name="buy_premium">Buy</string>
+    <string name="watch_ad">Watch</string>
+
+    <string name="no_ads">— No ads</string>
+    <string name="premium_sets">— Premium sets</string>
+    <string name="all_future_sets">— All future sets included</string>
+    <string name="all_future_features">— All future features unlocked</string>
+    <string name="forever">— Yours forever</string>
+
+
 
 </resources>

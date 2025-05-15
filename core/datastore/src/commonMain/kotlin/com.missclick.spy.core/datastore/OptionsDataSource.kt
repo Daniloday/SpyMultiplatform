@@ -17,6 +17,7 @@ interface OptionsDataSource {
     suspend fun setCollectionName(
         collectionName: String,
         languageCode: String,
+        isCollectionPremium: Boolean,
     )
 
     suspend fun setLanguage(languageCode: String)

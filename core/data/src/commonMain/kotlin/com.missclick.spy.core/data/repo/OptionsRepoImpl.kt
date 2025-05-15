@@ -38,11 +38,13 @@ internal class OptionsRepoImpl(
     override suspend fun setCollectionName(
         collectionName: String,
         languageCode: String,
+        isCollectionPremium: Boolean,
     ) {
         withContext(ioDispatcher) {
             optionsDataSource.setCollectionName(
                 collectionName = collectionName,
-                languageCode = languageCode
+                languageCode = languageCode,
+                isCollectionPremium = isCollectionPremium
             )
         }
     }
