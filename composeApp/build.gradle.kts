@@ -1,4 +1,3 @@
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.util.Properties
 
@@ -17,7 +16,6 @@ val secretKeyProperties: Properties by lazy {
 
 kotlin {
     androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
         }
@@ -82,8 +80,8 @@ android {
         applicationId = "com.missclick.spy"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 17
-        versionName = "2.1.4"
+        versionCode = 18
+        versionName = "2.1.5"
         manifestPlaceholders["ADMOB_APPLICATION_ID"] = secretKeyProperties.getProperty("ADMOB_APPLICATION_ID")
         buildConfigField("String", "UNITY_GAME_ID", "\"${secretKeyProperties["UNITY_GAME_ID"]}\"")
         buildConfigField("String", "ADAPTY_API_KEY", "\"${secretKeyProperties["ADAPTY_API_KEY"]}\"")
@@ -97,6 +95,11 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = true
+            signingConfig = signingConfigs.getByName("debug")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {

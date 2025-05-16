@@ -23,3 +23,26 @@
 -dontwarn android.media.LoudnessCodecController$OnLoudnessCodecUpdateListener
 -dontwarn android.media.LoudnessCodecController
 -keep class com.adapty.** { *; }
+-keepattributes SourceFile,LineNumberTable        # Keep file names and line numbers.
+-keep public class * extends java.lang.Exception
+-keep class com.google.firebase.crashlytics.** { *; }
+-keep class com.google.firebase.components.** { *; }
+-keep class com.google.firebase.inject.** { *; }
+-keep class com.google.firebase.platforminfo.** { *; }
+-keep class com.google.firebase.** { *; }
+-dontwarn com.google.firebase.crashlytics.**
+-keepclassmembers class * {
+    @com.google.firebase.crashlytics.internal.model.CrashlyticsReport$** <fields>;
+}
+
+-keepattributes SourceFile,LineNumberTable
+-keep class com.google.protobuf.** { *; }
+-keep class androidx.datastore.** { *; }
+-keepclassmembers class * extends com.google.protobuf.GeneratedMessageLite {
+    <fields>;
+    <methods>;
+}
+-keepclassmembers class * extends com.google.protobuf.GeneratedMessageLite$Builder {
+    <fields>;
+    <methods>;
+}
