@@ -129,11 +129,17 @@
     <string name="buy_premium">Купить</string>
     <string name="watch_ad">Посмотреть</string>
 
+    <string name="spy_premium">Шпион Премиум</string>
+    <string name="restore_purchases">Восстановить покупки</string>
     <string name="no_ads">— Без рекламы</string>
     <string name="premium_sets">— Премиум-наборы</string>
     <string name="all_future_sets">— Все будущие наборы включены</string>
     <string name="all_future_features">— Все будущие функции разблокированы</string>
     <string name="forever">— Навсегда</string>
+
+
+    <string name="thanks_for_purchase">Спасибо за покупку</string>
+    <string name="enjoy_game">Приятной игры!</string>
 
 
 

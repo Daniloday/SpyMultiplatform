@@ -21,4 +21,6 @@ interface OptionsRepo {
 
     suspend fun setLanguage(languageCode: String)
 
+    suspend fun activatePremium()
+
 }

@@ -129,11 +129,16 @@
     <string name="buy_premium">Придбати</string>
     <string name="watch_ad">Переглянути</string>
 
+    <string name="spy_premium">Шпигун Преміум</string>
+    <string name="restore_purchases">Відновити покупки</string>
     <string name="no_ads">— Без реклами</string>
     <string name="premium_sets">— Преміум-набори</string>
     <string name="all_future_sets">— Усі майбутні набори включено</string>
     <string name="all_future_features">— Усі майбутні функції розблоковано</string>
     <string name="forever">— Назавжди</string>
+
+    <string name="thanks_for_purchase">Дякуюмо за покупку</string>
+    <string name="enjoy_game">Приємної гри!</string>
 
 
 </resources>

@@ -56,4 +56,12 @@ internal class OptionsDataSourceImpl(
         }
     }
 
+    override suspend fun setPremiumStatus(isPremium: Boolean) {
+        optionsPreferences.updateData { currentData ->
+            currentData.copy(
+                isPremium = isPremium,
+            )
+        }
+    }
+
 }

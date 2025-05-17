@@ -15,10 +15,10 @@ class SpyApp : Application() {
         super.onCreate()
         FirebaseApp.initializeApp(this)
         MobileAds.initialize(this)
-//        Adapty.activate(
-//            applicationContext,
-//            AdaptyConfig.Builder(BuildConfig.ADAPTY_API_KEY).build()
-//        )
+        Adapty.activate(
+            applicationContext,
+            AdaptyConfig.Builder(BuildConfig.ADAPTY_API_KEY).build()
+        )
     }
 
 }

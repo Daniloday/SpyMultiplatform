@@ -55,5 +55,11 @@ internal class OptionsRepoImpl(
         }
     }
 
+    override suspend fun activatePremium() {
+        withContext(ioDispatcher) {
+            optionsDataSource.setPremiumStatus(true)
+        }
+    }
+
 
 }

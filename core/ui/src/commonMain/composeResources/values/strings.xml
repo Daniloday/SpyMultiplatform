@@ -121,11 +121,16 @@ by chance, so your role only depends on your luck!
     <string name="buy_premium">Buy</string>
     <string name="watch_ad">Watch</string>
 
+    <string name="spy_premium">Spy Premium</string>
+    <string name="restore_purchases">Restore purchases</string>
     <string name="no_ads">— No ads</string>
     <string name="premium_sets">— Premium sets</string>
     <string name="all_future_sets">— All future sets included</string>
     <string name="all_future_features">— All future features unlocked</string>
     <string name="forever">— Yours forever</string>
+
+    <string name="thanks_for_purchase">Thanks for your purchase</string>
+    <string name="enjoy_game">Enjoy the game!</string>
 
 
 

@@ -21,4 +21,6 @@ interface OptionsDataSource {
     )
 
     suspend fun setLanguage(languageCode: String)
+
+    suspend fun setPremiumStatus(isPremium: Boolean)
 }
