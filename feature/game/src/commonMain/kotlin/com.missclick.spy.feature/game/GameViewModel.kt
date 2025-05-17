@@ -68,7 +68,8 @@ class GameViewModel(
         _viewState.update {
             GameViewState.Preparing(
                 cards = cards,
-                timerMin = options.time
+                timerMin = options.time,
+                isPremium = options.isPremium
             )
         }
     }
@@ -104,7 +105,8 @@ class GameViewModel(
                     spyNumbers = preparingState.cards.mapIndexedNotNull { index, cardInfo ->
                         if (cardInfo.isSpy) return@mapIndexedNotNull index + 1
                         null
-                    }
+                    },
+                    isPremium = preparingState.isPremium
                 )
             }
 
@@ -133,7 +135,7 @@ class GameViewModel(
     fun showSpies() {
         val timerState = viewState.value as? GameViewState.Timer ?: return
         _viewState.update {
-            GameViewState.End(spyNumbers = timerState.spyNumbers)
+            GameViewState.End(spyNumbers = timerState.spyNumbers, isPremium = timerState.isPremium)
         }
     }
 
@@ -146,15 +148,18 @@ sealed class GameViewState {
     data class Preparing(
         val cards: List<CardInfo>,
         val timerMin: Int,
+        val isPremium: Boolean,
     ) : GameViewState()
 
     data class Timer(
         val timeSecLeft: Int,
         val spyNumbers: List<Int>,
+        val isPremium: Boolean,
     ) : GameViewState()
 
     data class End(
         val spyNumbers: List<Int>,
+        val isPremium: Boolean,
     ) : GameViewState()
 
 }

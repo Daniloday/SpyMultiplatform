@@ -92,11 +92,15 @@ internal fun GameRoute(
                         onBackClick()
                     }
                 } else {
-                    interstitialAdManager.showAd(onAdClosed = {
-                        coroutineScope.launch {
-                            onBackClick()
-                        }
-                    })
+                    if ((viewState as? GameViewState.End)?.isPremium == true) {
+                        onBackClick()
+                    } else {
+                        interstitialAdManager.showAd(onAdClosed = {
+                            coroutineScope.launch {
+                                onBackClick()
+                            }
+                        })
+                    }
                 }
             } else {
                 onBackClick()

@@ -1,5 +1,6 @@
 package com.missclick.spy.di
 
+import com.missclick.spy.AppViewModel
 import com.missclick.spy.core.advertising.di.advertisingModule
 import com.missclick.spy.core.common.di.commonModule
 import com.missclick.spy.core.data.di.dataModule
@@ -15,9 +16,11 @@ import com.missclick.spy.feature.premium.di.premiumModule
 import com.missclick.spy.feature.rules.di.rulesModule
 import com.missclick.spy.feature.settings.di.settingsModule
 import com.missclick.spy.feature.words.di.wordsModule
+import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 internal val appModule = module {
+    viewModel { AppViewModel(get()) }
     includes(
         dataModule,
         dataStoreModule,
