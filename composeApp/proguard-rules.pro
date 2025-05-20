@@ -30,6 +30,7 @@
 -keep class com.google.firebase.inject.** { *; }
 -keep class com.google.firebase.platforminfo.** { *; }
 -keep class com.google.firebase.** { *; }
+-keep class com.revenuecat.purchases.** { *; }
 -dontwarn com.google.firebase.crashlytics.**
 -keepclassmembers class * {
     @com.google.firebase.crashlytics.internal.model.CrashlyticsReport$** <fields>;

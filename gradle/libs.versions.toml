@@ -1,7 +1,7 @@
 [versions]
 accompanistSystemuicontroller = "0.36.0"
 adsIdentifier = "1.0.0-alpha05"
-agp = "8.9.2"
+agp = "8.9.3"
 android-compileSdk = "36"
 android-minSdk = "24"
 android-targetSdk = "36"
@@ -24,12 +24,13 @@ kotlinxCoroutinesCore = "1.9.0"
 kotlinxDatetime = "0.6.0"
 navigationCompose = "2.9.0-beta01"
 koin = "4.0.4"
+purchases = "8.17.1"
 room = "2.7.1"
 ksp = "2.1.20-2.0.1"
 kotlinxSerialization = "2.0.0"
 kotlinxSerializationJson = "1.7.3"
 sqlite = "2.5.1"
-playServicesAds = "24.2.0"
+playServicesAds = "24.3.0"
 playServicesAdsLite = "24.0.0"
 uiAndroid = "1.8.1"
 jetbrainsKotlinJvm = "1.9.0"
@@ -54,6 +55,7 @@ androidx-room-compiler = { module = "androidx.room:room-compiler",  version.ref 
 androidx-room-runtime = { module = "androidx.room:room-runtime",  version.ref = "room" }
 androidx-room-runtime-android = { module = "androidx.room:room-runtime-android",  version.ref = "room" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
+purchases = { module = "com.revenuecat.purchases:purchases", version.ref = "purchases" }
 sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite"}
 
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }

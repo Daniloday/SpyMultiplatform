@@ -1,13 +1,11 @@
 package com.missclick.spy
 
 import android.app.Application
-import com.adapty.Adapty
-import com.adapty.models.AdaptyConfig
-import com.applovin.sdk.AppLovinSdk
 import com.google.android.gms.ads.MobileAds
 import com.google.firebase.FirebaseApp
-import com.unity3d.ads.UnityAds
-import com.unity3d.ads.metadata.MetaData
+import com.revenuecat.purchases.LogLevel
+import com.revenuecat.purchases.Purchases
+import com.revenuecat.purchases.PurchasesConfiguration
 
 class SpyApp : Application() {
 
@@ -15,10 +13,8 @@ class SpyApp : Application() {
         super.onCreate()
         FirebaseApp.initializeApp(this)
         MobileAds.initialize(this)
-        Adapty.activate(
-            applicationContext,
-            AdaptyConfig.Builder(BuildConfig.ADAPTY_API_KEY).build()
-        )
+        Purchases.logLevel = LogLevel.DEBUG
+        Purchases.configure(PurchasesConfiguration.Builder(this, BuildConfig.PURCHASE_API_KEY).build())
     }
 
 }

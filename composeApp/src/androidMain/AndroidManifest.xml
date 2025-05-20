@@ -21,6 +21,7 @@
             android:exported="true"
             android:theme="@style/Theme.Spy.Starting"
             android:screenOrientation="portrait"
+            android:launchMode="standard"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|mnc|colorMode|density|fontScale|fontWeightAdjustment|keyboard|layoutDirection|locale|mcc|navigation|smallestScreenSize|touchscreen|uiMode"
             android:name=".MainActivity">
             <intent-filter>

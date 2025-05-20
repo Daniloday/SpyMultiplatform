@@ -5,9 +5,7 @@ plugins {
 kotlin {
     sourceSets {
         androidMain.dependencies {
-            api(project.dependencies.platform(libs.adapty.bom))
-            api(libs.adapty)
-            api(libs.adapty.ui)
+            api(libs.purchases)
         }
     }
 }

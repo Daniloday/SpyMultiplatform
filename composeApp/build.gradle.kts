@@ -82,11 +82,11 @@ android {
         applicationId = "com.missclick.spy"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 20
-        versionName = "2.2.1"
+        versionCode = 23
+        versionName = "2.2.4"
         manifestPlaceholders["ADMOB_APPLICATION_ID"] = secretKeyProperties.getProperty("ADMOB_APPLICATION_ID")
         buildConfigField("String", "UNITY_GAME_ID", "\"${secretKeyProperties["UNITY_GAME_ID"]}\"")
-        buildConfigField("String", "ADAPTY_API_KEY", "\"${secretKeyProperties["ADAPTY_API_KEY"]}\"")
+        buildConfigField("String", "PURCHASE_API_KEY", "\"${secretKeyProperties["PURCHASE_API_KEY"]}\"")
         androidResources.localeFilters += listOf("en", "ru", "uk")
     }
     packaging {
