@@ -1,4 +1,4 @@
-name: Build KMP Project
+name: Build Android Project
 
 on:
   push:
@@ -35,17 +35,11 @@ jobs:
     - name: Build Android project
       run: ./gradlew --no-daemon assembleRelease
 
-    - name: Build iOS project
-      run: ./gradlew --no-daemon iosX64Test
-
     - name: Run tests
       run: ./gradlew test
 
-    - name: Upload build artifacts
+    - name: Upload Android APK artifact
       uses: actions/upload-artifact@v2
       with:
-        name: build-artifacts
-        path: build/
-
-
-
+        name: android-apk
+        path: app/build/outputs/apk/release/app-release.apk
