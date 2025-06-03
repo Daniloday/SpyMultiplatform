@@ -59,7 +59,7 @@ import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-internal fun GameOptionsRoute(
+internal expect fun GameOptionsRoute(
     modifier: Modifier = Modifier,
     onSettingsClick: () -> Unit,
     onGuideClick: () -> Unit,
@@ -67,7 +67,18 @@ internal fun GameOptionsRoute(
     onSelectSetClick: () -> Unit,
     onPremiumClick: () -> Unit,
     vm: GameOptionsViewModel = koinViewModel(),
-    rewardedAdManager: RewardedAdManager = koinInject(),
+)
+
+@Composable
+internal fun GameOptionsRouteShared(
+    modifier: Modifier = Modifier,
+    onSettingsClick: () -> Unit,
+    onGuideClick: () -> Unit,
+    onStartClick: () -> Unit,
+    onSelectSetClick: () -> Unit,
+    onPremiumClick: () -> Unit,
+    vm: GameOptionsViewModel = koinViewModel(),
+    rewardedAdManager: RewardedAdManager,
 ) {
 
     val viewStateOptions by vm.viewStateOptions.collectAsState()

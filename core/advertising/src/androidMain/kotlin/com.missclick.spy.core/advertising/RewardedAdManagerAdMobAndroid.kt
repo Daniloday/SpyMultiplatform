@@ -12,7 +12,7 @@ import com.missclick.spy.advertising.BuildConfig
 
 internal class RewardedAdManagerAdMobAndroid(
     private val context: Context,
-    private val activity: Lazy<Activity>,
+    private val activity: Activity,
 ): RewardedAdManager {
 
     private var rewardedAd: RewardedAd? = null
@@ -51,7 +51,7 @@ internal class RewardedAdManagerAdMobAndroid(
                     rewardedAd = null
                 }
             }
-            rewardedAd?.show(activity.value) { onAdWatched() }
+            rewardedAd?.show(activity) { onAdWatched() }
         } else {
             onAdSkipped()
             loadAd()

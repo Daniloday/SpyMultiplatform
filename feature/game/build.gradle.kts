@@ -10,6 +10,7 @@ kotlin {
             implementation(projects.core.data)
             implementation(projects.core.advertising)
             implementation(projects.core.common)
+            implementation(projects.core.purchase)
 
             implementation(libs.kotlinx.datetime)
         }

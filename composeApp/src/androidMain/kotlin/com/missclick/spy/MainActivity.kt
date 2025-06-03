@@ -16,6 +16,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
+import org.koin.core.parameter.parametersOf
 import org.koin.dsl.module
 
 class MainActivity : ComponentActivity() {
@@ -25,7 +26,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
-        initKoin()
         runBlocking {
             setActualLanguageUseCase()
         }
@@ -36,24 +36,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             App()
         }
-    }
-
-    private fun initKoin() {
-        startKoin {
-            androidLogger()
-            androidContext(applicationContext)
-            modules(
-                appModule,
-                module {
-                    single<Activity> { this@MainActivity }
-                }
-            )
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        stopKoin()
     }
 
 }

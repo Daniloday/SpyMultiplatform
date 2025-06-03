@@ -1,6 +1,7 @@
 package com.missclick.spy.core.purchase
 
 import android.app.Activity
+import com.google.android.play.core.review.ReviewManagerFactory
 import com.revenuecat.purchases.PurchaseParams
 import com.revenuecat.purchases.Purchases
 import com.revenuecat.purchases.getOfferingsWith
@@ -8,7 +9,7 @@ import com.revenuecat.purchases.purchaseWith
 import com.revenuecat.purchases.restorePurchasesWith
 
 internal class PurchaseManagerAndroid(
-    private val activity: Lazy<Activity>,
+    private val activity: Activity,
 ) : PurchaseManager {
     override fun buy(onResult: (Boolean) -> Unit) {
         Purchases.sharedInstance.getOfferingsWith(
@@ -19,7 +20,7 @@ internal class PurchaseManagerAndroid(
                 val aPackage = offerings.current?.availablePackages?.firstOrNull()
                 if (aPackage != null) {
                     Purchases.sharedInstance.purchaseWith(
-                        PurchaseParams.Builder(activity.value, aPackage).build(),
+                        PurchaseParams.Builder(activity, aPackage).build(),
                         onError = { error, userCancelled ->
                             onResult(false)
                         },
@@ -45,5 +46,17 @@ internal class PurchaseManagerAndroid(
                     onResult(false)
                 }
             })
+    }
+
+    override fun requestRateUs() {
+        val manager = ReviewManagerFactory.create(activity)
+        val request = manager.requestReviewFlow()
+        request.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val reviewInfo = task.result
+                manager.launchReviewFlow(activity, reviewInfo)
+            }
+        }
+
     }
 }

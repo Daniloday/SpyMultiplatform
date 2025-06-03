@@ -25,6 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
+import com.missclick.spy.core.purchase.PurchaseManager
 import com.missclick.spy.core.ui.kit.AppDivider
 import com.missclick.spy.core.ui.kit.TopBar
 import com.missclick.spy.core.ui.kit.buttons.PrimaryButton
@@ -48,10 +49,18 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-internal fun PremiumRoute(
+internal expect fun PremiumRoute(
+    onBackClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    vm: PremiumViewModel = koinViewModel()
+)
+
+@Composable
+internal fun PremiumRouteShared(
     onBackClick: () -> Unit,
     modifier: Modifier = Modifier,
     vm: PremiumViewModel = koinViewModel(),
+    purchaseManager: PurchaseManager
 ) {
 
     val viewState = vm.viewState.collectAsState()
@@ -59,8 +68,12 @@ internal fun PremiumRoute(
     PremiumScreen(
         onBackClick = onBackClick,
         modifier = modifier,
-        onBuy = vm::onBuy,
-        onRestore = vm::onRestore,
+        onBuy = {
+            vm.onBuy(purchaseManager)
+        },
+        onRestore = {
+            vm.onRestore(purchaseManager)
+        },
         viewState = viewState.value,
     )
 }

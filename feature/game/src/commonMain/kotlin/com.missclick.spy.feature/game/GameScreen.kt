@@ -45,7 +45,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.missclick.spy.core.advertising.InterstitialAdManager
 import com.missclick.spy.core.common.extentions.randomByTime
-import com.missclick.spy.core.data.AppStoreRepo
+import com.missclick.spy.core.purchase.PurchaseManager
 import com.missclick.spy.core.ui.theme.AppTheme
 import com.missclick.spy.core.ui.kit.buttons.PrimaryButton
 import com.missclick.spy.resources.Res
@@ -68,14 +68,21 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
+import org.koin.core.parameter.parametersOf
 
 @Composable
-internal fun GameRoute(
+internal expect fun GameRoute(
+    modifier: Modifier = Modifier,
+    onBackClick: () -> Unit,
+)
+
+@Composable
+internal fun GameRouteShared(
     modifier: Modifier = Modifier,
     onBackClick: () -> Unit,
     vm: GameViewModel = koinViewModel(),
-    interstitialAdManager: InterstitialAdManager = koinInject(),
-    appStoreRepo: AppStoreRepo = koinInject()
+    interstitialAdManager: InterstitialAdManager,
+    purchaseManager: PurchaseManager
 ) {
 
     val viewState by vm.viewState.collectAsState()
@@ -88,7 +95,7 @@ internal fun GameRoute(
             if (viewState is GameViewState.End) {
                 if ((0..4).randomByTime() == 0) {
                     coroutineScope.launch {
-                        appStoreRepo.requestRateUs()
+                        purchaseManager.requestRateUs()
                         onBackClick()
                     }
                 } else {

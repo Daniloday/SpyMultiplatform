@@ -4,8 +4,6 @@ plugins {
 
 kotlin {
     sourceSets {
-        androidMain.dependencies {
-            implementation(libs.google.playReview)
-        }
+
     }
 }

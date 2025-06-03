@@ -1,5 +1,6 @@
 package com.missclick.spy.core.advertising.di
 
+import android.app.Activity
 import com.missclick.spy.core.advertising.InterstitialAdManager
 import com.missclick.spy.core.advertising.InterstitialAdManagerAdMobAndroid
 import com.missclick.spy.core.advertising.RewardedAdManager
@@ -8,16 +9,16 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 internal actual fun platformModule(): Module = module {
-    single<InterstitialAdManager> {
+    factory<InterstitialAdManager> { (activity: Activity) ->
         InterstitialAdManagerAdMobAndroid(
             context = get(),
-            activity = inject()
+            activity = activity
         )
     }
-    single<RewardedAdManager> {
+    factory<RewardedAdManager> { (activity: Activity) ->
         RewardedAdManagerAdMobAndroid(
             context = get(),
-            activity = inject()
+            activity = activity
         )
     }
 }

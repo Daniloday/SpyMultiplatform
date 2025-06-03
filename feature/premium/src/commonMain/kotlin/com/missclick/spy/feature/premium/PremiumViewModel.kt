@@ -11,8 +11,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 internal class PremiumViewModel(
-    private val purchaseManager: PurchaseManager,
-    private val getOptions: GetOptionsUseCase,
+    getOptions: GetOptionsUseCase,
     private val optionsRepo: OptionsRepo,
 ): ViewModel() {
 
@@ -24,7 +23,7 @@ internal class PremiumViewModel(
         initialValue = PremiumViewState.Loading,
     )
 
-    fun onBuy() {
+    fun onBuy(purchaseManager: PurchaseManager,) {
         purchaseManager.buy { result ->
             if (result) {
                 viewModelScope.launch {
@@ -34,7 +33,7 @@ internal class PremiumViewModel(
         }
     }
 
-    fun onRestore() {
+    fun onRestore(purchaseManager: PurchaseManager,) {
         purchaseManager.restore { result ->
             if (result) {
                 viewModelScope.launch {

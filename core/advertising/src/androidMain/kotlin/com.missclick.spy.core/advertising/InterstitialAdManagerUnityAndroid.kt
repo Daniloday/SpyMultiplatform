@@ -16,7 +16,7 @@ import com.unity3d.ads.UnityAdsShowOptions
 
 internal class InterstitialAdManagerUnityAndroid(
     private val context: Context,
-    private val activity: Lazy<Activity>,
+    private val activity: Activity,
 ) : InterstitialAdManager {
 
     var isAdLoadedSuccessfully = false
@@ -47,7 +47,7 @@ internal class InterstitialAdManagerUnityAndroid(
             loadAd()
             return
         }
-        UnityAds.show(activity.value, "Interstitial_Android", UnityAdsShowOptions(), object :
+        UnityAds.show(activity, "Interstitial_Android", UnityAdsShowOptions(), object :
             IUnityAdsShowListener {
             override fun onUnityAdsShowFailure(
                 placementId: String?,

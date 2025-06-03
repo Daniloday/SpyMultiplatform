@@ -10,15 +10,11 @@ import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.missclick.spy.advertising.BuildConfig
-import com.unity3d.ads.IUnityAdsLoadListener
-import com.unity3d.ads.IUnityAdsShowListener
-import com.unity3d.ads.UnityAds
-import com.unity3d.ads.UnityAdsShowOptions
 
 
 internal class InterstitialAdManagerAdMobAndroid(
     private val context: Context,
-    private val activity: Lazy<Activity>,
+    private val activity: Activity,
 ): InterstitialAdManager {
 
     private var interstitialAd: InterstitialAd? = null
@@ -57,7 +53,7 @@ internal class InterstitialAdManagerAdMobAndroid(
                     interstitialAd = null
                 }
             }
-            interstitialAd?.show(activity.value)
+            interstitialAd?.show(activity)
         } else {
             onAdClosed()
             loadAd()
