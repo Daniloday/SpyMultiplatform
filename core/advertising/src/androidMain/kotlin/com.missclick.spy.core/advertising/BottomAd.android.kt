@@ -29,14 +29,14 @@ actual fun BottomAds(
     AndroidView(
         modifier = modifier.fillMaxWidth().height(50.dp),
         factory = {
-//            MaxAdView(BuildConfig.APP_LOVIN_BANNER_ID).apply {
-//                loadAd()
-//            }
-            AdView(activity).apply {
-                setAdSize(AdSize.BANNER)
-                adUnitId = BuildConfig.ADMOB_BANNER_ID
-                loadAd(AdRequest.Builder().build())
+            MaxAdView(BuildConfig.APP_LOVIN_BANNER_ID).apply {
+                loadAd()
             }
+//            AdView(activity).apply {
+//                setAdSize(AdSize.BANNER)
+//                adUnitId = BuildConfig.ADMOB_BANNER_ID
+//                loadAd(AdRequest.Builder().build())
+//            }
         }
     )
 }
