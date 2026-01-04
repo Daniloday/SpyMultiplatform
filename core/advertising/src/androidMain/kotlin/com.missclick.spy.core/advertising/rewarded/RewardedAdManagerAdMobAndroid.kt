@@ -1,4 +1,4 @@
-package com.missclick.spy.core.advertising
+package com.missclick.spy.core.advertising.rewarded
 
 import android.app.Activity
 import android.content.Context
@@ -9,6 +9,7 @@ import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import com.missclick.spy.advertising.BuildConfig
+import com.missclick.spy.core.advertising.RewardedAdManager
 
 internal class RewardedAdManagerAdMobAndroid(
     private val context: Context,

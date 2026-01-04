@@ -92,6 +92,7 @@ internal fun GameOptionsRouteShared(
                 onPremiumClick()
             },
             onShowAdClick = {
+                vm.onClosePremiumSetDialog()
                 rewardedAdManager.showAd(
                     onAdSkipped = vm::onClosePremiumSetDialog,
                     onAdWatched = onStartClick

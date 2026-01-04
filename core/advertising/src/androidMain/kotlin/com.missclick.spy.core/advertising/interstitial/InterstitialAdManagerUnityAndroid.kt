@@ -1,14 +1,8 @@
-package com.missclick.spy.core.advertising
+package com.missclick.spy.core.advertising.interstitial
 
 import android.app.Activity
 import android.content.Context
-import androidx.compose.animation.fadeIn
-import androidx.compose.ui.text.intl.Locale
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
-import com.missclick.spy.advertising.BuildConfig
+import com.missclick.spy.core.advertising.InterstitialAdManager
 import com.unity3d.ads.IUnityAdsLoadListener
 import com.unity3d.ads.IUnityAdsShowListener
 import com.unity3d.ads.UnityAds
