@@ -19,6 +19,7 @@ kotlin {
             api(libs.admob.unity)
             api(libs.admob.applovin)
             api(libs.admob.ironsource)
+            api(libs.applovin.sdk)
 //            api(libs.admob.meta)
         }
     }
@@ -27,8 +28,11 @@ kotlin {
 android {
     defaultConfig {
         buildConfigField("String", "ADMOB_BANNER_ID", "\"${secretKeyProperties["ADMOB_BANNER_ID"]}\"")
+        buildConfigField("String", "APP_LOVIN_BANNER_ID", "\"${secretKeyProperties["APP_LOVIN_BANNER_ID"]}\"")
         buildConfigField("String", "ADMOB_INTERSTITIAL_ID", "\"${secretKeyProperties["ADMOB_INTERSTITIAL_ID"]}\"")
+        buildConfigField("String", "APP_LOVIN_INTERSTITIAL_ID", "\"${secretKeyProperties["APP_LOVIN_INTERSTITIAL_ID"]}\"")
         buildConfigField("String", "ADMOB_REWARDED_ID", "\"${secretKeyProperties["ADMOB_REWARDED_ID"]}\"")
+        buildConfigField("String", "APP_LOVIN_REWARDED_ID", "\"${secretKeyProperties["APP_LOVIN_REWARDED_ID"]}\"")
     }
     buildFeatures {
         buildConfig = true

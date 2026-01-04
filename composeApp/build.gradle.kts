@@ -86,6 +86,7 @@ android {
         versionName = "2.2.4"
         manifestPlaceholders["ADMOB_APPLICATION_ID"] = secretKeyProperties.getProperty("ADMOB_APPLICATION_ID")
         buildConfigField("String", "UNITY_GAME_ID", "\"${secretKeyProperties["UNITY_GAME_ID"]}\"")
+        buildConfigField("String", "APP_LOVIN_APPLICATION_ID", "\"${secretKeyProperties["APP_LOVIN_APPLICATION_ID"]}\"")
         buildConfigField("String", "PURCHASE_API_KEY", "\"${secretKeyProperties["PURCHASE_API_KEY"]}\"")
         androidResources.localeFilters += listOf("en", "ru", "uk")
     }

@@ -1,6 +1,9 @@
 package com.missclick.spy
 
 import android.app.Application
+import com.applovin.sdk.AppLovinMediationProvider
+import com.applovin.sdk.AppLovinSdk
+import com.applovin.sdk.AppLovinSdkInitializationConfiguration
 import com.google.android.gms.ads.MobileAds
 import com.google.firebase.FirebaseApp
 import com.missclick.spy.di.appModule
@@ -18,6 +21,11 @@ class SpyApp : Application() {
         FirebaseApp.initializeApp(this)
         initKoin()
         MobileAds.initialize(this)
+        val initConfig = AppLovinSdkInitializationConfiguration.builder(BuildConfig.APP_LOVIN_APPLICATION_ID)
+            .setMediationProvider(AppLovinMediationProvider.MAX)
+            .build()
+
+        AppLovinSdk.getInstance(this).initialize(initConfig) {}
         Purchases.logLevel = LogLevel.DEBUG
         Purchases.configure(PurchasesConfiguration.Builder(this, BuildConfig.PURCHASE_API_KEY).build())
     }
