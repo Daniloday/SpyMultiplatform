@@ -45,6 +45,7 @@ admob-meta = "6.21.0.0"
 firebase-bom = "34.7.0"
 firebase-crashlytics = "3.0.6"
 adaptyBom = "3.4.0"
+firebaseConfigKtx = "23.0.1"
 
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
@@ -94,6 +95,8 @@ androidx-sqlite-ktx = { group = "androidx.sqlite", name = "sqlite-ktx", version.
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase-bom" }
 firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
 firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics" }
+firebase-remote-config = { group = "com.google.firebase", name = "firebase-config" }
+firebase-config-ktx = { group = "com.google.firebase", name = "firebase-config-ktx" }
 
 
 play-services-ads = { module = "com.google.android.gms:play-services-ads", version.ref = "playServicesAds" }
@@ -106,6 +109,7 @@ admob-meta = { module = "com.google.ads.mediation:facebook", version.ref = "admo
 adapty-bom = { module = "io.adapty:adapty-bom", version.ref = "adaptyBom" }
 adapty = { module = "io.adapty:android-sdk" }
 adapty-ui = { module = "io.adapty:android-ui" }
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

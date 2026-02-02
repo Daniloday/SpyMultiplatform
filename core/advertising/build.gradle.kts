@@ -20,6 +20,9 @@ kotlin {
             api(libs.admob.applovin)
             api(libs.admob.ironsource)
             api(libs.applovin.sdk)
+            implementation(project.dependencies.platform(libs.firebase.bom))
+            implementation(libs.firebase.remote.config)
+//            implementation(libs.firebase.config.ktx)
 //            api(libs.admob.meta)
         }
     }

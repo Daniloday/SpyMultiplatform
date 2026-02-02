@@ -1,6 +1,9 @@
 package com.missclick.spy.core.advertising.di
 
 import android.app.Activity
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
+import com.missclick.spy.core.advertising.AdsProvider
+import com.missclick.spy.core.advertising.AdsProviderResolver
 import com.missclick.spy.core.advertising.InterstitialAdManager
 import com.missclick.spy.core.advertising.interstitial.InterstitialAdManagerAdMobAndroid
 import com.missclick.spy.core.advertising.RewardedAdManager
@@ -11,30 +14,44 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 internal actual fun platformModule(): Module = module {
-//    factory<InterstitialAdManager> { (activity: Activity) ->
-//        InterstitialAdManagerAdMobAndroid(
-//            context = get(),
-//            activity = activity
-//        )
-//    }
+
+    single { FirebaseRemoteConfig.getInstance() }
+
+    single {
+        AdsProviderResolver(
+            context = get(),
+            remoteConfig = get()
+        )
+    }
 
     factory<InterstitialAdManager> { (activity: Activity) ->
-        InterstitialAdManagerAppLovinAndroid(
-            activity = activity
-        )
+        when (get<AdsProviderResolver>().resolve()) {
+            AdsProvider.ADMOB ->
+                InterstitialAdManagerAdMobAndroid(
+                    context = get(),
+                    activity = activity
+                )
+
+            AdsProvider.APPLOVIN ->
+                InterstitialAdManagerAppLovinAndroid(
+                    activity = activity
+                )
+        }
     }
-
-
-//    factory<RewardedAdManager> { (activity: Activity) ->
-//        RewardedAdManagerAdMobAndroid(
-//            context = get(),
-//            activity = activity
-//        )
-//    }
 
     factory<RewardedAdManager> { (activity: Activity) ->
-        RewardedAdManagerAppLovinAndroid(
-            activity = activity
-        )
+        when (get<AdsProviderResolver>().resolve()) {
+            AdsProvider.ADMOB ->
+                RewardedAdManagerAdMobAndroid(
+                    context = get(),
+                    activity = activity
+                )
+
+            AdsProvider.APPLOVIN ->
+                RewardedAdManagerAppLovinAndroid(
+                    activity = activity
+                )
+        }
     }
+
 }
