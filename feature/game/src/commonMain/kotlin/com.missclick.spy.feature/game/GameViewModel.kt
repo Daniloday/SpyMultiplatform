@@ -22,7 +22,6 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.datetime.Clock
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 import kotlin.random.Random
@@ -46,7 +45,7 @@ class GameViewModel(
     }
 
     private fun initCards(options: Options, words: List<String>) {
-        val randomWord = words.random(Random(Clock.System.now().toEpochMilliseconds()))
+        val randomWord = words.random(Random(kotlin.time.Clock.System.now().toEpochMilliseconds()))
         val localCads = List(options.playersCount - options.spiesCount) {
             CardInfo(
                 cardState = CardState.CLOSED,
@@ -63,7 +62,7 @@ class GameViewModel(
             )
         }
 
-        val cards = (localCads + spyCards).shuffled(Random(Clock.System.now().toEpochMilliseconds()))
+        val cards = (localCads + spyCards).shuffled(Random(kotlin.time.Clock.System.now().toEpochMilliseconds()))
 
         _viewState.update {
             GameViewState.Preparing(
