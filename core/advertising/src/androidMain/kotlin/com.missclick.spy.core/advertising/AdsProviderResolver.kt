@@ -6,7 +6,7 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import java.util.Locale
 
-const val MIN_FETCH_INTERVAL = 0L //7200
+const val MIN_FETCH_INTERVAL = 7200L
 
 enum class AdsProvider {
     ADMOB,
