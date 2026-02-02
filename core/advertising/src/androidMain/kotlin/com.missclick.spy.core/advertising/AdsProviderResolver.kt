@@ -3,7 +3,10 @@ package com.missclick.spy.core.advertising
 import android.content.Context
 import android.telephony.TelephonyManager
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import java.util.Locale
+
+const val MIN_FETCH_INTERVAL = 0L //7200
 
 enum class AdsProvider {
     ADMOB,
@@ -20,13 +23,12 @@ class AdsProviderResolver(
     }
 
     fun resolve(): AdsProvider {
-        println("current ad:")
-
-        println(when (remoteConfig.getString(KEY).lowercase(Locale.US)) {
-            "admob" -> AdsProvider.ADMOB
-            "applovin" -> AdsProvider.APPLOVIN
-            else -> fallbackByCountry()
-        })
+        remoteConfig.setConfigSettingsAsync(
+            FirebaseRemoteConfigSettings.Builder()
+                .setMinimumFetchIntervalInSeconds(MIN_FETCH_INTERVAL)
+                .build()
+        )
+        remoteConfig.fetchAndActivate()
         return when (remoteConfig.getString(KEY).lowercase(Locale.US)) {
             "admob" -> AdsProvider.ADMOB
             "applovin" -> AdsProvider.APPLOVIN
