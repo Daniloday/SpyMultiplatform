@@ -52,6 +52,7 @@ internal fun CollectionsRoute(
     modifier: Modifier = Modifier,
     onBackClick: () -> Unit,
     onCollectionClick: (String) -> Unit,
+    onPremiumProCollectionClick: () -> Unit,
     vm: CollectionsViewModel = koinViewModel(),
 ) {
 
@@ -64,7 +65,8 @@ internal fun CollectionsRoute(
         onCollectionClick = onCollectionClick,
         onAddNewCollectionClick = vm::addNewCollection,
         onNewCollectionSaveClick = vm::saveNewCollection,
-        onNewCollectionNameChange = vm::onNewCollectionNameChange
+        onNewCollectionNameChange = vm::onNewCollectionNameChange,
+        onPremiumProCollectionClick = onPremiumProCollectionClick
     )
 }
 
@@ -77,6 +79,7 @@ private fun CollectionsScreen(
     onAddNewCollectionClick: () -> Unit,
     onNewCollectionNameChange: (String) -> Unit,
     onNewCollectionSaveClick: () -> Unit,
+    onPremiumProCollectionClick: () -> Unit,
 ) {
     Column(
         modifier = modifier
@@ -96,6 +99,7 @@ private fun CollectionsScreen(
                 },
                 onNewCollectionNameChange = onNewCollectionNameChange,
                 viewState = viewState,
+                onPremiumProCollectionClick = onPremiumProCollectionClick
             )
         }
     }
@@ -109,6 +113,7 @@ private fun CollectionsScreenSuccess(
     onAddNewCollectionClick: () -> Unit,
     onNewCollectionNameChange: (String) -> Unit,
     onNewCollectionSaveClick: () -> Unit,
+    onPremiumProCollectionClick: () -> Unit,
 ) {
 
     val lazyListState = rememberLazyListState()
@@ -132,11 +137,16 @@ private fun CollectionsScreenSuccess(
             CollectionCard(
                 modifier = Modifier,//.animateItem(), //todo
                 onCollectionClick = {
-                    onCollectionClick(collection.name)
+                    if (collection.isPro && !viewState.isPremium) {
+                        onPremiumProCollectionClick()
+                    } else {
+                        onCollectionClick(collection.name)
+                    }
                 },
                 collectionName = collection.name,
                 isSelected = collection.isSelected,
-                isPremium = collection.isPremium
+                isPremium = collection.isPremium,
+                isPro = collection.isPro,
             )
         }
         item {
@@ -220,6 +230,7 @@ private fun CollectionCard(
     collectionName: String,
     isSelected: Boolean,
     isPremium: Boolean,
+    isPro: Boolean,
     onCollectionClick: () -> Unit,
 ) {
     Card(
@@ -247,6 +258,16 @@ private fun CollectionCard(
                 )
                 Spacer(modifier = Modifier.weight(1f))
                 if (isPremium) {
+                    Icon(
+                        modifier = Modifier
+                            .padding(horizontal = 8.dp)
+                            .size(48.dp),
+                        tint = AppTheme.colors.tertiary,
+                        painter = painterResource(Res.drawable.ic_premium),
+                        contentDescription = null
+                    )
+                }
+                if (isPro) {
                     Icon(
                         modifier = Modifier
                             .padding(horizontal = 8.dp)

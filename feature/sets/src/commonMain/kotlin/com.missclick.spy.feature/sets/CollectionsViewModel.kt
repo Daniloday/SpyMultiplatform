@@ -2,6 +2,7 @@ package com.missclick.spy.feature.sets
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.missclick.spy.core.data.OptionsRepo
 import com.missclick.spy.core.data.SetRepo
 import com.missclick.spy.core.data.WordRepo
 import com.missclick.spy.core.domain.GetOptionsUseCase
@@ -18,6 +19,7 @@ class CollectionsViewModel(
     private val wordRepo: WordRepo,
     private val setRepo: SetRepo,
     private val getOptionsUseCase: GetOptionsUseCase,
+    private val optionRepo: OptionsRepo,
 ) : ViewModel() {
 
     private val _viewState = MutableStateFlow<CollectionsViewState>(CollectionsViewState.Loading)
@@ -30,7 +32,12 @@ class CollectionsViewModel(
             setRepo.getSets(options.selectedLanguageCode).collect { sets ->
                 initSuccess(
                     selectedCollection = selectedCollection,
-                    sets = sets
+                    sets = sets.sortedBy {
+                        it.isPremium
+                    }.sortedBy {
+                        it.isPro
+                    },
+                    isPremium = optionRepo.options.first().isPremium
                 )
             }
         }
@@ -40,12 +47,14 @@ class CollectionsViewModel(
     private fun initSuccess(
         sets: List<Set>,
         selectedCollection: String,
+        isPremium: Boolean,
     ) {
         val collectionViews = sets.map { set ->
             CollectionView(
                 name = set.name,
                 isSelected = set.name == selectedCollection,
-                isPremium = set.isPremium
+                isPremium = set.isPremium,
+                isPro = set.isPro
             )
         }
         val successState = viewState.value as? CollectionsViewState.Success
@@ -54,6 +63,7 @@ class CollectionsViewModel(
                 collectionViews = collectionViews,
                 isEnteringNewCollection = successState?.isEnteringNewCollection ?: false,
                 newCollection = successState?.newCollection ?: "",
+                isPremium = isPremium,
             )
         }
     }
@@ -110,6 +120,7 @@ sealed class CollectionsViewState {
         val collectionViews: List<CollectionView>,
         val isEnteringNewCollection: Boolean,
         val newCollection: String,
+        val isPremium: Boolean,
     ): CollectionsViewState()
 }
 
@@ -117,4 +128,5 @@ data class CollectionView(
     val name: String,
     val isSelected: Boolean,
     val isPremium: Boolean,
+    val isPro: Boolean,
 )

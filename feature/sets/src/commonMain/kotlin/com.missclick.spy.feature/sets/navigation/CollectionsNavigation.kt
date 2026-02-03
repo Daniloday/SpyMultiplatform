@@ -11,6 +11,7 @@ const val COLLECTIONS_ROUTE = "Collections"
 fun NavGraphBuilder.collectionsScreen(
     onBackClick: () -> Unit,
     onCollectionClick: (String) -> Unit,
+    onPremiumProCollectionClick: () -> Unit,
 ) {
 
     composable(
@@ -18,7 +19,8 @@ fun NavGraphBuilder.collectionsScreen(
     ) {
         CollectionsRoute(
             onBackClick = onBackClick,
-            onCollectionClick = onCollectionClick
+            onCollectionClick = onCollectionClick,
+            onPremiumProCollectionClick = onPremiumProCollectionClick
         )
     }
 

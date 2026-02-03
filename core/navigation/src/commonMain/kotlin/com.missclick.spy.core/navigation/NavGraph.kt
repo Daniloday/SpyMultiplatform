@@ -51,6 +51,7 @@ fun NavGraph(
         collectionsScreen(
             onBackClick = navController::navigateBackToGameOptions,
             onCollectionClick = navController::navigateToWords,
+            onPremiumProCollectionClick = navController::navigateToPremium
         )
         wordsScreen(
             onBackClick = navController::navigateBackToCollections,
