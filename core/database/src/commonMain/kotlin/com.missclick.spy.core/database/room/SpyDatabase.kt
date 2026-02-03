@@ -22,7 +22,7 @@ internal const val PRELOAD_DB_NAME = "spy-database-preload.db"
         SetEntity::class,
         LanguageEntity::class,
     ],
-    version = 3,
+    version = 5,
     autoMigrations = [
 
     ],

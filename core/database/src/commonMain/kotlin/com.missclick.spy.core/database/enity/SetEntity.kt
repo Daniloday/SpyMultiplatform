@@ -32,6 +32,8 @@ internal data class SetEntity(
     val isCustom: Boolean = true,
     @ColumnInfo(name = "is_premium")
     val isPremium: Boolean = false,
+    @ColumnInfo(name = "is_pro")
+    val isPro: Boolean = false,
 )
 
 internal fun SetEntity.asModel(): Set {
@@ -39,6 +41,7 @@ internal fun SetEntity.asModel(): Set {
         name = name,
         isCustom = isCustom,
         isPremium = isPremium,
+        isPro = isPro
     )
 }
 
@@ -46,6 +49,7 @@ internal fun Set.asEntity(languageId: Int): SetEntity {
     return SetEntity(
         name = name,
         languageId = languageId,
-        isCustom = isCustom
+        isCustom = isCustom,
+        isPro = isPro,
     )
 }

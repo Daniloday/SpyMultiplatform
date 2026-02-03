@@ -6,4 +6,5 @@ data class Set(
     val name: String,
     val isCustom: Boolean,
     val isPremium: Boolean,
+    val isPro: Boolean,
 )

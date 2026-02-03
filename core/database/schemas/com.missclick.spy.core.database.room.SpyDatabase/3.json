@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 3,
-    "identityHash": "d2452482fedbe0bd5229028602ecb831",
+    "identityHash": "4ef0e76eb0392d7b59f65aabcdcbf226",
     "entities": [
       {
         "tableName": "word",
@@ -66,7 +66,7 @@
       },
       {
         "tableName": "set",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `language_id` INTEGER NOT NULL, `is_custom` INTEGER NOT NULL, `is_premium` INTEGER NOT NULL, FOREIGN KEY(`language_id`) REFERENCES `language`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `language_id` INTEGER NOT NULL, `is_custom` INTEGER NOT NULL, `is_premium` INTEGER NOT NULL, `is_pro` INTEGER NOT NULL, FOREIGN KEY(`language_id`) REFERENCES `language`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -95,6 +95,12 @@
           {
             "fieldPath": "isPremium",
             "columnName": "is_premium",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isPro",
+            "columnName": "is_pro",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -163,7 +169,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd2452482fedbe0bd5229028602ecb831')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4ef0e76eb0392d7b59f65aabcdcbf226')"
     ]
   }
 }

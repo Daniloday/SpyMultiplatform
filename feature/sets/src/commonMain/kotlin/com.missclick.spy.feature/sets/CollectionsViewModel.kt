@@ -75,6 +75,7 @@ class CollectionsViewModel(
                 name = successState.newCollection,
                 isCustom = true,
                 isPremium = false,
+                isPro = false,
             )
             viewModelScope.launch(Dispatchers.IO) {
                 val options = getOptionsUseCase().first()

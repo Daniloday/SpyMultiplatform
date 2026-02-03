@@ -34,4 +34,30 @@ internal object DatabaseMigrations {
         }
     }
 
+    val MIGRATION_3_4 = object : Migration(3, 4) {
+        override fun migrate(connection: SQLiteConnection) {
+            connection.execSQL("ALTER TABLE `set` ADD COLUMN is_pro INTEGER NOT NULL DEFAULT 0")
+        }
+    }
+
+    fun getMigration45(newSetsLoader: NewSetsLoader) = object : Migration(4, 5) {
+        override fun migrate(connection: SQLiteConnection) {
+
+            val languages = newSetsLoader.getNewSets("v5.json")
+
+            languages.forEach { language ->
+                language.sets.forEach { set ->
+                    connection.execSQL("INSERT INTO `set` (name, language_id, is_custom, is_premium, is_pro) VALUES ('${set.name}', ${language.languageId}, 0, ${if (set.isPremium) 1 else 0}, ${if (set.isPro) 1 else 0})")
+                    val setId = connection.prepare("SELECT last_insert_rowid()").use { stmt ->
+                        stmt.step()
+                        stmt.getLong(0)
+                    }
+                    set.words.forEach { word ->
+                        connection.execSQL("INSERT INTO `word` (name, set_id, is_hidden) VALUES ('${word}', $setId, 0)")
+                    }
+                }
+            }
+        }
+    }
+
 }

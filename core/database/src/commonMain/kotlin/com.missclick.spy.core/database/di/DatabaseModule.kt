@@ -48,6 +48,8 @@ private fun provideDatabase(
         .addMigrations(
             DatabaseMigrations.MIGRATION_1_2,
             DatabaseMigrations.getMigration23(newSetsLoader),
+            DatabaseMigrations.MIGRATION_3_4,
+            DatabaseMigrations.getMigration45(newSetsLoader),
             )
         .build()
 }
