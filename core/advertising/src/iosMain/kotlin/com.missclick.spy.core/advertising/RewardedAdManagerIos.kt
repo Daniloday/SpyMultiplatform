@@ -1,9 +1,8 @@
 package com.missclick.spy.core.advertising
 
-
-internal class InterstitialAdManagerIos(
+internal class RewardedAdManagerIos(
     private val adMobIos: AdMobIos
-): InterstitialAdManager {
+): RewardedAdManager {
 
     init {
         loadAd()
@@ -13,12 +12,11 @@ internal class InterstitialAdManagerIos(
         adMobIos.loadRewardedAd()
     }
 
-    override fun showAd(onAdClosed: () -> Unit) {
+
+    override fun showAd(onAdSkipped: () -> Unit, onAdWatched: () -> Unit) {
         adMobIos.showRewardedAd {
-            onAdClosed()
+            onAdWatched()
             loadAd()
         }
     }
 }
-
-

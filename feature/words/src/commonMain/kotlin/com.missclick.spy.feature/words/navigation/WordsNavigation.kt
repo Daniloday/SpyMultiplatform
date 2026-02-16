@@ -6,7 +6,9 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import androidx.savedstate.read
 import com.missclick.spy.feature.words.WordsRoute
+import org.koin.core.component.getScopeName
 
 private const val COLLECTION_NAME = "collectionName"
 const val WORDS_NAV_ROUTE = "wordsNavRoute"
@@ -22,19 +24,19 @@ fun NavGraphBuilder.wordsScreen(
 
     composable(
         route = "$WORDS_NAV_ROUTE/{$COLLECTION_NAME}",
-        arguments = listOf(
-            navArgument(COLLECTION_NAME) { type = NavType.StringType },
-        ),
-    ) { navBackStackEntry ->
-        val selectedCollectionName = remember {
-            navBackStackEntry.arguments?.getString(COLLECTION_NAME) ?: ""
-        }
+        arguments = listOf(navArgument(COLLECTION_NAME) { type = NavType.StringType }),
+    ) { entry ->
+
+        val selectedCollectionName =
+            entry.arguments?.read { getStringOrNull(COLLECTION_NAME) } ?: ""
+
         WordsRoute(
             onBackClick = onBackClick,
             onSelectCollection = onSelectCollection,
             selectedCollectionName = selectedCollectionName
         )
     }
+
 
 }
 

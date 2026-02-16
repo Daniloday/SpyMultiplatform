@@ -13,6 +13,8 @@
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 		8FA80BDF2CBAA3A3004961CB /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 8FA80BDE2CBAA3A3004961CB /* InfoPlist.xcstrings */; };
+		8FB9B9032F4333F4007558C8 /* v3.json in Resources */ = {isa = PBXBuildFile; fileRef = 8FB9B9012F4333F4007558C8 /* v3.json */; };
+		8FB9B9042F4333F4007558C8 /* v5.json in Resources */ = {isa = PBXBuildFile; fileRef = 8FB9B9022F4333F4007558C8 /* v5.json */; };
 		8FC7BBCF2CB7E1A6002AEFE7 /* spy-database-preload.db in Resources */ = {isa = PBXBuildFile; fileRef = 8FC7BBCE2CB7E1A6002AEFE7 /* spy-database-preload.db */; };
 		8FC7BBD12CB88DC1002AEFE7 /* AdMob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC7BBD02CB88DC1002AEFE7 /* AdMob.swift */; };
 		8FD70FB22CBC211100D28FBA /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FD70FB12CBC211100D28FBA /* Launch Screen.storyboard */; };
@@ -29,6 +31,8 @@
 		82E94E0054C8A2540902BDCF /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 		8FA80BDD2CBAA31F004961CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8FA80BDE2CBAA3A3004961CB /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		8FB9B9012F4333F4007558C8 /* v3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = v3.json; sourceTree = "<group>"; };
+		8FB9B9022F4333F4007558C8 /* v5.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = v5.json; sourceTree = "<group>"; };
 		8FC7BBCE2CB7E1A6002AEFE7 /* spy-database-preload.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = "spy-database-preload.db"; path = "Resources/spy-database-preload.db"; sourceTree = "<group>"; };
 		8FC7BBD02CB88DC1002AEFE7 /* AdMob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMob.swift; sourceTree = "<group>"; };
 		8FD70FB12CBC211100D28FBA /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -75,6 +79,8 @@
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
+				8FB9B9012F4333F4007558C8 /* v3.json */,
+				8FB9B9022F4333F4007558C8 /* v5.json */,
 				8FC7BBCE2CB7E1A6002AEFE7 /* spy-database-preload.db */,
 				AB1DB47929225F7C00F7AF9C /* Configuration */,
 				7555FF7D242A565900829871 /* iosApp */,
@@ -179,6 +185,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FB9B9032F4333F4007558C8 /* v3.json in Resources */,
+				8FB9B9042F4333F4007558C8 /* v5.json in Resources */,
 				8FC7BBCF2CB7E1A6002AEFE7 /* spy-database-preload.db in Resources */,
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
 				8FA80BDF2CBAA3A3004961CB /* InfoPlist.xcstrings in Resources */,
@@ -220,9 +228,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -391,7 +403,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 5HV2XT29CJ;
+				DEVELOPMENT_TEAM = "${TEAM_ID}";
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

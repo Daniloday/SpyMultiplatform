@@ -5,7 +5,13 @@ plugins {
 }
 
 kotlin {
+    android {
+        sourceSets["main"].assets.srcDirs("src/commonMain/resources")
+    }
     sourceSets {
+        val commonMain by getting {
+            resources.srcDir("src/commonMain/resources")
+        }
         commonMain.dependencies {
             implementation(projects.core.model)
         }
