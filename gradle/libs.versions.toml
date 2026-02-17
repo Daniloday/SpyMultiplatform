@@ -56,6 +56,7 @@ androidx-room-runtime-android = { module = "androidx.room:room-runtime-android",
 applovin-sdk = { module = "com.applovin:applovin-sdk", version.ref = "applovinSdk" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
 purchases-core = { module = "com.revenuecat.purchases:purchases-kmp-core", version.ref = "purchases" }
+purchases-ui = { module = "com.revenuecat.purchases:purchases-kmp-ui", version.ref = "purchases" }
 sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite"}
 
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }

@@ -14,7 +14,7 @@ fun MainViewController(
 ) = ComposeUIViewController(
     configure = {
         Purchases.logLevel = LogLevel.DEBUG
-        Purchases.configure(PurchasesConfiguration.Builder( "goog_SQlPXzCveMSHRuAimqKBUuTnlsR").build())
+        Purchases.configure(PurchasesConfiguration.Builder( "test_iZrwglqjMMNNWqfGSXwRBzMUdPh").build())
         initKoin(adMobIos)
     }
 ) {
