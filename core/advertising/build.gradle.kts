@@ -24,6 +24,7 @@ kotlin {
             implementation(libs.firebase.remote.config)
 //            implementation(libs.firebase.config.ktx)
 //            api(libs.admob.meta)
+            implementation(libs.google.playReview)
         }
     }
 }

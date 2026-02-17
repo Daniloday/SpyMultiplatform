@@ -44,6 +44,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.missclick.spy.core.advertising.InterstitialAdManager
+import com.missclick.spy.core.advertising.RateUs
 import com.missclick.spy.core.common.extentions.randomByTime
 import com.missclick.spy.core.purchase.PurchaseManager
 import com.missclick.spy.core.ui.theme.AppTheme
@@ -82,7 +83,7 @@ internal fun GameRouteShared(
     onBackClick: () -> Unit,
     vm: GameViewModel = koinViewModel(),
     interstitialAdManager: InterstitialAdManager,
-    purchaseManager: PurchaseManager
+    rateUs: RateUs,
 ) {
 
     val viewState by vm.viewState.collectAsState()
@@ -95,7 +96,7 @@ internal fun GameRouteShared(
             if (viewState is GameViewState.End) {
                 if ((0..4).randomByTime() == 0) {
                     coroutineScope.launch {
-                        purchaseManager.requestRateUs()
+                        rateUs.show()
                         onBackClick()
                     }
                 } else {

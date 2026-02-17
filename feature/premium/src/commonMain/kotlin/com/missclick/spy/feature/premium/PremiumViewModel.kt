@@ -24,23 +24,11 @@ internal class PremiumViewModel(
     )
 
     fun onBuy(purchaseManager: PurchaseManager,) {
-        purchaseManager.buy { result ->
-            if (result) {
-                viewModelScope.launch {
-                    optionsRepo.activatePremium()
-                }
-            }
-        }
+
     }
 
     fun onRestore(purchaseManager: PurchaseManager,) {
-        purchaseManager.restore { result ->
-            if (result) {
-                viewModelScope.launch {
-                    optionsRepo.activatePremium()
-                }
-            }
-        }
+
     }
 
 }

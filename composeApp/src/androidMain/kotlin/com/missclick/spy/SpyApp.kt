@@ -7,9 +7,9 @@ import com.applovin.sdk.AppLovinSdkInitializationConfiguration
 import com.google.android.gms.ads.MobileAds
 import com.google.firebase.FirebaseApp
 import com.missclick.spy.di.appModule
-import com.revenuecat.purchases.LogLevel
-import com.revenuecat.purchases.Purchases
-import com.revenuecat.purchases.PurchasesConfiguration
+import com.revenuecat.purchases.kmp.LogLevel
+import com.revenuecat.purchases.kmp.Purchases
+import com.revenuecat.purchases.kmp.PurchasesConfiguration
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -27,7 +27,7 @@ class SpyApp : Application() {
 
         AppLovinSdk.getInstance(this).initialize(initConfig) {}
         Purchases.logLevel = LogLevel.DEBUG
-        Purchases.configure(PurchasesConfiguration.Builder(this, BuildConfig.PURCHASE_API_KEY).build())
+        Purchases.configure(PurchasesConfiguration.Builder( BuildConfig.PURCHASE_API_KEY).build())
     }
 
     private fun initKoin() {

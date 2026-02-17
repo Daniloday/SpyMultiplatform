@@ -68,6 +68,8 @@ kotlin {
             implementation(projects.feature.words)
             implementation(projects.feature.premium)
 
+            implementation(libs.purchases.core)
+
         }
     }
 }

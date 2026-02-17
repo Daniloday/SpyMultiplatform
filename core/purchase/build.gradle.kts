@@ -4,9 +4,14 @@ plugins {
 
 kotlin {
     sourceSets {
-        androidMain.dependencies {
-            api(libs.purchases)
-            implementation(libs.google.playReview)
+        commonMain.dependencies {
+            api(libs.purchases.core)
+        }
+
+        named { it.lowercase().startsWith("ios") }.configureEach {
+            languageSettings {
+                optIn("kotlinx.cinterop.ExperimentalForeignApi")
+            }
         }
     }
 }

@@ -10,12 +10,11 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.missclick.spy.core.advertising.BottomAds
-import com.missclick.spy.core.domain.GetOptionsUseCase
 import com.missclick.spy.core.navigation.NavGraph
 import com.missclick.spy.core.ui.theme.AppTheme
 import com.missclick.spy.core.ui.theme.SpyTheme
-import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
+
 
 @Composable
 internal fun App(

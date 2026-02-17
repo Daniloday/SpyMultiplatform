@@ -25,7 +25,7 @@ kotlinxCoroutinesCore = "1.10.2"
 kotlinxDatetime = "0.7.1"
 navigationCompose = "2.9.2"
 koin = "4.1.1"
-purchases = "9.21.0"
+purchases = "2.5.1+17.33.1"
 room = "2.8.4"
 ksp = "2.1.20-2.0.1"
 kotlinxSerialization = "2.3.10"
@@ -55,7 +55,7 @@ androidx-room-runtime = { module = "androidx.room:room-runtime",  version.ref = 
 androidx-room-runtime-android = { module = "androidx.room:room-runtime-android",  version.ref = "room" }
 applovin-sdk = { module = "com.applovin:applovin-sdk", version.ref = "applovinSdk" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
-purchases = { module = "com.revenuecat.purchases:purchases", version.ref = "purchases" }
+purchases-core = { module = "com.revenuecat.purchases:purchases-kmp-core", version.ref = "purchases" }
 sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite"}
 
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }

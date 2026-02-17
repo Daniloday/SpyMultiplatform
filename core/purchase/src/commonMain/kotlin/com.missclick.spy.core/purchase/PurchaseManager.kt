@@ -1,7 +1,8 @@
 package com.missclick.spy.core.purchase
 
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
+
 interface PurchaseManager {
-    fun buy(onResult: (Boolean) -> Unit)
-    fun restore(onResult: (Boolean) -> Unit)
-    fun requestRateUs()
+    val isPremium: StateFlow<Boolean>
 }

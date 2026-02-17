@@ -13,6 +13,6 @@ internal actual fun GameRoute(
         modifier = modifier,
         onBackClick = onBackClick,
         interstitialAdManager = koinInject(),
-        purchaseManager = koinInject()
+        rateUs = koinInject()
     )
 }

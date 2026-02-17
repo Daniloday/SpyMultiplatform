@@ -4,7 +4,6 @@ import android.app.Activity
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.intl.Locale
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
 
@@ -20,6 +19,6 @@ internal actual fun GameRoute(
         modifier = modifier,
         onBackClick = onBackClick,
         interstitialAdManager = koinInject { parametersOf(activity) },
-        purchaseManager = koinInject { parametersOf(activity) },
+        rateUs = koinInject { parametersOf(activity) },
     )
 }
