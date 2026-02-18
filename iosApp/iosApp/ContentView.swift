@@ -4,8 +4,8 @@ import ComposeApp
 
 struct ComposeView: UIViewControllerRepresentable {
     
-    func makeCoordinator() -> InterstitialAdManager {
-        InterstitialAdManager()
+    func makeCoordinator() -> AdsCoordinator {
+           AdsCoordinator()
     }
     
     func makeUIViewController(context: Context) -> UIViewController {
@@ -23,6 +23,12 @@ struct ContentView: View {
         ComposeView().ignoresSafeArea(.all)
     }
 }
+
+final class AdsCoordinator {
+    let interstitial = InterstitialAdManager()
+    let rewarded = RewardedAdManager()
+}
+
 
 
 

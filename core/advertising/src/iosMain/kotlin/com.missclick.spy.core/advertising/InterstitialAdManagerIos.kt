@@ -10,14 +10,11 @@ internal class InterstitialAdManagerIos(
     }
 
     private fun loadAd() {
-        adMobIos.loadRewardedAd()
+        adMobIos.loadInterstitialAd()
     }
 
     override fun showAd(onAdClosed: () -> Unit) {
-        adMobIos.showRewardedAd {
-            onAdClosed()
-            loadAd()
-        }
+        adMobIos.showInterstitialAd(onAdClosed)
     }
 }
 

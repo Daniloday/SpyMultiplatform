@@ -14,9 +14,6 @@ internal class RewardedAdManagerIos(
 
 
     override fun showAd(onAdSkipped: () -> Unit, onAdWatched: () -> Unit) {
-        adMobIos.showRewardedAd {
-            onAdWatched()
-            loadAd()
-        }
+        adMobIos.showRewardedAd(onAdSkipped, onAdWatched)
     }
 }

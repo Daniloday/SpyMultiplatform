@@ -4,6 +4,8 @@ import platform.UIKit.UIViewController
 
 class AdMobIos(
     val bannerViewController: () -> UIViewController,
+    val loadInterstitialAd: () -> Unit,
+    val showInterstitialAd: (onAdClosed: () -> Unit) -> Unit,
     val loadRewardedAd: () -> Unit,
-    val showRewardedAd: (onAdClosed: () -> Unit) -> Unit,
+    val showRewardedAd: (onAdClosed: () -> Unit, onReward: () -> Unit,) -> Unit,
 )

@@ -8,6 +8,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.interop.UIKitViewController
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.UIKitInteropProperties
+import androidx.compose.ui.viewinterop.UIKitViewController
 import kotlinx.cinterop.ExperimentalForeignApi
 import org.koin.compose.koinInject
 
@@ -18,13 +20,12 @@ actual fun BottomAds(
     modifier: Modifier,
 ) {
 
-//    val adMobIos: AdMobIos = koinInject()
-//
-//    UIKitViewController(
-//        modifier = Modifier.height(50.dp).width(320.dp).background(Color.Transparent),
-//        factory = {
-//
-//            adMobIos.bannerViewController()
-//        }
-//    )
+    val adMobIos: AdMobIos = koinInject()
+
+    UIKitViewController(
+        modifier = Modifier.height(50.dp).width(320.dp).background(Color.Transparent),
+        factory = {
+            adMobIos.bannerViewController()
+        }
+    )
 }
