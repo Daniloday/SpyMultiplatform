@@ -173,6 +173,18 @@ final class RewardedAdManager: NSObject, GADFullScreenContentDelegate {
         onClosed = nil
         onReward = nil
     }
+    
+    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Rewarded will present")
+    }
+
+    func adDidRecordImpression(_ ad: GADFullScreenPresentingAd) {
+        print("Rewarded impression")
+    }
+
+    func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {
+        print("Rewarded click")
+    }
 }
 
 // MARK: - KMP bridge
