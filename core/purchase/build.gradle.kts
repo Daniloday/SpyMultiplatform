@@ -5,7 +5,7 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            api(libs.purchases.core)
+            implementation(libs.purchases.core)
         }
 
         named { it.lowercase().startsWith("ios") }.configureEach {

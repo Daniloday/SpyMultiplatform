@@ -13,7 +13,6 @@ kotlin {
             implementation(projects.feature.settings)
             implementation(projects.feature.sets)
             implementation(projects.feature.words)
-            implementation(projects.feature.premium)
         }
     }
 }

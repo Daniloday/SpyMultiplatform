@@ -1,6 +1,7 @@
 package com.missclick.spy
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,6 +14,8 @@ import com.missclick.spy.core.advertising.BottomAds
 import com.missclick.spy.core.navigation.NavGraph
 import com.missclick.spy.core.ui.theme.AppTheme
 import com.missclick.spy.core.ui.theme.SpyTheme
+import com.revenuecat.purchases.kmp.ui.revenuecatui.Paywall
+import com.revenuecat.purchases.kmp.ui.revenuecatui.PaywallOptions
 import org.koin.compose.viewmodel.koinViewModel
 
 
@@ -21,21 +24,33 @@ internal fun App(
     vm: AppViewModel = koinViewModel()
 ) {
 
-    val isPremium = vm.isPremium.collectAsState()
+    val isPremium by vm.isPremium.collectAsState()
+    val isShowPaywall by vm.isShowPaywall.collectAsState()
+
+    val options = remember { PaywallOptions({ vm.closePaywall() }) }
 
     SpyTheme {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(
-                    brush = AppTheme.colors.background
+        Box {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        brush = AppTheme.colors.background
+                    )
+                    .windowInsetsPadding(WindowInsets.safeDrawing),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                NavGraph(
+                    modifier = Modifier.weight(1f),
+                    onShowPaywall = vm::showPaywall
                 )
-                .windowInsetsPadding(WindowInsets.safeDrawing),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            NavGraph(modifier = Modifier.weight(1f))
-            if (!isPremium.value) {
-                BottomAds()
+                if (!isPremium) {
+                    BottomAds()
+                }
+            }
+
+            if (isShowPaywall) {
+                Paywall(options)
             }
         }
     }

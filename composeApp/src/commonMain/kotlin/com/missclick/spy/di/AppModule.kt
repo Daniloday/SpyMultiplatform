@@ -12,7 +12,6 @@ import com.missclick.spy.core.purchase.di.purchaseModule
 import com.missclick.spy.feature.sets.di.collectionsModule
 import com.missclick.spy.feature.game.di.gameModule
 import com.missclick.spy.feature.game_options.di.gameOptionsModule
-import com.missclick.spy.feature.premium.di.premiumModule
 import com.missclick.spy.feature.rules.di.rulesModule
 import com.missclick.spy.feature.settings.di.settingsModule
 import com.missclick.spy.feature.words.di.wordsModule
@@ -36,7 +35,6 @@ internal val appModule = module {
         advertisingModule,
         commonModule,
         purchaseModule,
-        premiumModule,
     )
 }
 
