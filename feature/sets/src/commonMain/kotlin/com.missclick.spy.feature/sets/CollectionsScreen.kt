@@ -36,7 +36,6 @@ import com.missclick.spy.resources.Res
 import com.missclick.spy.resources.add_set
 import com.missclick.spy.resources.enter_set_name
 import com.missclick.spy.resources.ic_back
-import com.missclick.spy.resources.ic_book
 import com.missclick.spy.resources.ic_ok
 import com.missclick.spy.resources.ic_premium
 import com.missclick.spy.resources.ic_triangle
@@ -57,6 +56,7 @@ internal fun CollectionsRoute(
 ) {
 
     val viewState by vm.viewState.collectAsState()
+    val uiDraft by vm.collectionsViewDraft.collectAsState()
 
     CollectionsScreen(
         modifier = modifier,
@@ -66,7 +66,8 @@ internal fun CollectionsRoute(
         onAddNewCollectionClick = vm::addNewCollection,
         onNewCollectionSaveClick = vm::saveNewCollection,
         onNewCollectionNameChange = vm::onNewCollectionNameChange,
-        onPremiumProCollectionClick = onPremiumProCollectionClick
+        onPremiumProCollectionClick = onPremiumProCollectionClick,
+        collectionsViewDraft = uiDraft
     )
 }
 
@@ -74,6 +75,7 @@ internal fun CollectionsRoute(
 private fun CollectionsScreen(
     modifier: Modifier = Modifier,
     viewState: CollectionsViewState,
+    collectionsViewDraft: CollectionsViewDraft,
     onBackClick: () -> Unit,
     onCollectionClick: (String) -> Unit,
     onAddNewCollectionClick: () -> Unit,
@@ -93,14 +95,16 @@ private fun CollectionsScreen(
                 onCollectionClick = onCollectionClick,
                 onNewCollectionSaveClick = {
                     onNewCollectionSaveClick()
-                    if (viewState.newCollection.isNotBlank()) {
-                        onCollectionClick(viewState.newCollection)
+                    if (collectionsViewDraft.newCollection.isNotBlank()) {
+                        onCollectionClick(collectionsViewDraft.newCollection)
                     }
                 },
                 onNewCollectionNameChange = onNewCollectionNameChange,
                 viewState = viewState,
-                onPremiumProCollectionClick = onPremiumProCollectionClick
+                onPremiumProCollectionClick = onPremiumProCollectionClick,
+                collectionsViewDraft = collectionsViewDraft,
             )
+            else -> Unit
         }
     }
 }
@@ -114,6 +118,7 @@ private fun CollectionsScreenSuccess(
     onNewCollectionNameChange: (String) -> Unit,
     onNewCollectionSaveClick: () -> Unit,
     onPremiumProCollectionClick: () -> Unit,
+    collectionsViewDraft: CollectionsViewDraft,
 ) {
 
     val lazyListState = rememberLazyListState()
@@ -157,7 +162,7 @@ private fun CollectionsScreenSuccess(
         if (viewState.isEnteringNewCollection) {
             item {
                 AddNewCollectionCard(
-                    name = viewState.newCollection,
+                    name = collectionsViewDraft.newCollection,
                     onValueChange = onNewCollectionNameChange,
                     onSaveClick = onNewCollectionSaveClick
                 )

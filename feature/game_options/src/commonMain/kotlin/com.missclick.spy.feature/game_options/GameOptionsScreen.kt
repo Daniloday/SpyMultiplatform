@@ -120,9 +120,9 @@ internal fun GameOptionsRouteShared(
 private fun GameOptionsScreen(
     modifier: Modifier = Modifier,
     onStart: () -> Unit,
+    onSelectSetClick: () -> Unit,
     onSettingsClick: () -> Unit,
     onGuideClick: () -> Unit,
-    onSelectSetClick: () -> Unit,
     onPremiumClick: () -> Unit,
     viewState: GameOptionsViewStateOptions,
     vm: GameOptionsViewModel,
@@ -132,11 +132,7 @@ private fun GameOptionsScreen(
             .padding(bottom = 16.dp)
             .fillMaxSize()
     ) {
-        TopBar(
-            onGuideClick = onGuideClick,
-            onSettingsClick = onSettingsClick,
-            onPremiumClick = onPremiumClick
-        )
+
         when (viewState) {
             is GameOptionsViewStateOptions.Success -> GameOptionsSuccess(
                 onStart = {
@@ -148,7 +144,10 @@ private fun GameOptionsScreen(
                 },
                 onSelectSetClick = onSelectSetClick,
                 vm = vm,
-                viewState = viewState
+                viewState = viewState,
+                onSettingsClick = onSettingsClick,
+                onGuideClick = onGuideClick,
+                onPremiumClick = onPremiumClick,
             )
 
             is GameOptionsViewStateOptions.Loading -> Unit
@@ -205,7 +204,17 @@ private fun ColumnScope.GameOptionsSuccess(
     onSelectSetClick: () -> Unit,
     viewState: GameOptionsViewStateOptions.Success,
     vm: GameOptionsViewModel,
+    onSettingsClick: () -> Unit,
+    onGuideClick: () -> Unit,
+    onPremiumClick: () -> Unit,
 ) {
+    TopBar(
+        onGuideClick = onGuideClick,
+        onSettingsClick = onSettingsClick,
+        onPremiumClick = onPremiumClick,
+        isPremium = viewState.isPremium
+    )
+
     Box(
         modifier = modifier
             .fillMaxWidth()
@@ -342,6 +351,7 @@ private fun Option(
 @Composable
 private fun TopBar(
     modifier: Modifier = Modifier,
+    isPremium: Boolean,
     onGuideClick: () -> Unit,
     onSettingsClick: () -> Unit,
     onPremiumClick: () -> Unit,
@@ -355,15 +365,17 @@ private fun TopBar(
             modifier = Modifier.align(Alignment.Center)
         ) {
             Spacer(modifier = Modifier.weight(1f))
-            IconButton(onClick = onPremiumClick) {
-                Icon(
-                    modifier = Modifier.size(48.dp),
-                    painter = painterResource(resource = Res.drawable.ic_premium),
-                    contentDescription = null,
-                    tint = AppTheme.colors.tertiary
-                )
+            if (!isPremium) {
+                IconButton(onClick = onPremiumClick) {
+                    Icon(
+                        modifier = Modifier.size(48.dp),
+                        painter = painterResource(resource = Res.drawable.ic_premium),
+                        contentDescription = null,
+                        tint = AppTheme.colors.tertiary
+                    )
+                }
+                Spacer(modifier = Modifier.width(8.dp))
             }
-            Spacer(modifier = Modifier.width(8.dp))
             IconButton(onClick = onGuideClick) {
                 Icon(
                     modifier = Modifier.size(32.dp),

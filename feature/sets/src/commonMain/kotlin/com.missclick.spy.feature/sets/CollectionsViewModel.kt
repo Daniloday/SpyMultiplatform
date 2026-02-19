@@ -8,11 +8,9 @@ import com.missclick.spy.core.data.WordRepo
 import com.missclick.spy.core.domain.GetOptionsUseCase
 import com.missclick.spy.core.model.Set
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.IO
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class CollectionsViewModel(
@@ -22,106 +20,93 @@ class CollectionsViewModel(
     private val optionRepo: OptionsRepo,
 ) : ViewModel() {
 
-    private val _viewState = MutableStateFlow<CollectionsViewState>(CollectionsViewState.Loading)
-    val viewState = _viewState.asStateFlow()
 
-    init {
-        viewModelScope.launch(Dispatchers.IO) {
-            val options = getOptionsUseCase().first()
-            val selectedCollection = options.collectionName
-            setRepo.getSets(options.selectedLanguageCode).collect { sets ->
-                initSuccess(
-                    selectedCollection = selectedCollection,
-                    sets = sets.sortedBy {
-                        it.isPremium
-                    }.sortedBy {
-                        it.isPro
-                    },
-                    isPremium = optionRepo.options.first().isPremium
-                )
+
+    private val _collectionsViewDraft = MutableStateFlow(CollectionsViewDraft())
+    val collectionsViewDraft = _collectionsViewDraft.asStateFlow()
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val viewState: StateFlow<CollectionsViewState> =
+        combine(
+            getOptionsUseCase(), // must be reactive Flow
+            collectionsViewDraft
+        ) { options, draft ->
+            options to draft
+        }
+            .flatMapLatest { (options, draft) ->
+                setRepo.getSets(options.selectedLanguageCode)
+                    .map { sets -> Triple(options, draft, sets) }
             }
-        }
-    }
+            .map { (options, draft, sets) ->
+                val sorted = sets.sortedWith(
+                    compareBy<Set> { it.isPremium }
+                        .thenBy { it.isPro }
+                )
 
+                val collectionViews = sorted.map { set ->
+                    CollectionView(
+                        name = set.name,
+                        isSelected = set.name == options.collectionName,
+                        isPremium = set.isPremium,
+                        isPro = set.isPro
+                    )
+                }
 
-    private fun initSuccess(
-        sets: List<Set>,
-        selectedCollection: String,
-        isPremium: Boolean,
-    ) {
-        val collectionViews = sets.map { set ->
-            CollectionView(
-                name = set.name,
-                isSelected = set.name == selectedCollection,
-                isPremium = set.isPremium,
-                isPro = set.isPro
+                CollectionsViewState.Success(
+                    collectionViews = collectionViews,
+                    isEnteringNewCollection = draft.isEnteringNewCollection,
+                    isPremium = options.isPremium
+                ) as CollectionsViewState
+            }
+            .onStart { emit(CollectionsViewState.Loading) }
+            .catch { e -> emit(CollectionsViewState.Error(e.message ?: "Unknown error")) }
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(5_000),
+                initialValue = CollectionsViewState.Loading
             )
-        }
-        val successState = viewState.value as? CollectionsViewState.Success
-        _viewState.update {
-            CollectionsViewState.Success(
-                collectionViews = collectionViews,
-                isEnteringNewCollection = successState?.isEnteringNewCollection ?: false,
-                newCollection = successState?.newCollection ?: "",
-                isPremium = isPremium,
-            )
-        }
-    }
 
     fun addNewCollection() {
-        val successState = viewState.value as? CollectionsViewState.Success ?: return
-        _viewState.update {
-            successState.copy(
-                isEnteringNewCollection = true,
-                newCollection = ""
-            )
-        }
-    }
-
-    fun saveNewCollection() {
-        val successState = viewState.value as? CollectionsViewState.Success ?: return
-        if (successState.newCollection.isNotBlank()) {
-            val newSet = Set(
-                name = successState.newCollection,
-                isCustom = true,
-                isPremium = false,
-                isPro = false,
-            )
-            viewModelScope.launch(Dispatchers.IO) {
-                val options = getOptionsUseCase().first()
-                setRepo.addSet(
-                    newSet,
-                    options.selectedLanguageCode
-                )
-            }
-        }
-        _viewState.update {
-            successState.copy(
-                isEnteringNewCollection = false,
-                newCollection = ""
-            )
-        }
+        _collectionsViewDraft.update { it.copy(isEnteringNewCollection = true, newCollection = "") }
     }
 
     fun onNewCollectionNameChange(newName: String) {
-        val successState = viewState.value as? CollectionsViewState.Success ?: return
-        _viewState.update {
-            successState.copy(
-                newCollection = newName
-            )
-        }
+        _collectionsViewDraft.update { it.copy(newCollection = newName) }
     }
 
+    fun saveNewCollection() {
+        val draft = collectionsViewDraft.value
+        if (draft.newCollection.isBlank()) {
+            _collectionsViewDraft.update { it.copy(isEnteringNewCollection = false, newCollection = "") }
+            return
+        }
+
+        val newSet = Set(
+            name = draft.newCollection,
+            isCustom = true,
+            isPremium = false,
+            isPro = false,
+        )
+
+        viewModelScope.launch(Dispatchers.IO) {
+            val options = getOptionsUseCase().first()
+            setRepo.addSet(newSet, options.selectedLanguageCode)
+        }
+
+        _collectionsViewDraft.update { it.copy(isEnteringNewCollection = false, newCollection = "") }
+    }
 }
 
 sealed class CollectionsViewState {
-    data object Loading: CollectionsViewState()
+    data object Loading : CollectionsViewState()
+
     data class Success(
         val collectionViews: List<CollectionView>,
         val isEnteringNewCollection: Boolean,
-        val newCollection: String,
         val isPremium: Boolean,
-    ): CollectionsViewState()
+    ) : CollectionsViewState()
+
+    data class Error(val message: String) : CollectionsViewState()
 }
 
 data class CollectionView(
@@ -129,4 +114,9 @@ data class CollectionView(
     val isSelected: Boolean,
     val isPremium: Boolean,
     val isPro: Boolean,
+)
+
+data class CollectionsViewDraft(
+    val isEnteringNewCollection: Boolean = false,
+    val newCollection: String = ""
 )

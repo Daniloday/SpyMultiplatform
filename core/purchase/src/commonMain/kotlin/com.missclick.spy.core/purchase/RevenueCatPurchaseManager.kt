@@ -17,7 +17,7 @@ class RevenueCatPurchaseManager() : PurchaseManager {
 
     private val delegate = object : PurchasesDelegate {
         override fun onCustomerInfoUpdated(customerInfo: CustomerInfo) {
-            _isPremium.value = customerInfo.entitlements["SpyPremium"]?.isActive == true
+            _isPremium.value = customerInfo.entitlements["spyPremium"]?.isActive == true
         }
 
         override fun onPurchasePromoProduct(
@@ -35,7 +35,7 @@ class RevenueCatPurchaseManager() : PurchaseManager {
         Purchases.sharedInstance.getCustomerInfo(
             onError = { _isPremium.value = false },
             onSuccess = { customerInfo ->
-                _isPremium.value = customerInfo.entitlements["SpyPremium"]?.isActive == true
+                _isPremium.value = customerInfo.entitlements["spyPremium"]?.isActive == true
             }
         )
     }
