@@ -84,8 +84,8 @@ android {
         applicationId = "com.missclick.spy"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 25
-        versionName = "2.4.0"
+        versionCode = 26
+        versionName = "2.5.0"
         manifestPlaceholders["ADMOB_APPLICATION_ID"] = secretKeyProperties.getProperty("ADMOB_APPLICATION_ID")
         buildConfigField("String", "UNITY_GAME_ID", "\"${secretKeyProperties["UNITY_GAME_ID"]}\"")
         buildConfigField("String", "APP_LOVIN_APPLICATION_ID", "\"${secretKeyProperties["APP_LOVIN_APPLICATION_ID"]}\"")
