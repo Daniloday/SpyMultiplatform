@@ -50,6 +50,7 @@ private fun provideDatabase(
             DatabaseMigrations.getMigration23(newSetsLoader),
             DatabaseMigrations.MIGRATION_3_4,
             DatabaseMigrations.getMigration45(newSetsLoader),
+            DatabaseMigrations.getMigration56(newSetsLoader),
             )
         .build()
 }
