@@ -124,7 +124,7 @@ private fun CollectionsScreenSuccess(
     val lazyListState = rememberLazyListState()
 
     LaunchedEffect(key1 = viewState.isEnteringNewCollection) {
-        if (viewState.collectionViews.isNotEmpty()) {
+        if (viewState.collectionViews.isNotEmpty() && viewState.isEnteringNewCollection) {
             lazyListState.animateScrollToItem(viewState.collectionViews.lastIndex)
         }
     }

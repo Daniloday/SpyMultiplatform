@@ -28,7 +28,7 @@ class CollectionsViewModel(
     @OptIn(ExperimentalCoroutinesApi::class)
     val viewState: StateFlow<CollectionsViewState> =
         combine(
-            getOptionsUseCase(), // must be reactive Flow
+            getOptionsUseCase(),
             collectionsViewDraft
         ) { options, draft ->
             options to draft
