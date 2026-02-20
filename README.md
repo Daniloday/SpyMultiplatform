@@ -1,14 +1,13 @@
-🕵️ Spy — Party Game (KMP)
+🕵️ **Spy — Party Game (KMP)**
 
 Spy is a cross-platform party game built with Kotlin Multiplatform.
 
-📱 Platforms
-Available on:
+📱 **Platforms**
 - Android
 - iOS
 
 
-🏗 Architecture & Tech Stack
+🏗 **Architecture & Tech Stack**
 - Kotlin Multiplatform
 - Compose Multiplatform (UI)
 - Koin (Dependency Injection)
@@ -23,7 +22,7 @@ The project keeps core game logic, state management, persistence, and UI fully s
 The application is built using Kotlin Multiplatform with shared business logic and shared UI.
 UI is implemented with Compose Multiplatform, enabling a single declarative UI layer across platforms.
 
-🎯 Gameplay Overview
+🎯 **Gameplay Overview**
 
 One player is the Spy.
 Everyone else knows the location.
@@ -42,7 +41,7 @@ Simple rules. High tension
 
 Designed for small groups and fast sessions.
 
-📥 Download
+📥 **Download**
 
 <a href="https://play.google.com/store/apps/details?id=com.missclick.spy">
   <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" height="60">
