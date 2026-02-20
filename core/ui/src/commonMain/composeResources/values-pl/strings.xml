@@ -1,0 +1,105 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Szpieg</string>
+    <string name="back">Wstecz</string>
+    <string name="skip">Pomiń</string>
+    <string name="next">Dalej</string>
+
+    <string name="min">min</string>
+    <string name="players">Gracze</string>
+    <string name="start">Start</string>
+    <string name="player">Gracz</string>
+    <string name="play">Graj</string>
+    <string name="spies">Szpiedzy</string>
+    <string name="timer">Minutnik</string>
+    <string name="set">Zestaw</string>
+    <string name="tap_to_see_you_role">Dotknij, aby zobaczyć swoją rolę</string>
+    <string name="you_local">Jesteś miejscowy. Wszyscy gracze poza Szpiegiem znają to miejsce. Zadawaj pytania, aby ustalić, kto jest Szpiegiem</string>
+    <string name="you_spy_hint">Spróbuj zorientować się, o jakim miejscu mówią miejscowi</string>
+    <string name="you_spy">Jesteś Szpiegiem</string>
+    <string name="hint_timer">Zaczynajcie zadawać pytania! Odkryjcie Szpiega zanim skończy się czas, inaczej wygra</string>
+    <string name="was_spy">Szpiegiem był</string>
+    <string name="were_spies">Szpiegami byli</string>
+    <string name="restart">Jeszcze raz</string>
+    <string name="choose">Wybierz zestaw</string>
+    <string name="print_word">Wpisz miejsce</string>
+    <string name="enter_set_name">Wpisz nazwę zestawu</string>
+    <string name="add_word">Dodaj słowo</string>
+    <string name="add_set">Dodaj zestaw</string>
+    <string name="toast_empty_set">Nie można wybrać pustego zestawu</string>
+    <string name="new_set">Nowy zestaw</string>
+
+    <string name="first_page_title">Gramy w Szpiega?</string>
+    <string name="first_page_text">Przewiń dalej, a wyjaśnimy zasady</string>
+
+    <string name="second_page_title">Role</string>
+    <string name="second_page_text">W grze jesteś albo miejscowy, albo Szpieg. Tylko miejscowi znają miejsce i muszą zdemaskować Szpiega. Szpieg próbuje odgadnąć miejsce</string>
+
+    <string name="third_page_title">Zadawajcie pytania</string>
+    <string name="third_page_text">Możecie zadawać pytania o miejsce.
+Gracz, który odpowiada, zadaje następne pytanie.
+Zaczyna gracz, który w poprzedniej rundzie był Szpiegiem</string>
+
+    <string name="fourth_page_title">Słuchajcie</string>
+    <string name="fourth_page_text">Uważnie słuchajcie pytań i odpowiedzi innych graczy.
+Pamiętajcie: Szpieg nie zna miejsca, więc może brzmieć podejrzanie</string>
+
+    <string name="fifth_page_title">Głosujcie</string>
+    <string name="fifth_page_text">Powiedz: „Znalazłem Szpiega” i podaj jego imię. Potem odbywa się głosowanie. Wszyscy gracze głosują, czy wskazana osoba jest Szpiegiem.
+</string>
+
+    <string name="sixth_page_title">Wygrana?</string>
+    <string name="sixth_page_text">Jeśli wszyscy się zgodzą, wskazany gracz pokazuje swoją kartę. Jeśli okaże się miejscowym, wygrywa Szpieg. Jeśli to naprawdę Szpieg, wygrywają miejscowi. Jeśli nie ma jednomyślności, gra trwa dalej. Jeśli Szpieg domyśla się miejsca, może je nazwać. Jeśli trafi, wygrywa. Jeśli nie, przegrywa</string>
+
+    <string name="seventh_page_title">Minutnik</string>
+    <string name="seventh_page_text">Nie zapomnijcie o czasie. Jest ograniczony i działa na korzyść Szpiega, więc spieszcie się.
+Gdy czas minie, wygrywa Szpieg</string>
+
+    <string name="guide_first_title">No to zaczynamy?</string>
+    <string name="guide_first_text">Najpierw wybierzcie ustawienia: zestaw słów, czas gry, liczbę graczy i szpiegów oraz język.
+</string>
+
+    <string name="guide_second_title">Jak właściwie grać?</string>
+    <string name="guide_second_text">Są dwie role: miejscowy i Szpieg. Podawajcie telefon po kolei, aby każdy zobaczył swoją rolę.
+</string>
+
+    <string name="guide_third_title">A inni nie zobaczą mojej roli?</string>
+    <string name="guide_third_text">Gdy dotkniesz karty, odwróci się. Z tyłu zobaczysz miejsce albo dowiesz się, że jesteś Szpiegiem.
+Dotknij ponownie, a karta się schowa i pojawi się następna. Przekaż telefon kolejnemu graczowi.
+Gdy wszyscy znają role, zaczynajcie. Zadawajcie pytania o miejsce, np.: „Jaki to ma kolor?”, „Jak często tam bywasz?”, „Chciałbyś tam wrócić?”. Zadaniem miejscowych jest zdemaskować Szpiega (albo Szpiegów, zależnie od ustawień). Zadaniem Szpiega jest udawać miejscowego i spróbować odgadnąć miejsce.
+</string>
+
+    <string name="guide_fourth_title">Co zrobić, jeśli podejrzewasz, kto jest Szpiegiem?</string>
+    <string name="guide_fourth_text">Powiedz: „Znalazłem Szpiega” i podaj jego imię. Potem odbywa się głosowanie, czy wskazana osoba jest Szpiegiem.
+Tylko jeśli wszyscy się zgodzą, wskazany gracz pokazuje swoją kartę. Jeśli okaże się miejscowym, wygrywa Szpieg. Jeśli to naprawdę Szpieg, wygrywają miejscowi. Jeśli nie ma jednomyślności, gra trwa dalej.
+Możecie też grać bez głosowania: na trzy wszyscy wskazują osobę, którą uważają za Szpiega. Jeśli wszyscy wskażą tę samą osobę, musi ujawnić swoją rolę.
+Jeśli jesteś Szpiegiem i myślisz, że znasz miejsce, powiedz: „Znam miejsce” i je nazwij. Jeśli trafisz, wygrywasz. Jeśli nie, wygrywają miejscowi.
+</string>
+
+    <string name="guide_fifth_title">Po co jest minutnik?</string>
+    <string name="guide_fifth_text">Jeśli miejscowi zdemaskują Szpiega zanim skończy się czas, wygrywają. Jeśli Szpieg dotrwa do końca, wygrywa on.
+</string>
+
+    <string name="guide_sixth_title">Jak grać z kilkoma Szpiegami?</string>
+    <string name="guide_sixth_text">Liczba Szpiegów zawsze musi być mniejsza niż liczba miejscowych. Każdy Szpieg gra na siebie, bo na końcu wygrywa tylko jeden.
+Aby wygrać, miejscowi muszą zdemaskować wszystkich Szpiegów. Jeśli nie zdemaskują wszystkich, wygrywają ci Szpiedzy, którzy zostali niewykryci.
+Jeśli wszyscy zagłosują przeciwko komuś, a okaże się miejscowym, wygrywają Szpiedzy.
+Gdy prawdziwy Szpieg zostanie zdemaskowany, odpada z gry, a rozgrywka trwa dalej.
+Jeśli Szpieg nazwie miejsce i trafi, gra się kończy i wygrywa. Jeśli się pomyli, gra toczy się dalej bez niego. Karty są losowe, więc twoja rola zależy od szczęścia.
+</string>
+
+    <string name="find">Sprawdź, kto jest Szpiegiem</string>
+    <string name="it_is_premium_set">Wybrano zestaw Premium. Aby grać, kup Premium albo obejrzyj reklamę</string>
+    <string name="buy_premium">Kup</string>
+    <string name="watch_ad">Obejrzyj</string>
+
+    <string name="spy_premium">Szpieg Premium</string>
+    <string name="restore_purchases">Przywróć zakupy</string>
+    <string name="no_ads">— Bez reklam</string>
+    <string name="premium_sets">— Zestawy Premium</string>
+    <string name="all_future_sets">— Wszystkie przyszłe zestawy w cenie</string>
+    <string name="all_future_features">— Wszystkie przyszłe funkcje odblokowane</string>
+    <string name="forever">— Na zawsze</string>
+
+    <string name="thanks_for_purchase">Dzięki za zakup</string>
+    <string name="enjoy_game">Miłej gry!</string>
+</resources>

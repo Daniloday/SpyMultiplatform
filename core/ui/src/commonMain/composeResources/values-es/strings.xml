@@ -1,0 +1,105 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Espía</string>
+    <string name="back">Atrás</string>
+    <string name="skip">Saltar</string>
+    <string name="next">Siguiente</string>
+
+    <string name="min">min</string>
+    <string name="players">Jugadores</string>
+    <string name="start">Empezar</string>
+    <string name="player">Jugador</string>
+    <string name="play">Jugar</string>
+    <string name="spies">Espías</string>
+    <string name="timer">Temporizador</string>
+    <string name="set">Set</string>
+    <string name="tap_to_see_you_role">Toca para ver tu rol</string>
+    <string name="you_local">Eres un local. Todos los jugadores, excepto el Espía, conocen este lugar. Haz preguntas para descubrir quién es el espía</string>
+    <string name="you_spy_hint">Intenta averiguar de qué lugar están hablando los locales</string>
+    <string name="you_spy">Eres el espía</string>
+    <string name="hint_timer">¡Empiecen a hacer preguntas! Descubran al espía antes de que se acabe el tiempo, o ganará</string>
+    <string name="was_spy">El espía fue</string>
+    <string name="were_spies">Los espías fueron</string>
+    <string name="restart">Otra vez</string>
+    <string name="choose">Elegir set</string>
+    <string name="print_word">Introduce un lugar</string>
+    <string name="enter_set_name">Introduce el nombre del set</string>
+    <string name="add_word">Añadir palabra</string>
+    <string name="add_set">Añadir set</string>
+    <string name="toast_empty_set">No puedes elegir un set vacío</string>
+    <string name="new_set">Nuevo set</string>
+
+    <string name="first_page_title">¿Jugamos a Espía?</string>
+    <string name="first_page_text">Desliza y te explicamos qué hacer</string>
+
+    <string name="second_page_title">Roles</string>
+    <string name="second_page_text">En el juego eres local o espía. Solo los locales conocen el lugar y deben descubrir al espía. El espía intenta adivinar el lugar</string>
+
+    <string name="third_page_title">Pregunten</string>
+    <string name="third_page_text">Pueden hacer preguntas sobre el lugar.
+Quien responda hace la siguiente pregunta.
+Empieza el jugador que fue espía en la partida anterior</string>
+
+    <string name="fourth_page_title">Escuchen</string>
+    <string name="fourth_page_text">Escuchen con atención las preguntas y respuestas de los demás.
+Recuerden: el espía no conoce el lugar, así que puede sonar sospechoso</string>
+
+    <string name="fifth_page_title">Voten</string>
+    <string name="fifth_page_text">Di: “He encontrado al espía” y di su nombre. Luego se vota. Todos votan si la persona señalada es el espía.
+</string>
+
+    <string name="sixth_page_title">¿Victoria?</string>
+    <string name="sixth_page_text">Si todos están de acuerdo, el jugador señalado muestra su carta. Si resulta ser local, gana el espía. Si de verdad es el espía, ganan los locales. Si no todos están de acuerdo, el juego continúa. Si el espía cree saber el lugar, puede decirlo. Si acierta, gana. Si falla, pierde</string>
+
+    <string name="seventh_page_title">Temporizador</string>
+    <string name="seventh_page_text">No olviden el tiempo. Es limitado y juega a favor del espía, así que apúrense.
+Cuando se acaba el tiempo, gana el espía</string>
+
+    <string name="guide_first_title">¿Listos?</string>
+    <string name="guide_first_text">Primero elijan la configuración: set de palabras, tiempo de juego, número de jugadores y espías, y el idioma.
+</string>
+
+    <string name="guide_second_title">¿Cómo se juega?</string>
+    <string name="guide_second_text">Hay dos roles: local y espía. Pasen el teléfono por turnos para que cada jugador vea su rol.
+</string>
+
+    <string name="guide_third_title">¿Otro jugador verá mi rol?</string>
+    <string name="guide_third_text">Cuando tocas la carta, se da vuelta. En la parte de atrás verás el lugar o descubrirás que eres el espía.
+Toca una vez más y tu carta se ocultará y aparecerá la siguiente. Pasa el teléfono al siguiente jugador para que vea su rol.
+Cuando todos conozcan su rol, empiecen a jugar. Hagan preguntas sobre el lugar, por ejemplo: “¿De qué color es este lugar?”, “¿Con qué frecuencia vas?”, “¿Te dan ganas de volver?”. La tarea de los locales es descubrir al espía (o espías, según la configuración). El espía debe fingir que es local y tratar de adivinar el lugar.
+</string>
+
+    <string name="guide_fourth_title">¿Qué hacer si sospechas quién es el espía?</string>
+    <string name="guide_fourth_text">Di: “He encontrado al espía” y di su nombre. Luego se vota si esa persona es el espía.
+Solo si todos están de acuerdo, el jugador señalado muestra su carta. Si es local, gana el espía. Si es el espía, ganan los locales. Si no todos están de acuerdo, el juego continúa.
+También pueden jugar sin votación: a la cuenta de tres, todos señalan a quien crean que es el espía. Si todos señalan a la misma persona, debe revelar su rol.
+Si eres el espía y crees saber el lugar, di: “Sé el lugar” y nómbralo. Si aciertas, ganas. Si fallas, ganan los locales.
+</string>
+
+    <string name="guide_fifth_title">¿Para qué sirve el temporizador?</string>
+    <string name="guide_fifth_text">Si los locales logran descubrir al espía antes de que termine el tiempo, ganan. Si el espía aguanta hasta el final, gana él.
+</string>
+
+    <string name="guide_sixth_title">¿Cómo jugar con varios espías?</string>
+    <string name="guide_sixth_text">El número de espías siempre debe ser menor que el de locales. Cada espía juega por su cuenta, porque al final solo gana uno.
+Para ganar, los locales deben descubrir a todos los espías. Si no descubren a todos, ganan los espías que quedaron sin descubrir.
+Si todos votan contra alguien y resulta ser local, ganan los espías.
+Si descubren a un espía de verdad, ese espía queda fuera y el juego continúa.
+Si un espía dice el lugar y acierta, el juego termina y ese espía gana. Si se equivoca, el juego sigue sin él. Las cartas salen al azar, así que tu rol depende de la suerte.
+</string>
+
+    <string name="find">Descubrir quién es el espía</string>
+    <string name="it_is_premium_set">Has elegido un set Premium. Para jugar, compra Premium o mira un anuncio</string>
+    <string name="buy_premium">Comprar</string>
+    <string name="watch_ad">Ver</string>
+
+    <string name="spy_premium">Espía Premium</string>
+    <string name="restore_purchases">Restaurar compras</string>
+    <string name="no_ads">— Sin anuncios</string>
+    <string name="premium_sets">— Sets Premium</string>
+    <string name="all_future_sets">— Todos los sets futuros incluidos</string>
+    <string name="all_future_features">— Todas las funciones futuras desbloqueadas</string>
+    <string name="forever">— Para siempre</string>
+
+    <string name="thanks_for_purchase">Gracias por tu compra</string>
+    <string name="enjoy_game">¡Que disfrutes el juego!</string>
+</resources>

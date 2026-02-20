@@ -1,0 +1,108 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Espion</string>
+    <string name="back">Retour</string>
+    <string name="skip">Passer</string>
+    <string name="next">Suivant</string>
+
+    <string name="min">min</string>
+    <string name="players">Joueurs</string>
+    <string name="start">Commencer</string>
+    <string name="player">Joueur</string>
+    <string name="play">Jouer</string>
+    <string name="spies">Espions</string>
+    <string name="timer">Minuteur</string>
+    <string name="set">Pack</string>
+    <string name="tap_to_see_you_role">Appuie pour voir ton rôle</string>
+    <string name="you_local">Tu es un local. Tous les joueurs, sauf l’espion, connaissent le lieu. Pose des questions pour découvrir qui est l’espion</string>
+    <string name="you_spy_hint">Essaie de comprendre de quel lieu parlent les autres</string>
+    <string name="you_spy">Tu es l’espion</string>
+    <string name="hint_timer">Commencez à poser des questions ! Trouvez l’espion avant la fin du temps, sinon il gagne</string>
+    <string name="was_spy">L’espion était</string>
+    <string name="were_spies">Les espions étaient</string>
+    <string name="restart">Rejouer</string>
+    <string name="choose">Choisir un pack</string>
+    <string name="print_word">Entrer un lieu</string>
+    <string name="enter_set_name">Entrer le nom du pack</string>
+    <string name="add_word">Ajouter un mot</string>
+    <string name="add_set">Ajouter un pack</string>
+    <string name="toast_empty_set">Impossible de choisir un pack vide</string>
+    <string name="new_set">Nouveau pack</string>
+
+    <string name="first_page_title">On joue à l’Espion ?</string>
+    <string name="first_page_text">Fais glisser et on t’explique les règles</string>
+
+    <string name="second_page_title">Rôles</string>
+    <string name="second_page_text">Dans le jeu, tu es soit un local, soit un espion. Seuls les locaux connaissent le lieu et doivent démasquer l’espion. L’espion tente de deviner le lieu</string>
+
+    <string name="third_page_title">Posez des questions</string>
+    <string name="third_page_text">Vous pouvez poser des questions sur le lieu.
+Le joueur qui répond pose la question suivante.
+Le joueur qui était espion à la partie précédente commence</string>
+
+    <string name="fourth_page_title">Écoutez</string>
+    <string name="fourth_page_text">Écoutez attentivement les questions et réponses des autres.
+N’oubliez pas : l’espion ne connaît pas le lieu et peut paraître suspect</string>
+
+    <string name="fifth_page_title">Votez</string>
+    <string name="fifth_page_text">Dis : « J’ai trouvé l’espion » et donne son nom. Ensuite, un vote a lieu. Tous les joueurs votent pour décider si la personne désignée est l’espion.
+</string>
+
+    <string name="sixth_page_title">Victoire ?</string>
+    <string name="sixth_page_text">Si tout le monde est d’accord, le joueur accusé révèle sa carte. S’il est local, l’espion gagne. S’il est vraiment l’espion, les locaux gagnent. Si tout le monde n’est pas d’accord, la partie continue. Si l’espion pense avoir deviné le lieu, il peut le dire. S’il a raison, il gagne. Sinon, il perd</string>
+
+    <string name="seventh_page_title">Minuteur</string>
+    <string name="seventh_page_text">N’oubliez pas le temps. Il est limité et joue en faveur de l’espion, alors dépêchez-vous.
+À la fin du temps, l’espion gagne</string>
+
+    <string name="guide_first_title">Prêts ?</string>
+    <string name="guide_first_text">Choisissez d’abord les paramètres : pack de mots, durée, nombre de joueurs et d’espions, ainsi que la langue.
+</string>
+
+    <string name="guide_second_title">Comment jouer ?</string>
+    <string name="guide_second_text">Il y a deux rôles : local et espion. Passez le téléphone à tour de rôle pour que chacun découvre son rôle.
+</string>
+
+    <string name="guide_third_title">Un autre joueur verra-t-il mon rôle ?</string>
+    <string name="guide_third_text">Quand tu appuies sur la carte, elle se retourne. Au dos, tu découvres soit le lieu, soit que tu es l’espion.
+Appuie encore et la carte se cache, laissant place à la suivante. Passe le téléphone au joueur suivant.
+Quand tout le monde connaît son rôle, la partie commence. Posez des questions sur le lieu, par exemple : « De quelle couleur est cet endroit ? », « À quelle fréquence y vas-tu ? », « As-tu envie d’y retourner ? ». Les locaux doivent démasquer l’espion. L’espion doit faire semblant d’être un local et tenter de deviner le lieu.
+</string>
+
+    <string name="guide_fourth_title">Tu penses savoir qui est l’espion ?</string>
+    <string name="guide_fourth_text">Dis : « J’ai trouvé l’espion » et donne son nom. Ensuite, un vote a lieu.
+Si tout le monde est d’accord, le joueur accusé révèle sa carte.
+S’il est local, les espions gagnent. S’il est vraiment espion, les locaux gagnent.
+Si tout le monde n’est pas d’accord, la partie continue.
+Vous pouvez aussi jouer sans vote : à trois, chacun désigne la personne qu’il pense être l’espion. Si tous désignent la même personne, elle révèle son rôle.
+Si tu es espion et que tu penses connaître le lieu, dis : « Je connais le lieu » et annonce-le. Si tu as raison, tu gagnes. Sinon, les locaux gagnent.
+</string>
+
+    <string name="guide_fifth_title">Pourquoi un minuteur ?</string>
+    <string name="guide_fifth_text">Si les locaux démasquent l’espion avant la fin du temps, ils gagnent. Si l’espion tient jusqu’au bout, il gagne.
+</string>
+
+    <string name="guide_sixth_title">Plusieurs espions ?</string>
+    <string name="guide_sixth_text">Le nombre d’espions doit toujours être inférieur à celui des locaux. Chaque espion joue pour lui-même, car un seul peut gagner.
+Pour gagner, les locaux doivent démasquer tous les espions. S’ils n’y parviennent pas, les espions non démasqués gagnent.
+Si tous votent contre quelqu’un et qu’il est local, les espions gagnent.
+Si un véritable espion est démasqué, il quitte la partie et le jeu continue.
+Si un espion annonce le lieu et a raison, la partie se termine et il gagne. S’il se trompe, la partie continue sans lui. Les rôles sont attribués au hasard.
+</string>
+
+    <string name="find">Découvrir qui est l’espion</string>
+    <string name="it_is_premium_set">Vous avez choisi un pack Premium. Pour jouer, achetez Premium ou regardez une publicité</string>
+    <string name="buy_premium">Acheter</string>
+    <string name="watch_ad">Regarder</string>
+
+    <string name="spy_premium">Espion Premium</string>
+    <string name="restore_purchases">Restaurer les achats</string>
+    <string name="no_ads">— Sans publicité</string>
+    <string name="premium_sets">— Packs Premium</string>
+    <string name="all_future_sets">— Tous les packs futurs inclus</string>
+    <string name="all_future_features">— Toutes les fonctionnalités futures débloquées</string>
+    <string name="forever">— À vie</string>
+
+    <string name="thanks_for_purchase">Merci pour votre achat</string>
+    <string name="enjoy_game">Amusez-vous bien !</string>
+
+</resources>

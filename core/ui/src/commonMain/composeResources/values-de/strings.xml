@@ -1,0 +1,106 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Spion</string>
+    <string name="back">Zurück</string>
+    <string name="skip">Überspringen</string>
+    <string name="next">Weiter</string>
+
+    <string name="min">Min</string>
+    <string name="players">Spieler</string>
+    <string name="start">Start</string>
+    <string name="player">Spieler</string>
+    <string name="play">Spielen</string>
+    <string name="spies">Spione</string>
+    <string name="timer">Timer</string>
+    <string name="set">Set</string>
+    <string name="tap_to_see_you_role">Tippe, um deine Rolle zu sehen</string>
+    <string name="you_local">Du bist ein Einheimischer. Alle Spieler außer dem Spion kennen diesen Ort. Stelle den anderen Fragen, um herauszufinden, wer der Spion ist</string>
+    <string name="you_spy_hint">Versuche herauszufinden, über welchen Ort die Einheimischen sprechen</string>
+    <string name="you_spy">Du bist der Spion</string>
+    <string name="hint_timer">Stellt Fragen! Findet den Spion, bevor die Zeit abläuft, sonst gewinnt er</string>
+    <string name="was_spy">Der Spion war</string>
+    <string name="were_spies">Die Spione waren</string>
+    <string name="restart">Noch einmal</string>
+    <string name="choose">Set auswählen</string>
+    <string name="print_word">Ort eingeben</string>
+    <string name="enter_set_name">Set-Name eingeben</string>
+    <string name="add_word">Wort hinzufügen</string>
+    <string name="add_set">Set hinzufügen</string>
+    <string name="toast_empty_set">Ein leeres Set kann nicht ausgewählt werden</string>
+    <string name="new_set">Neues Set</string>
+
+    <string name="first_page_title">Lust auf eine Runde Spion?</string>
+    <string name="first_page_text">Wische weiter und wir erklären dir die Regeln</string>
+
+    <string name="second_page_title">Rollen</string>
+    <string name="second_page_text">In diesem Spiel bist du entweder Einheimischer oder Spion. Nur die Einheimischen kennen den Ort und müssen den Spion entlarven. Der Spion versucht, den Ort zu erraten</string>
+
+    <string name="third_page_title">Fragen stellen</string>
+    <string name="third_page_text">Ihr dürft Fragen zum Ort stellen.
+Der Spieler, der antwortet, stellt als Nächstes eine Frage.
+Derjenige beginnt, der in der letzten Runde der Spion war</string>
+
+    <string name="fourth_page_title">Zuhören</string>
+    <string name="fourth_page_text">Hört genau auf Fragen und Antworten der anderen.
+Denkt daran: Der Spion kennt den Ort nicht und könnte sich verdächtig verhalten</string>
+
+    <string name="fifth_page_title">Abstimmen</string>
+    <string name="fifth_page_text">Sage: „Ich habe den Spion gefunden“ und nenne seinen Namen. Danach wird abgestimmt. Alle Spieler stimmen ab, ob die genannte Person der Spion ist.
+</string>
+
+    <string name="sixth_page_title">Sieg?</string>
+    <string name="sixth_page_text">Wenn alle zustimmen, zeigt der beschuldigte Spieler seine Karte. Ist er Einheimischer, gewinnt der Spion. Ist er tatsächlich der Spion, gewinnen die Einheimischen. Sind sich nicht alle einig, geht das Spiel weiter. Wenn der Spion glaubt, den Ort erkannt zu haben, darf er ihn nennen. Liegt er richtig, gewinnt er. Liegt er falsch, verliert er</string>
+
+    <string name="seventh_page_title">Timer</string>
+    <string name="seventh_page_text">Vergesst die Zeit nicht. Sie ist begrenzt und spielt dem Spion in die Karten, also beeilt euch.
+Sobald der Timer abläuft, gewinnt der Spion</string>
+
+    <string name="guide_first_title">Bereit?</string>
+    <string name="guide_first_text">Wählt zuerst die Einstellungen: Wort-Set, Spielzeit, Anzahl der Spieler und Spione sowie die Sprache.
+</string>
+
+    <string name="guide_second_title">Wie spielt man?</string>
+    <string name="guide_second_text">Es gibt zwei Rollen: Einheimischer und Spion. Gebt das Telefon reihum weiter, damit jeder seine Rolle sehen kann.
+</string>
+
+    <string name="guide_third_title">Sieht jemand meine Rolle?</string>
+    <string name="guide_third_text">Wenn du auf die Karte tippst, dreht sie sich um. Auf der Rückseite siehst du entweder den Ort oder erfährst, dass du der Spion bist.
+Nach einem weiteren Tippen verschwindet deine Karte und die nächste erscheint. Gib das Telefon weiter.
+Wenn alle ihre Rollen kennen, beginnt das Spiel. Stellt euch Fragen zum Ort, zum Beispiel: „Welche Farbe hat dieser Ort?“, „Wie oft bist du dort?“, „Kommst du gerne dorthin zurück?“. Die Einheimischen müssen den Spion entlarven. Der Spion muss so tun, als kenne er den Ort, und versuchen, ihn zu erraten.
+</string>
+
+    <string name="guide_fourth_title">Du vermutest jemanden?</string>
+    <string name="guide_fourth_text">Sage: „Ich habe den Spion gefunden“ und nenne seinen Namen. Danach wird abgestimmt. Stimmen alle zu, zeigt der beschuldigte Spieler seine Karte.
+Ist er Einheimischer, gewinnen die Spione. Ist er tatsächlich der Spion, gewinnen die Einheimischen.
+Ihr könnt auch ohne Abstimmung spielen: Bei drei zeigen alle gleichzeitig auf die Person, die sie für den Spion halten. Wenn alle dieselbe Person wählen, muss sie ihre Rolle zeigen.
+Wenn du als Spion den Ort erraten hast, sage: „Ich kenne den Ort“ und nenne ihn. Wenn du richtig liegst, gewinnst du. Wenn nicht, gewinnen die Einheimischen.
+</string>
+
+    <string name="guide_fifth_title">Warum ein Timer?</string>
+    <string name="guide_fifth_text">Schaffen es die Einheimischen, den Spion vor Ablauf der Zeit zu entlarven, gewinnen sie. Hält der Spion bis zum Ende durch, gewinnt er.
+</string>
+
+    <string name="guide_sixth_title">Mehrere Spione?</string>
+    <string name="guide_sixth_text">Die Anzahl der Spione muss immer kleiner sein als die der Einheimischen. Jeder Spion spielt für sich selbst, denn am Ende kann nur einer gewinnen.
+Um zu gewinnen, müssen die Einheimischen alle Spione entlarven. Wenn sie nicht alle finden, gewinnen die nicht entlarvten Spione.
+Wird einstimmig gegen jemanden gestimmt und er ist Einheimischer, gewinnen die Spione.
+Wird ein echter Spion entlarvt, scheidet er aus und das Spiel geht weiter.
+Nennt ein Spion den Ort und liegt richtig, endet das Spiel und er gewinnt. Liegt er falsch, spielt er nicht weiter. Die Rollen werden zufällig verteilt.
+</string>
+
+    <string name="find">Herausfinden, wer der Spion ist</string>
+    <string name="it_is_premium_set">Du hast ein Premium-Set gewählt. Kaufe Premium oder sieh dir Werbung an, um zu spielen</string>
+    <string name="buy_premium">Kaufen</string>
+    <string name="watch_ad">Ansehen</string>
+
+    <string name="spy_premium">Spion Premium</string>
+    <string name="restore_purchases">Käufe wiederherstellen</string>
+    <string name="no_ads">— Keine Werbung</string>
+    <string name="premium_sets">— Alle Premium-Sets</string>
+    <string name="all_future_sets">— Alle zukünftigen Sets inklusive</string>
+    <string name="all_future_features">— Alle zukünftigen Funktionen freigeschaltet</string>
+    <string name="forever">— Für immer</string>
+
+    <string name="thanks_for_purchase">Danke für deinen Kauf</string>
+    <string name="enjoy_game">Viel Spaß beim Spielen!</string>
+
+</resources>

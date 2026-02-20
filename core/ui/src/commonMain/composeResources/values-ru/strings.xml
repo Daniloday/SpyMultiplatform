@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Шпион</string>
     <string name="back">Назад</string>
-    <string name="skip">Пропуститъ</string>
+    <string name="skip">Пропустить</string>
     <string name="next">Далее</string>
 
     <string name="min">мин</string>

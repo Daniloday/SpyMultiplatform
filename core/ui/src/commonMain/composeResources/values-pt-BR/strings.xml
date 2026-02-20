@@ -1,0 +1,105 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Espião</string>
+    <string name="back">Voltar</string>
+    <string name="skip">Pular</string>
+    <string name="next">Próximo</string>
+
+    <string name="min">min</string>
+    <string name="players">Jogadores</string>
+    <string name="start">Começar</string>
+    <string name="player">Jogador</string>
+    <string name="play">Jogar</string>
+    <string name="spies">Espiões</string>
+    <string name="timer">Cronômetro</string>
+    <string name="set">Conjunto</string>
+    <string name="tap_to_see_you_role">Toque para ver seu papel</string>
+    <string name="you_local">Você é um local. Todos os jogadores, exceto o Espião, conhecem este lugar. Faça perguntas para descobrir quem é o espião</string>
+    <string name="you_spy_hint">Tente entender de qual lugar os locais estão falando</string>
+    <string name="you_spy">Você é o espião</string>
+    <string name="hint_timer">Comecem a fazer perguntas! Descubram o espião antes do tempo acabar, ou ele vence</string>
+    <string name="was_spy">O espião foi</string>
+    <string name="were_spies">Os espiões foram</string>
+    <string name="restart">De novo</string>
+    <string name="choose">Escolher conjunto</string>
+    <string name="print_word">Digite um lugar</string>
+    <string name="enter_set_name">Digite o nome do conjunto</string>
+    <string name="add_word">Adicionar palavra</string>
+    <string name="add_set">Adicionar conjunto</string>
+    <string name="toast_empty_set">Não é possível escolher um conjunto vazio</string>
+    <string name="new_set">Novo conjunto</string>
+
+    <string name="first_page_title">Bora jogar Espião?</string>
+    <string name="first_page_text">Deslize e a gente te mostra como jogar</string>
+
+    <string name="second_page_title">Papéis</string>
+    <string name="second_page_text">No jogo você é local ou espião. Só os locais conhecem o lugar e precisam desmascarar o espião. O espião tenta adivinhar o lugar</string>
+
+    <string name="third_page_title">Perguntem</string>
+    <string name="third_page_text">Vocês podem fazer perguntas sobre o lugar.
+Quem responde faz a próxima pergunta.
+Começa quem foi o espião na rodada anterior</string>
+
+    <string name="fourth_page_title">Escutem</string>
+    <string name="fourth_page_text">Escutem com atenção as perguntas e respostas dos outros.
+Lembrem-se: o espião não sabe o lugar, então pode soar suspeito</string>
+
+    <string name="fifth_page_title">Votem</string>
+    <string name="fifth_page_text">Diga: “Encontrei o espião” e fale o nome dele. Depois, vocês votam. Todos votam se a pessoa apontada é o espião.
+</string>
+
+    <string name="sixth_page_title">Vitória?</string>
+    <string name="sixth_page_text">Se todos concordarem, o jogador acusado mostra a carta. Se ele for local, o espião vence. Se for mesmo o espião, os locais vencem. Se nem todos concordarem, o jogo continua. Se o espião achar que descobriu o lugar, ele pode dizer qual é. Se acertar, vence. Se errar, perde</string>
+
+    <string name="seventh_page_title">Cronômetro</string>
+    <string name="seventh_page_text">Não esqueçam do tempo. Ele é limitado e favorece o espião, então se apressem.
+Quando o tempo acabar, o espião vence</string>
+
+    <string name="guide_first_title">Vamos começar?</string>
+    <string name="guide_first_text">Primeiro, escolha as configurações: conjunto de palavras, tempo de jogo, quantidade de jogadores e espiões, e o idioma.
+</string>
+
+    <string name="guide_second_title">Como jogar?</string>
+    <string name="guide_second_text">Existem dois papéis: local e espião. Passem o celular em ordem para que cada jogador veja seu papel.
+</string>
+
+    <string name="guide_third_title">Outro jogador vai ver meu papel?</string>
+    <string name="guide_third_text">Quando você toca na carta, ela vira. No verso, você vê o lugar ou descobre que é o espião.
+Toque mais uma vez e sua carta some, mostrando a próxima. Passe o celular para o próximo jogador.
+Quando todos souberem seus papéis, comecem o jogo. Façam perguntas sobre o lugar, por exemplo: “Que cor tem esse lugar?”, “Com que frequência você vai lá?”, “Dá vontade de voltar?”. A missão dos locais é desmascarar o espião (ou espiões, dependendo das configurações). O espião deve fingir que é local e tentar adivinhar o lugar.
+</string>
+
+    <string name="guide_fourth_title">O que fazer se você suspeita de alguém?</string>
+    <string name="guide_fourth_text">Diga: “Encontrei o espião” e fale o nome dele. Depois vocês votam se a pessoa apontada é o espião.
+Só se todos concordarem, o jogador acusado mostra a carta. Se ele for local, o espião vence. Se for mesmo o espião, os locais vencem. Se nem todos concordarem, o jogo continua.
+Também dá para jogar sem votação: na contagem de três, todo mundo aponta quem acha que é o espião. Se todos apontarem a mesma pessoa, ela precisa revelar o papel.
+Se você for o espião e achar que sabe o lugar, diga: “Eu sei o lugar” e fale qual é. Se acertar, você vence. Se errar, os locais vencem.
+</string>
+
+    <string name="guide_fifth_title">Para que serve o cronômetro?</string>
+    <string name="guide_fifth_text">Se os locais desmascararem o espião antes do tempo acabar, eles vencem. Se o espião aguentar até o fim, ele vence.
+</string>
+
+    <string name="guide_sixth_title">Como jogar com vários espiões?</string>
+    <string name="guide_sixth_text">O número de espiões sempre deve ser menor que o de locais. Cada espião joga por conta própria, porque no final só um vence.
+Para vencer, os locais precisam desmascarar todos os espiões. Se não desmascararem todos, vencem os espiões que ficaram escondidos.
+Se todos votarem contra alguém e essa pessoa for local, os espiões vencem.
+Quando um espião de verdade é desmascarado, ele sai do jogo e a partida continua.
+Se um espião disser o lugar e acertar, o jogo termina e ele vence. Se errar, o jogo continua sem ele. As cartas são sorteadas, então seu papel depende da sorte.
+</string>
+
+    <string name="find">Descobrir quem é o espião</string>
+    <string name="it_is_premium_set">Você escolheu um conjunto Premium. Para jogar, compre o Premium ou assista a um anúncio</string>
+    <string name="buy_premium">Comprar</string>
+    <string name="watch_ad">Assistir</string>
+
+    <string name="spy_premium">Espião Premium</string>
+    <string name="restore_purchases">Restaurar compras</string>
+    <string name="no_ads">— Sem anúncios</string>
+    <string name="premium_sets">— Conjuntos Premium</string>
+    <string name="all_future_sets">— Todos os conjuntos futuros incluídos</string>
+    <string name="all_future_features">— Todos os recursos futuros desbloqueados</string>
+    <string name="forever">— Para sempre</string>
+
+    <string name="thanks_for_purchase">Obrigado pela compra</string>
+    <string name="enjoy_game">Bom jogo!</string>
+</resources>
