@@ -9,7 +9,7 @@ const val GAME_OPTIONS_ROUTE = "gameOptions"
 
 fun NavGraphBuilder.gameOptionsScreen(
     onStartClick: () -> Unit,
-    onGuideClick: () -> Unit,
+    onGuideClick: (Boolean) -> Unit,
     onSettingsClick: () -> Unit,
     onSelectSetClick: () -> Unit,
     onPremiumClick: () -> Unit,

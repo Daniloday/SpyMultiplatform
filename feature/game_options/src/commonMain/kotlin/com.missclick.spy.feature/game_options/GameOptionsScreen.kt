@@ -68,7 +68,7 @@ import org.koin.compose.viewmodel.koinViewModel
 internal expect fun GameOptionsRoute(
     modifier: Modifier = Modifier,
     onSettingsClick: () -> Unit,
-    onGuideClick: () -> Unit,
+    onGuideClick: (Boolean) -> Unit,
     onStartClick: () -> Unit,
     onSelectSetClick: () -> Unit,
     onPremiumClick: () -> Unit,
@@ -79,7 +79,7 @@ internal expect fun GameOptionsRoute(
 internal fun GameOptionsRouteShared(
     modifier: Modifier = Modifier,
     onSettingsClick: () -> Unit,
-    onGuideClick: () -> Unit,
+    onGuideClick: (Boolean) -> Unit,
     onStartClick: () -> Unit,
     onSelectSetClick: () -> Unit,
     onPremiumClick: () -> Unit,
@@ -128,7 +128,7 @@ private fun GameOptionsScreen(
     onStart: () -> Unit,
     onSelectSetClick: () -> Unit,
     onSettingsClick: () -> Unit,
-    onGuideClick: () -> Unit,
+    onGuideClick: (Boolean) -> Unit,
     onPremiumClick: () -> Unit,
     viewState: GameOptionsViewStateOptions,
     vm: GameOptionsViewModel,
@@ -211,11 +211,13 @@ private fun ColumnScope.GameOptionsSuccess(
     viewState: GameOptionsViewStateOptions.Success,
     vm: GameOptionsViewModel,
     onSettingsClick: () -> Unit,
-    onGuideClick: () -> Unit,
+    onGuideClick: (Boolean) -> Unit,
     onPremiumClick: () -> Unit,
 ) {
     TopBar(
-        onGuideClick = onGuideClick,
+        onGuideClick = {
+            onGuideClick(false)
+        },
         onSettingsClick = onSettingsClick,
         onPremiumClick = onPremiumClick,
         isPremium = viewState.isPremium
@@ -232,7 +234,9 @@ private fun ColumnScope.GameOptionsSuccess(
             vm = vm,
             viewState = viewState,
             onSelectSetClick = onSelectSetClick,
-            onHelpClick = onGuideClick
+            onHelpClick = {
+                onGuideClick(true)
+            },
         )
     }
     PrimaryButton(

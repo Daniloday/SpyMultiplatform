@@ -13,6 +13,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -45,10 +46,12 @@ import org.jetbrains.compose.resources.stringResource
 internal fun GuideRoute(
     modifier: Modifier = Modifier,
     onBackClick: () -> Unit,
+    openHardMode: Boolean,
 ) {
     GuideScreen(
         modifier = modifier,
-        onBackClick = onBackClick
+        onBackClick = onBackClick,
+        openHardMode = openHardMode,
     )
 }
 
@@ -56,12 +59,13 @@ internal fun GuideRoute(
 private fun GuideScreen(
     modifier: Modifier = Modifier,
     onBackClick: () -> Unit,
+    openHardMode: Boolean,
 ) {
     Column(
         modifier = modifier
     ) {
         TopBar(onBackClick = onBackClick)
-        Guide(onClickPlay = onBackClick)
+        Guide(onClickPlay = onBackClick, openHardMode = openHardMode)
     }
 }
 
@@ -69,8 +73,15 @@ private fun GuideScreen(
 private fun Guide(
     modifier: Modifier = Modifier,
     onClickPlay: () -> Unit,
+    openHardMode: Boolean,
 ) {
     val scrollState = rememberScrollState()
+
+    LaunchedEffect(key1 = openHardMode) {
+        if (openHardMode) {
+            scrollState.scrollTo(scrollState.maxValue)
+        }
+    }
 
     val guide = listOf(
         Res.string.guide_first_title to Res.string.guide_first_text,

@@ -11,7 +11,7 @@ import org.koin.core.parameter.parametersOf
 internal actual fun GameOptionsRoute(
     modifier: Modifier,
     onSettingsClick: () -> Unit,
-    onGuideClick: () -> Unit,
+    onGuideClick: (Boolean) -> Unit,
     onStartClick: () -> Unit,
     onSelectSetClick: () -> Unit,
     onPremiumClick: () -> Unit,
