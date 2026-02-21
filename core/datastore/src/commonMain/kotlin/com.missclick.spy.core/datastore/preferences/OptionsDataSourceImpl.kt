@@ -3,6 +3,7 @@ package com.missclick.spy.core.datastore.preferences
 import androidx.datastore.core.DataStore
 import com.missclick.spy.core.datastore.OptionsDataSource
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.withContext
 
 internal class OptionsDataSourceImpl(
     private val optionsPreferences: DataStore<OptionsPreferences>
@@ -56,10 +57,10 @@ internal class OptionsDataSourceImpl(
         }
     }
 
-    override suspend fun setPremiumStatus(isPremium: Boolean) {
+    override suspend fun changeHardMode(isHardModeEnabled: Boolean) {
         optionsPreferences.updateData { currentData ->
             currentData.copy(
-                isPremium = isPremium,
+                isHardModeEnabled = isHardModeEnabled,
             )
         }
     }

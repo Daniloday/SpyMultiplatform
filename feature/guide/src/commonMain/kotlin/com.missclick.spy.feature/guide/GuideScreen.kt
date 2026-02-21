@@ -29,6 +29,8 @@ import com.missclick.spy.resources.guide_fourth_text
 import com.missclick.spy.resources.guide_fourth_title
 import com.missclick.spy.resources.guide_second_text
 import com.missclick.spy.resources.guide_second_title
+import com.missclick.spy.resources.guide_seven_text
+import com.missclick.spy.resources.guide_seven_title
 import com.missclick.spy.resources.guide_sixth_text
 import com.missclick.spy.resources.guide_sixth_title
 import com.missclick.spy.resources.guide_third_text
@@ -77,6 +79,7 @@ private fun Guide(
         Res.string.guide_fourth_title to Res.string.guide_fourth_text,
         Res.string.guide_fifth_title to Res.string.guide_fifth_text,
         Res.string.guide_sixth_title to Res.string.guide_sixth_text,
+        Res.string.guide_seven_title to Res.string.guide_seven_text,
     )
 
     Column(

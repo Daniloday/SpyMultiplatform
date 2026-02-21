@@ -12,6 +12,7 @@
     <string name="spies">Spies</string>
     <string name="timer">Timer</string>
     <string name="set">Set</string>
+    <string name="hard_mode">Hard Mode</string>
     <string name="tap_to_see_you_role">Tap to see your role</string>
     <string name="you_local">You are a local. All players except a spy know this location. Ask your friends different questions to figure out which one of them is a spy</string>
     <string name="you_spy_hint">Try to figure out what location the locals are talking about</string>
@@ -112,6 +113,13 @@ when one of the Spies calls the location: If he guesses, the game
 ends and this Spy wins. If he calls the wrong
 place - the game continues without him. Cards fall out completely
 by chance, so your role only depends on your luck!
+</string>
+
+    <string name="guide_seven_title">What is Hardcore Mode?</string>
+    <string name="guide_seven_text">
+In this mode, the spy does not know that they are the spy.
+They receive a different word and think they are playing on equal terms with everyone else.
+If there are multiple spies, they will receive the same alternative word.
 </string>
 
 

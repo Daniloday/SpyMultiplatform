@@ -3,6 +3,7 @@ package com.missclick.spy.core.datastore
 import com.missclick.spy.core.model.Options
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.withContext
 
 interface OptionsDataSource {
 
@@ -22,5 +23,5 @@ interface OptionsDataSource {
 
     suspend fun setLanguage(languageCode: String)
 
-    suspend fun setPremiumStatus(isPremium: Boolean)
+    suspend fun changeHardMode(isHardModeEnabled: Boolean)
 }

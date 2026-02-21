@@ -27,6 +27,7 @@
     <string name="add_set">Adicionar conjunto</string>
     <string name="toast_empty_set">Não é possível escolher um conjunto vazio</string>
     <string name="new_set">Novo conjunto</string>
+    <string name="hard_mode">Modo difícil</string>
 
     <string name="first_page_title">Bora jogar Espião?</string>
     <string name="first_page_text">Deslize e a gente te mostra como jogar</string>
@@ -85,6 +86,13 @@ Para vencer, os locais precisam desmascarar todos os espiões. Se não desmascar
 Se todos votarem contra alguém e essa pessoa for local, os espiões vencem.
 Quando um espião de verdade é desmascarado, ele sai do jogo e a partida continua.
 Se um espião disser o lugar e acertar, o jogo termina e ele vence. Se errar, o jogo continua sem ele. As cartas são sorteadas, então seu papel depende da sorte.
+</string>
+
+    <string name="guide_seven_title">O que é o modo Hardcore?</string>
+    <string name="guide_seven_text">
+Neste modo, o espião não sabe que é o espião.
+Ele recebe uma palavra diferente e acredita que está jogando em igualdade com os outros.
+Se houver vários espiões, eles receberão a mesma palavra alternativa.
 </string>
 
     <string name="find">Descobrir quem é o espião</string>

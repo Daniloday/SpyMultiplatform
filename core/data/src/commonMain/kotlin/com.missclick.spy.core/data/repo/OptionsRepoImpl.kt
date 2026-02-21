@@ -55,11 +55,10 @@ internal class OptionsRepoImpl(
         }
     }
 
-    override suspend fun activatePremium() {
+    override suspend fun changeHardMode(isHardModeEnabled: Boolean) {
         withContext(ioDispatcher) {
-            optionsDataSource.setPremiumStatus(true)
+            optionsDataSource.changeHardMode(isHardModeEnabled)
         }
     }
-
 
 }

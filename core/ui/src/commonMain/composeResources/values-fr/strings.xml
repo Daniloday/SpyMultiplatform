@@ -27,6 +27,7 @@
     <string name="add_set">Ajouter un pack</string>
     <string name="toast_empty_set">Impossible de choisir un pack vide</string>
     <string name="new_set">Nouveau pack</string>
+    <string name="hard_mode">Mode difficile</string>
 
     <string name="first_page_title">On joue à l’Espion ?</string>
     <string name="first_page_text">Fais glisser et on t’explique les règles</string>
@@ -87,6 +88,13 @@ Pour gagner, les locaux doivent démasquer tous les espions. S’ils n’y parvi
 Si tous votent contre quelqu’un et qu’il est local, les espions gagnent.
 Si un véritable espion est démasqué, il quitte la partie et le jeu continue.
 Si un espion annonce le lieu et a raison, la partie se termine et il gagne. S’il se trompe, la partie continue sans lui. Les rôles sont attribués au hasard.
+</string>
+
+    <string name="guide_seven_title">Qu’est-ce que le mode Hardcore ?</string>
+    <string name="guide_seven_text">
+Dans ce mode, l’espion ne sait pas qu’il est l’espion.
+Il reçoit un mot différent et pense jouer à égalité avec les autres.
+S’il y a plusieurs espions, ils recevront le même mot alternatif.
 </string>
 
     <string name="find">Découvrir qui est l’espion</string>

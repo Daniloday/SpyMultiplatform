@@ -21,6 +21,6 @@ interface OptionsRepo {
 
     suspend fun setLanguage(languageCode: String)
 
-    suspend fun activatePremium()
+    suspend fun changeHardMode(isHardModeEnabled: Boolean)
 
 }

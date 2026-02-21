@@ -27,6 +27,7 @@
     <string name="add_set">Dodaj zestaw</string>
     <string name="toast_empty_set">Nie można wybrać pustego zestawu</string>
     <string name="new_set">Nowy zestaw</string>
+    <string name="hard_mode">Tryb trudny</string>
 
     <string name="first_page_title">Gramy w Szpiega?</string>
     <string name="first_page_text">Przewiń dalej, a wyjaśnimy zasady</string>
@@ -85,6 +86,13 @@ Aby wygrać, miejscowi muszą zdemaskować wszystkich Szpiegów. Jeśli nie zdem
 Jeśli wszyscy zagłosują przeciwko komuś, a okaże się miejscowym, wygrywają Szpiedzy.
 Gdy prawdziwy Szpieg zostanie zdemaskowany, odpada z gry, a rozgrywka trwa dalej.
 Jeśli Szpieg nazwie miejsce i trafi, gra się kończy i wygrywa. Jeśli się pomyli, gra toczy się dalej bez niego. Karty są losowe, więc twoja rola zależy od szczęścia.
+</string>
+
+    <string name="guide_seven_title">Czym jest tryb hardcore?</string>
+    <string name="guide_seven_text">
+W tym trybie szpieg nie wie, że jest szpiegiem.
+Otrzymuje inne słowo i myśli, że gra na równych zasadach z innymi.
+Jeśli jest kilku szpiegów, otrzymają to samo alternatywne słowo.
 </string>
 
     <string name="find">Sprawdź, kto jest Szpiegiem</string>

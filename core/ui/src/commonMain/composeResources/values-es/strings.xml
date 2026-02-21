@@ -27,6 +27,7 @@
     <string name="add_set">Añadir set</string>
     <string name="toast_empty_set">No puedes elegir un set vacío</string>
     <string name="new_set">Nuevo set</string>
+    <string name="hard_mode">Modo difícil</string>
 
     <string name="first_page_title">¿Jugamos a Espía?</string>
     <string name="first_page_text">Desliza y te explicamos qué hacer</string>
@@ -85,6 +86,13 @@ Para ganar, los locales deben descubrir a todos los espías. Si no descubren a t
 Si todos votan contra alguien y resulta ser local, ganan los espías.
 Si descubren a un espía de verdad, ese espía queda fuera y el juego continúa.
 Si un espía dice el lugar y acierta, el juego termina y ese espía gana. Si se equivoca, el juego sigue sin él. Las cartas salen al azar, así que tu rol depende de la suerte.
+</string>
+
+    <string name="guide_seven_title">¿Qué es el modo Hardcore?</string>
+    <string name="guide_seven_text">
+En este modo, el espía no sabe que es el espía.
+Recibe una palabra diferente y piensa que juega en igualdad de condiciones con los demás.
+Si hay varios espías, recibirán la misma palabra alternativa.
 </string>
 
     <string name="find">Descubrir quién es el espía</string>

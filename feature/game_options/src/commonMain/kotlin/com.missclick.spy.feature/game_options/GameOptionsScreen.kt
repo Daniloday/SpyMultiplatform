@@ -17,6 +17,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -25,6 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
@@ -42,7 +46,9 @@ import com.missclick.spy.core.ui.kit.buttons.PrimaryButton
 import com.missclick.spy.core.ui.theme.AppTheme
 import com.missclick.spy.resources.Res
 import com.missclick.spy.resources.buy_premium
+import com.missclick.spy.resources.hard_mode
 import com.missclick.spy.resources.ic_book
+import com.missclick.spy.resources.ic_help
 import com.missclick.spy.resources.ic_premium
 import com.missclick.spy.resources.ic_settings
 import com.missclick.spy.resources.it_is_premium_set
@@ -225,7 +231,8 @@ private fun ColumnScope.GameOptionsSuccess(
             modifier = Modifier,
             vm = vm,
             viewState = viewState,
-            onSelectSetClick = onSelectSetClick
+            onSelectSetClick = onSelectSetClick,
+            onHelpClick = onGuideClick
         )
     }
     PrimaryButton(
@@ -239,6 +246,7 @@ private fun Options(
     modifier: Modifier = Modifier,
     viewState: GameOptionsViewStateOptions.Success,
     onSelectSetClick: () -> Unit,
+    onHelpClick: () -> Unit,
     vm: GameOptionsViewModel,
 ) {
     Column(
@@ -275,6 +283,56 @@ private fun Options(
             value = viewState.collectionName,
             onSelectClick = onSelectSetClick
         )
+        HardMode(viewState = viewState, vm = vm, onHelpClick = onHelpClick)
+    }
+}
+
+@Composable
+private fun HardMode(
+    modifier: Modifier = Modifier,
+    viewState: GameOptionsViewStateOptions.Success,
+    vm: GameOptionsViewModel,
+    onHelpClick: () -> Unit,
+) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Text(
+                text = stringResource(resource = Res.string.hard_mode),
+                color = AppTheme.colors.primary,
+                style = AppTheme.types.h28,
+            )
+            IconButton(onClick = onHelpClick) {
+                Icon(
+                    modifier = Modifier.size(32.dp),
+                    painter = painterResource(resource = Res.drawable.ic_help),
+                    contentDescription = null,
+                    tint = AppTheme.colors.primary
+                )
+            }
+        }
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Switch(
+                checked = viewState.isHardModeEnabled,
+                onCheckedChange = vm::changeHardMode,
+                colors = SwitchDefaults.colors(
+                    checkedThumbColor = AppTheme.colors.secondary,
+                    uncheckedThumbColor = AppTheme.colors.onSecondary,
+                    checkedTrackColor = Color.Transparent,
+                    uncheckedTrackColor = Color.Transparent,
+                    checkedBorderColor = AppTheme.colors.primary,
+                    uncheckedBorderColor = AppTheme.colors.primary
+                )
+            )
+
+        }
     }
 }
 

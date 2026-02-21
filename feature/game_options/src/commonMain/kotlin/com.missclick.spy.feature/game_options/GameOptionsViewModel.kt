@@ -27,7 +27,8 @@ class GameOptionsViewModel(
             time = it.time,
             collectionName = it.collectionName,
             isPremium = it.isPremium,
-            isSelectedCollectionPremium = it.isSelectedCollectionPremium
+            isSelectedCollectionPremium = it.isSelectedCollectionPremium,
+            isHardModeEnabled = it.isHardModeEnabled
         )
     }.stateIn(
         scope = viewModelScope,
@@ -106,6 +107,12 @@ class GameOptionsViewModel(
         }
     }
 
+    fun changeHardMode(isHardModeEnabled: Boolean) {
+        viewModelScope.launch(Dispatchers.IO) {
+            optionsRepo.changeHardMode(isHardModeEnabled)
+        }
+    }
+
 }
 
 sealed class GameOptionsViewStateOptions {
@@ -117,7 +124,8 @@ sealed class GameOptionsViewStateOptions {
         val collectionName: String,
         val isPremium: Boolean,
         val isSelectedCollectionPremium: Boolean,
-        val isShowPremiumSetDialog: Boolean = false
+        val isShowPremiumSetDialog: Boolean = false,
+        val isHardModeEnabled: Boolean = false,
     ) : GameOptionsViewStateOptions()
 }
 

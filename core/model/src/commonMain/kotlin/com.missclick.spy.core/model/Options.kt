@@ -8,5 +8,6 @@ data class Options(
     val collectionLanguageCode: String,
     val isSelectedCollectionPremium: Boolean,
     val selectedLanguageCode: String,
+    val isHardModeEnabled: Boolean,
     val isPremium: Boolean,
 )

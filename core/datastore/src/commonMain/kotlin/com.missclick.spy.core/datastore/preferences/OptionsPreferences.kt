@@ -15,7 +15,8 @@ internal data class OptionsPreferences(
     val isSelectedCollectionPremium: Boolean = false,
     val collectionLanguageCode: String = "",
     val collectionName: String = "",
-    val isPremium: Boolean = false,
+
+    val isHardModeEnabled: Boolean = false,
 )
 
 internal fun OptionsPreferences.asModel() = Options(
@@ -25,6 +26,7 @@ internal fun OptionsPreferences.asModel() = Options(
     selectedLanguageCode = selectedLanguageCode,
     collectionName = collectionName,
     collectionLanguageCode = collectionLanguageCode,
-    isPremium = isPremium,
     isSelectedCollectionPremium = isSelectedCollectionPremium,
+    isHardModeEnabled = isHardModeEnabled,
+    isPremium = false,
 )

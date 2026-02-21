@@ -27,6 +27,7 @@
     <string name="add_set">Set hinzufügen</string>
     <string name="toast_empty_set">Ein leeres Set kann nicht ausgewählt werden</string>
     <string name="new_set">Neues Set</string>
+    <string name="hard_mode">Schwerer Modus</string>
 
     <string name="first_page_title">Lust auf eine Runde Spion?</string>
     <string name="first_page_text">Wische weiter und wir erklären dir die Regeln</string>
@@ -85,6 +86,13 @@ Um zu gewinnen, müssen die Einheimischen alle Spione entlarven. Wenn sie nicht 
 Wird einstimmig gegen jemanden gestimmt und er ist Einheimischer, gewinnen die Spione.
 Wird ein echter Spion entlarvt, scheidet er aus und das Spiel geht weiter.
 Nennt ein Spion den Ort und liegt richtig, endet das Spiel und er gewinnt. Liegt er falsch, spielt er nicht weiter. Die Rollen werden zufällig verteilt.
+</string>
+
+    <string name="guide_seven_title">Was ist der Hardcore-Modus?</string>
+    <string name="guide_seven_text">
+In diesem Modus weiß der Spion nicht, dass er der Spion ist.
+Er erhält ein anderes Wort und glaubt, dass er mit allen anderen gleichberechtigt spielt.
+Wenn es mehrere Spione gibt, erhalten sie dasselbe alternative Wort.
 </string>
 
     <string name="find">Herausfinden, wer der Spion ist</string>
