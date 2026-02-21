@@ -273,7 +273,8 @@ private fun Preparing(
                     .align(Alignment.Center),
                 cardInfo = cardInfo,
                 onCardClick = onCardClick,
-                playerNumber = cardIndex + 1
+                playerNumber = cardIndex + 1,
+                isHardMode = viewState.isHardMode
             )
         }
 
@@ -285,6 +286,7 @@ private fun GameCard(
     modifier: Modifier = Modifier,
     cardInfo: CardInfo,
     playerNumber: Int,
+    isHardMode: Boolean,
     onCardClick: () -> Unit,
 ) {
 
@@ -321,7 +323,7 @@ private fun GameCard(
 
 
     val animateBorderColor by animateColorAsState(
-        targetValue = if (cardInfo.cardState != CardState.CLOSED && cardInfo.isSpy) AppTheme.colors.secondary else AppTheme.colors.primary,
+        targetValue = if (cardInfo.cardState != CardState.CLOSED && cardInfo.isSpy && !isHardMode) AppTheme.colors.secondary else AppTheme.colors.primary,
         animationSpec = snap(delayMillis = 250),
         label = ""
     )
@@ -361,7 +363,7 @@ private fun GameCard(
                 playerNumber = playerNumber
             )
             when {
-                (cardInfo.cardState == CardState.OPENED || cardInfo.cardState == CardState.SKIPPED) && !cardInfo.isSpy ->
+                (cardInfo.cardState == CardState.OPENED || cardInfo.cardState == CardState.SKIPPED) && (!cardInfo.isSpy || isHardMode) ->
                     CardOpenedLocal(
                         modifier = Modifier
                             .padding(16.dp)

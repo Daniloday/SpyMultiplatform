@@ -45,11 +45,13 @@ class GameViewModel(
     }
 
     private fun initCards(options: Options, words: List<String>) {
-        val randomWord = words.random(Random(kotlin.time.Clock.System.now().toEpochMilliseconds()))
+        val shuffledWords = words.shuffled(Random(kotlin.time.Clock.System.now().toEpochMilliseconds()))
+        val localWord = shuffledWords[0]
+        val spyWord = shuffledWords[1]
         val localCads = List(options.playersCount - options.spiesCount) {
             CardInfo(
                 cardState = CardState.CLOSED,
-                location = randomWord,
+                location = localWord,
                 isSpy = false
             )
         }
@@ -57,7 +59,7 @@ class GameViewModel(
         val spyCards = List(options.spiesCount) {
             CardInfo(
                 cardState = CardState.CLOSED,
-                location = randomWord,
+                location = spyWord,
                 isSpy = true
             )
         }
@@ -68,7 +70,8 @@ class GameViewModel(
             GameViewState.Preparing(
                 cards = cards,
                 timerMin = options.time,
-                isPremium = options.isPremium
+                isPremium = options.isPremium,
+                isHardMode = options.isHardModeEnabled
             )
         }
     }
@@ -148,6 +151,7 @@ sealed class GameViewState {
         val cards: List<CardInfo>,
         val timerMin: Int,
         val isPremium: Boolean,
+        val isHardMode: Boolean,
     ) : GameViewState()
 
     data class Timer(
