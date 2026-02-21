@@ -1,14 +1,51 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
+🕵️ **Spy — Party Game (KMP)**
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+Spy is a cross-platform party game built with Kotlin Multiplatform.
 
-* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform, 
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+📱 **Platforms**
+- Android
+- iOS
 
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+🏗 **Architecture & Tech Stack**
+- Kotlin Multiplatform
+- Compose Multiplatform (UI)
+- Koin (Dependency Injection)
+- Clean Architecture
+- Shared Domain Layer
+- Room Multiplatform (local database)
+- DataStore Multiplatform (preferences & settings)
+- RevenueCat (Multiplatform) for in-app purchases
+
+
+The project keeps core game logic, state management, persistence, and UI fully shared across platforms while preserving platform compatibility.
+The application is built using Kotlin Multiplatform with shared business logic and shared UI.
+UI is implemented with Compose Multiplatform, enabling a single declarative UI layer across platforms.
+
+🎯 **Gameplay Overview**
+
+One player is the Spy.
+Everyone else knows the location.
+Players ask questions. The Spy tries to blend in.
+Time is limited.
+
+Simple rules. High tension
+
+- Each player receives a hidden role
+- Locals know the location
+- The Spy does not
+- Players ask each other contextual questions
+- Voting determines who gets exposed
+- The Spy can win by guessing the location
+- A timer adds pressure to every round
+
+Designed for small groups and fast sessions.
+
+📥 **Download**
+
+<a href="https://play.google.com/store/apps/details?id=com.missclick.spy">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" height="60">
+</a>
+
+
+
