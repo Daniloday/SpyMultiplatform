@@ -234,7 +234,7 @@
       }
     },
     {
-      "key": "",
+      "key": "epochs",
       "language": "uk",
       "name": "Епохи",
       "flags": {
@@ -1066,7 +1066,7 @@
       ]
     },
     {
-      "setKey": "",
+      "setKey": "epochs",
       "language": "uk",
       "items": [
         "Камʼяний вік",

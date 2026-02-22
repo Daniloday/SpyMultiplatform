@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 internal interface WordDao {
 
-    // ✅ Правильно: слова по (languageCode + setKey)
     @Query(
         """
         SELECT w.text
@@ -42,7 +41,6 @@ internal interface WordDao {
         languageCode: String
     ): Flow<List<String>>
 
-    // ✅ Нормально: удалить слово внутри конкретного сета
     @Query(
         """
         DELETE FROM word
@@ -70,4 +68,14 @@ internal interface WordDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertWords(words: List<WordEntity>)
+
+    @Query("""
+    DELETE FROM word
+    WHERE set_id = :setId
+      AND EXISTS (
+        SELECT 1 FROM `set`
+        WHERE id = :setId AND is_custom = 0
+      )
+""")
+    suspend fun deleteDefaultWordsBySetId(setId: Long)
 }

@@ -31,6 +31,7 @@ internal data class WordEntity(
 
     @ColumnInfo(name = "set_id")
     val setId: Long,
+
 )
 
 internal fun Word.asEntity(collectionId: Long): WordEntity {

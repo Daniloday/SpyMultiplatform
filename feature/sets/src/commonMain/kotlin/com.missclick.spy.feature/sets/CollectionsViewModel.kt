@@ -48,7 +48,8 @@ class CollectionsViewModel(
                         name = set.name,
                         isSelected = set.name == options.selectedSetName,
                         isPremium = set.isPremium,
-                        isPro = set.isPro
+                        isPro = set.isPro,
+                        key = set.key
                     )
                 }
 
@@ -115,6 +116,7 @@ data class CollectionView(
     val isSelected: Boolean,
     val isPremium: Boolean,
     val isPro: Boolean,
+    val key: String
 )
 
 data class CollectionsViewDraft(

@@ -28,11 +28,11 @@ class WordsViewModel(
     private val _viewState = MutableStateFlow<WordsViewState>(WordsViewState.Loading)
     val viewState = _viewState.asStateFlow()
 
-    fun loadData(selectedCollectionName: String) {
+    fun loadData(selectedCollectionKey: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val options = getOptionsUseCase().first()
-            val collection = setRepo.getSet(selectedCollectionName, options.selectedLanguageCode)
-            val getWordsResult = wordsRepo.getWords(collection.name, options.selectedLanguageCode)
+            val collection = setRepo.getSet(selectedCollectionKey, options.selectedLanguageCode)
+            val getWordsResult = wordsRepo.getWords(selectedCollectionKey, options.selectedLanguageCode)
             getWordsResult.collect {
                 initSuccess(collection, it, options.selectedLanguageCode)
             }

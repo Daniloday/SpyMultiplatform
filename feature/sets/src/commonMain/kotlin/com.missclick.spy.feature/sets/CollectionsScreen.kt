@@ -145,7 +145,7 @@ private fun CollectionsScreenSuccess(
                     if (collection.isPro && !viewState.isPremium) {
                         onPremiumProCollectionClick()
                     } else {
-                        onCollectionClick(collection.name)
+                        onCollectionClick(collection.key)
                     }
                 },
                 collectionName = collection.name,

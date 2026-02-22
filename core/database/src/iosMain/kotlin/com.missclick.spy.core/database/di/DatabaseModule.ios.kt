@@ -3,6 +3,8 @@ package com.missclick.spy.core.database.di
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
+import com.missclick.spy.core.database.content_loader.ContentJsonLoader
+import com.missclick.spy.core.database.content_loader.ContentJsonLoaderIos
 import com.missclick.spy.core.database.room.DB_NAME
 import com.missclick.spy.core.database.room.SpyDatabase
 import kotlinx.cinterop.ExperimentalForeignApi
@@ -15,6 +17,7 @@ import platform.Foundation.NSUserDomainMask
 
 internal actual fun platformModule(): Module = module {
     single { provideDatabaseBuilder() }
+    single<ContentJsonLoader> { ContentJsonLoaderIos() }
 }
 
 
