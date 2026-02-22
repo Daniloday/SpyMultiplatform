@@ -14,14 +14,25 @@ internal class OptionsPreferencesSerializer(
     override val defaultValue: OptionsPreferences = OptionsPreferences()
 ) : Serializer<OptionsPreferences> {
 
-    override suspend fun readFrom(input: InputStream): OptionsPreferences =
-        try {
-            Json.decodeFromString(
-                OptionsPreferences.serializer(), input.readBytes().decodeToString()
-            )
-        } catch (serialization: SerializationException) {
-            throw CorruptionException("Unable to read Settings", serialization)
+    private val json = Json {
+        ignoreUnknownKeys = true
+        isLenient = true
+        explicitNulls = false
+        coerceInputValues = true
+    }
+
+    override suspend fun readFrom(input: InputStream): OptionsPreferences {
+        val raw = input.readBytes().decodeToString()
+        if (raw.isBlank()) return defaultValue
+
+        return try {
+            json.decodeFromString(OptionsPreferences.serializer(), raw)
+        } catch (_: SerializationException) {
+            defaultValue
+        } catch (_: IllegalArgumentException) {
+            defaultValue
         }
+    }
 
     override suspend fun writeTo(t: OptionsPreferences, output: OutputStream) {
         withContext(Dispatchers.IO) {
