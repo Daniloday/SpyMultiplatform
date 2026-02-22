@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.missclick.spy.core.data.OptionsRepo
 import com.missclick.spy.core.data.SetRepo
 import com.missclick.spy.core.data.WordRepo
+import com.missclick.spy.core.domain.CreateNewSetUseCase
 import com.missclick.spy.core.domain.GetOptionsUseCase
 import com.missclick.spy.core.model.Set
 import kotlinx.coroutines.Dispatchers
@@ -12,12 +13,12 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class CollectionsViewModel(
-    private val wordRepo: WordRepo,
     private val setRepo: SetRepo,
     private val getOptionsUseCase: GetOptionsUseCase,
-    private val optionRepo: OptionsRepo,
+    private val createNewSetUseCase: CreateNewSetUseCase,
 ) : ViewModel() {
 
 
@@ -75,27 +76,18 @@ class CollectionsViewModel(
         _collectionsViewDraft.update { it.copy(newCollection = newName) }
     }
 
-    fun saveNewCollection() {
-        val draft = collectionsViewDraft.value
-        if (draft.newCollection.isBlank()) {
-            _collectionsViewDraft.update { it.copy(isEnteringNewCollection = false, newCollection = "") }
-            return
-        }
-
-        val newSet = Set(
-            name = draft.newCollection,
-            isCustom = true,
-            isPremium = false,
-            isPro = false,
-            key = "" // todo
-        )
-
-        viewModelScope.launch(Dispatchers.IO) {
+    suspend fun saveNewCollection(): String? {
+        return withContext(Dispatchers.IO) {
+            val draft = collectionsViewDraft.value
+            if (draft.newCollection.isBlank()) {
+                _collectionsViewDraft.update { it.copy(isEnteringNewCollection = false, newCollection = "") }
+                return@withContext null
+            }
             val options = getOptionsUseCase().first()
-            setRepo.addSet(newSet, options.selectedLanguageCode)
+            val newSet = createNewSetUseCase(draft.newCollection, options.selectedLanguageCode)
+            _collectionsViewDraft.update { it.copy(isEnteringNewCollection = false, newCollection = "") }
+            return@withContext newSet?.key
         }
-
-        _collectionsViewDraft.update { it.copy(isEnteringNewCollection = false, newCollection = "") }
     }
 }
 
@@ -121,5 +113,5 @@ data class CollectionView(
 
 data class CollectionsViewDraft(
     val isEnteringNewCollection: Boolean = false,
-    val newCollection: String = ""
+    val newCollection: String = "",
 )

@@ -59,14 +59,11 @@ internal fun SetEntity.asModel(): Set {
 
 internal fun Set.asEntity(languageCode: String): SetEntity {
 
-    val slug = name
-        .lowercase()
-        .replace(Regex("[^a-z0-9]+"), "_")
-        .trim('_')
+
 
     return SetEntity(
         name = name,
-        key = "custom_${slug}_${Clock.System.now().toEpochMilliseconds()}",
+        key = key,
         languageCode = languageCode,
         isCustom = isCustom,
         isPro = isPro,

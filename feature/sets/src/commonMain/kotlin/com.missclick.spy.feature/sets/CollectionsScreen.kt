@@ -22,6 +22,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
@@ -40,6 +41,7 @@ import com.missclick.spy.resources.ic_ok
 import com.missclick.spy.resources.ic_premium
 import com.missclick.spy.resources.ic_triangle
 import com.missclick.spy.resources.ic_triangle_border
+import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
@@ -58,13 +60,22 @@ internal fun CollectionsRoute(
     val viewState by vm.viewState.collectAsState()
     val uiDraft by vm.collectionsViewDraft.collectAsState()
 
+    val coroutineScope = rememberCoroutineScope()
+
     CollectionsScreen(
         modifier = modifier,
         viewState = viewState,
         onBackClick = onBackClick,
         onCollectionClick = onCollectionClick,
         onAddNewCollectionClick = vm::addNewCollection,
-        onNewCollectionSaveClick = vm::saveNewCollection,
+        onNewCollectionSaveClick = {
+            coroutineScope.launch {
+                val setKey = vm.saveNewCollection()
+                if (setKey != null) {
+                    onCollectionClick(setKey)
+                }
+            }
+        },
         onNewCollectionNameChange = vm::onNewCollectionNameChange,
         onPremiumProCollectionClick = onPremiumProCollectionClick,
         collectionsViewDraft = uiDraft
@@ -83,6 +94,7 @@ private fun CollectionsScreen(
     onNewCollectionSaveClick: () -> Unit,
     onPremiumProCollectionClick: () -> Unit,
 ) {
+
     Column(
         modifier = modifier
     ) {
@@ -93,12 +105,7 @@ private fun CollectionsScreen(
                 modifier = modifier,
                 onAddNewCollectionClick = onAddNewCollectionClick,
                 onCollectionClick = onCollectionClick,
-                onNewCollectionSaveClick = {
-                    onNewCollectionSaveClick()
-                    if (collectionsViewDraft.newCollection.isNotBlank()) {
-                        onCollectionClick(collectionsViewDraft.newCollection)
-                    }
-                },
+                onNewCollectionSaveClick = onNewCollectionSaveClick,
                 onNewCollectionNameChange = onNewCollectionNameChange,
                 viewState = viewState,
                 onPremiumProCollectionClick = onPremiumProCollectionClick,

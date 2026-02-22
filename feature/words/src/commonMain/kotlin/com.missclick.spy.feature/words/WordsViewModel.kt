@@ -58,7 +58,6 @@ class WordsViewModel(
     suspend fun saveCollection() {
         withContext(Dispatchers.IO) {
             val successState = viewState.value as? WordsViewState.Success ?: return@withContext
-            val options = getOptionsUseCase().first()
             optionsRepo.setSelectedSet(
                 setKey = successState.setKey
             )
@@ -69,7 +68,7 @@ class WordsViewModel(
         val successState = viewState.value as? WordsViewState.Success ?: return
         viewModelScope.launch(Dispatchers.IO) {
             val options = getOptionsUseCase().first()
-            setRepo.deleteSet(successState.collectionName, options.selectedLanguageCode)
+            setRepo.deleteSet(successState.setKey, options.selectedLanguageCode)
         }
     }
 
@@ -103,7 +102,7 @@ class WordsViewModel(
             )
             viewModelScope.launch(Dispatchers.IO) {
                 val options = getOptionsUseCase().first()
-                wordsRepo.addWord(word, successState.collectionName, options.selectedLanguageCode)
+                wordsRepo.addWord(word, successState.setKey, options.selectedLanguageCode)
             }
         }
         _viewState.update {
