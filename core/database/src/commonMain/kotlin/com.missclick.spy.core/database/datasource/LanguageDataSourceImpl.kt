@@ -13,12 +13,8 @@ internal class LanguageDataSourceImpl(
         return languageDao.getLanguages().map { it.asModel() }
     }
 
-    override suspend fun getDefaultLanguage(): String {
-        return languageDao.getDefaultLanguage()
-    }
-
-    override suspend fun getSetLanguage(setName: String): String {
-        return languageDao.getSetLanguage(setName)
+    override suspend fun getSetLanguageByKey(setKey: String): String? {
+        return languageDao.getSetLanguageByKey(setKey)
     }
 
     override suspend fun checkIsExistLanguage(languageCode: String): Boolean {

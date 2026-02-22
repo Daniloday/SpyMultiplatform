@@ -1,11 +1,11 @@
 package com.missclick.spy.core.data
 
-import com.missclick.spy.core.model.Options
+import com.missclick.spy.core.model.OptionsStored
 import kotlinx.coroutines.flow.Flow
 
 interface OptionsRepo {
 
-    val options: Flow<Options>
+    val options: Flow<OptionsStored>
 
     suspend fun setPlayersCount(playersCount: Int)
 
@@ -13,11 +13,7 @@ interface OptionsRepo {
 
     suspend fun setTime(time: Int)
 
-    suspend fun setCollectionName(
-        collectionName: String,
-        languageCode: String,
-        isCollectionPremium: Boolean,
-    )
+    suspend fun setSelectedSet(setKey: String)
 
     suspend fun setLanguage(languageCode: String)
 

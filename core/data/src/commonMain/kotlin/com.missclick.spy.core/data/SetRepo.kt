@@ -7,8 +7,8 @@ interface SetRepo {
     
     fun getSets(languageCode: String): Flow<List<Set>>
     suspend fun getDefaultSet(languageCode: String): String
-    suspend fun getSet(setName: String, languageCode: String): Set
-    suspend fun deleteSet(setName: String, languageCode: String)
+    suspend fun getSet(setKey: String, languageCode: String): Set
+    suspend fun deleteSet(setKey: String, languageCode: String)
     suspend fun addSet(set: Set, languageCode: String)
     
 }

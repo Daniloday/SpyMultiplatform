@@ -46,7 +46,7 @@ class CollectionsViewModel(
                 val collectionViews = sorted.map { set ->
                     CollectionView(
                         name = set.name,
-                        isSelected = set.name == options.collectionName,
+                        isSelected = set.name == options.selectedSetName,
                         isPremium = set.isPremium,
                         isPro = set.isPro
                     )
@@ -86,6 +86,7 @@ class CollectionsViewModel(
             isCustom = true,
             isPremium = false,
             isPro = false,
+            key = "" // todo
         )
 
         viewModelScope.launch(Dispatchers.IO) {

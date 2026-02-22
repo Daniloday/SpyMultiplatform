@@ -34,12 +34,12 @@ class WordsViewModel(
             val collection = setRepo.getSet(selectedCollectionName, options.selectedLanguageCode)
             val getWordsResult = wordsRepo.getWords(collection.name, options.selectedLanguageCode)
             getWordsResult.collect {
-                initSuccess(collection, it)
+                initSuccess(collection, it, options.selectedLanguageCode)
             }
         }
     }
 
-    private fun initSuccess(selectedSet: Set, words: List<String>) {
+    private fun initSuccess(selectedSet: Set, words: List<String>, languageCode: String) {
         val successState = viewState.value as? WordsViewState.Success
         _viewState.update {
             WordsViewState.Success(
@@ -48,7 +48,9 @@ class WordsViewModel(
                 newWord = successState?.newWord ?: "",
                 collectionName = selectedSet.name,
                 isEditable = selectedSet.isCustom,
-                isPremium = selectedSet.isPremium
+                isPremium = selectedSet.isPremium,
+                setKey = selectedSet.key,
+                languageCode = languageCode
             )
         }
     }
@@ -57,10 +59,8 @@ class WordsViewModel(
         withContext(Dispatchers.IO) {
             val successState = viewState.value as? WordsViewState.Success ?: return@withContext
             val options = getOptionsUseCase().first()
-            optionsRepo.setCollectionName(
-                collectionName = successState.collectionName,
-                languageCode = options.selectedLanguageCode,
-                isCollectionPremium = successState.isPremium
+            optionsRepo.setSelectedSet(
+                setKey = successState.setKey
             )
         }
     }
@@ -74,8 +74,13 @@ class WordsViewModel(
     }
 
     fun deleteWord(name: String) {
+        val successState = viewState.value as? WordsViewState.Success ?: return
         viewModelScope.launch(Dispatchers.IO) {
-            wordsRepo.deleteWord(name)
+            wordsRepo.deleteWord(
+                wordText = name,
+                setKey = successState.setKey,
+                languageCode = successState.languageCode
+            )
         }
     }
 
@@ -121,13 +126,15 @@ class WordsViewModel(
 }
 
 sealed class WordsViewState {
-    data object Loading: WordsViewState()
+    data object Loading : WordsViewState()
     data class Success(
         val collectionName: String,
+        val setKey: String,
+        val languageCode: String,
         val isEnteringNewWord: Boolean = false,
         val newWord: String = "",
         val isEditable: Boolean,
         val words: List<String>,
         val isPremium: Boolean
-    ): WordsViewState()
+    ) : WordsViewState()
 }

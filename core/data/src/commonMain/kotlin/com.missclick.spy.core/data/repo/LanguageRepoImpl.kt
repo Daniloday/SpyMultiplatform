@@ -13,40 +13,25 @@ internal class LanguageRepoImpl(
     private val ioDispatcher: CoroutineDispatcher,
 ) : LanguageRepo {
 
-    override suspend fun checkIsExistLanguage(languageCode: String): Boolean {
-        return withContext(ioDispatcher) {
-            languageDataSource.checkIsExistLanguage(languageCode)
-        }
-    }
+    override suspend fun checkIsExistLanguage(languageCode: String): Boolean =
+        withContext(ioDispatcher) { languageDataSource.checkIsExistLanguage(languageCode) }
 
-    override suspend fun getDefaultLanguage(): String {
-        return withContext(ioDispatcher) {
-            languageDataSource.getDefaultLanguage()
-        }
-    }
+    override suspend fun getLanguages(): List<Language> =
+        withContext(ioDispatcher) { languageDataSource.getLanguages() }
 
-    override suspend fun getSetLanguage(setName: String): String {
-        return withContext(ioDispatcher) {
-            languageDataSource.getSetLanguage(setName)
-        }
-    }
-
-    override suspend fun getLanguages(): List<Language> {
-        return withContext(ioDispatcher) {
-            languageDataSource.getLanguages()
-        }
-    }
-
-    override suspend fun getCurrentLanguageCode(): String {
-        return withContext(ioDispatcher) {
-            deviceDataSource.getCurrentLanguageCode()
-        }
-    }
+    override suspend fun getCurrentLanguageCode(): String =
+        withContext(ioDispatcher) { deviceDataSource.getCurrentLanguageCode() }
 
     override suspend fun setLanguage(languageCode: String) {
-        withContext(ioDispatcher) {
-            deviceDataSource.setLanguage(languageCode)
-        }
+        withContext(ioDispatcher) { deviceDataSource.setLanguage(languageCode) }
     }
 
+    override suspend fun getDefaultLanguage(): String = withContext(ioDispatcher) {
+        val device = deviceDataSource.getCurrentLanguageCode()
+        if (languageDataSource.checkIsExistLanguage(device)) device else "en"
+    }
+
+    override suspend fun getSetLanguage(setKey: String): String = withContext(ioDispatcher) {
+        languageDataSource.getSetLanguageByKey(setKey) ?: "en"
+    }
 }

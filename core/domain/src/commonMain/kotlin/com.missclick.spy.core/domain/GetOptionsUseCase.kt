@@ -5,16 +5,13 @@ import com.missclick.spy.core.data.LanguageRepo
 import com.missclick.spy.core.data.OptionsRepo
 import com.missclick.spy.core.data.SetRepo
 import com.missclick.spy.core.data.WordRepo
-import com.missclick.spy.core.model.Options
+import com.missclick.spy.core.model.OptionsResolved
+import com.missclick.spy.core.model.OptionsStored
 import com.missclick.spy.core.purchase.PurchaseManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.IO
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.*
 
 class GetOptionsUseCase(
     private val optionsRepo: OptionsRepo,
@@ -25,46 +22,99 @@ class GetOptionsUseCase(
 ) {
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    operator fun invoke(): Flow<Options> {
-        val premiumFlow = purchaseManager.isPremium
-
+    operator fun invoke(): Flow<OptionsResolved> {
         return optionsRepo.options
-            .combine(premiumFlow) { optionsRaw, isPremium ->
-                normalizeLanguage(optionsRaw).copy(isPremium = isPremium)
+            .flatMapLatest { raw ->
+                flow { emit(ensureLanguage(raw)) }
             }
-            .flatMapLatest { options ->
-                wordsRepo.getWords(options.collectionName, options.selectedLanguageCode)
-                    .map { words -> options to words.size }
+            .flatMapLatest { stored ->
+                flow { emit(ensureSelectedSetKey(stored)) }
             }
-            .map { (options, wordsCount) ->
-                val needsResetByLanguage =
-                    options.collectionLanguageCode != options.selectedLanguageCode
-
-                val needsResetByWords =
-                    wordsCount < MIN_LOCATIONS_TO_PLAY
-
-                if (needsResetByLanguage || needsResetByWords) {
-                    val defaultCollection = setRepo.getDefaultSet(options.selectedLanguageCode)
-                    options.copy(
-                        collectionName = defaultCollection,
-                        isSelectedCollectionPremium = false,
-                    )
-                } else {
-                    options
+            .combine(purchaseManager.isPremium) { stored, isPremium ->
+                stored to isPremium
+            }
+            .flatMapLatest { (stored, isPremium) ->
+                flow {
+                    val resolved = resolveAndValidate(stored, isPremium)
+                    emit(resolved)
                 }
             }
             .flowOn(Dispatchers.IO)
     }
 
-    private suspend fun normalizeLanguage(optionsRaw: Options): Options {
-        if (optionsRaw.selectedLanguageCode.isNotEmpty()) return optionsRaw
+    private suspend fun ensureLanguage(raw: OptionsStored): OptionsStored {
+        if (raw.selectedLanguageCode.isNotBlank()) return raw
 
-        val currentLanguage = languageRepo.getCurrentLanguageCode()
-        val newLanguageCode =
-            if (languageRepo.checkIsExistLanguage(currentLanguage)) currentLanguage
-            else languageRepo.getDefaultLanguage()
+        val deviceLang = languageRepo.getCurrentLanguageCode()
+        val actualLang =
+            if (languageRepo.checkIsExistLanguage(deviceLang)) deviceLang
+            else "en"
 
-        return optionsRaw.copy(selectedLanguageCode = newLanguageCode)
+        optionsRepo.setLanguage(actualLang)
+
+        return raw.copy(selectedLanguageCode = actualLang)
+    }
+
+    private suspend fun ensureSelectedSetKey(stored: OptionsStored): OptionsStored {
+        if (stored.selectedSetKey.isNotBlank()) return stored
+
+        val defaultKey = setRepo.getDefaultSet(stored.selectedLanguageCode)
+        optionsRepo.setSelectedSet(defaultKey)
+
+        return stored.copy(selectedSetKey = defaultKey)
+    }
+
+    private suspend fun resolveAndValidate(
+        stored: OptionsStored,
+        isPremium: Boolean,
+    ): OptionsResolved {
+        // Resolve set
+        val set = setRepo.getSet(
+            setKey = stored.selectedSetKey,
+            languageCode = stored.selectedLanguageCode
+        )
+
+        // Validate words
+        val wordsCount = wordsRepo.getWords(
+            setKey = stored.selectedSetKey,
+            languageCode = stored.selectedLanguageCode
+        ).first().size
+
+        if (wordsCount < MIN_LOCATIONS_TO_PLAY) {
+            val defaultKey = setRepo.getDefaultSet(stored.selectedLanguageCode)
+            if (defaultKey != stored.selectedSetKey) {
+                optionsRepo.setSelectedSet(defaultKey)
+            }
+
+            val defaultSet = setRepo.getSet(
+                setKey = defaultKey,
+                languageCode = stored.selectedLanguageCode
+            )
+
+            return OptionsResolved(
+                playersCount = stored.playersCount,
+                spiesCount = stored.spiesCount,
+                time = stored.time,
+
+                selectedLanguageCode = stored.selectedLanguageCode,
+                selectedSetName = defaultSet.name,
+                selectedSetKey = stored.selectedSetKey,
+                isSelectedSetPremium = defaultSet.isPremium,
+                isHardModeEnabled = stored.isHardModeEnabled,
+                isPremium = isPremium,
+            )
+        }
+
+        return OptionsResolved(
+            playersCount = stored.playersCount,
+            spiesCount = stored.spiesCount,
+            time = stored.time,
+            selectedLanguageCode = stored.selectedLanguageCode,
+            selectedSetName = set.name,
+            selectedSetKey = stored.selectedSetKey,
+            isSelectedSetPremium = set.isPremium,
+            isHardModeEnabled = stored.isHardModeEnabled,
+            isPremium = isPremium,
+        )
     }
 }
-

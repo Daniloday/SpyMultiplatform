@@ -12,32 +12,23 @@ internal class SetRepoImpl(
     private val setDataSource: SetDataSource,
     private val ioDispatcher: CoroutineDispatcher,
 ) : SetRepo {
-    override fun getSets(languageCode: String): Flow<List<Set>> {
-        return setDataSource.getSets(languageCode).flowOn(ioDispatcher)
+
+    override fun getSets(languageCode: String): Flow<List<Set>> =
+        setDataSource.getSets(languageCode).flowOn(ioDispatcher)
+
+    override suspend fun getDefaultSet(languageCode: String): String = withContext(ioDispatcher) {
+        setDataSource.getDefaultSet(languageCode)
     }
 
-    override suspend fun getDefaultSet(languageCode: String): String {
-        return withContext(ioDispatcher) {
-            setDataSource.getDefaultSet(languageCode)
-        }
+    override suspend fun getSet(setKey: String, languageCode: String): Set = withContext(ioDispatcher) {
+        setDataSource.getSet(setKey, languageCode)
     }
 
-    override suspend fun getSet(setName: String, languageCode: String): Set {
-        return withContext(ioDispatcher) {
-            setDataSource.getSet(setName, languageCode)
-        }
-    }
-
-    override suspend fun deleteSet(setName: String, languageCode: String) {
-        withContext(ioDispatcher) {
-            setDataSource.deleteSet(setName, languageCode)
-        }
+    override suspend fun deleteSet(setKey: String, languageCode: String) {
+        withContext(ioDispatcher) { setDataSource.deleteSet(setKey, languageCode) }
     }
 
     override suspend fun addSet(set: Set, languageCode: String) {
-        withContext(ioDispatcher) {
-            setDataSource.addSet(set, languageCode)
-        }
+        return withContext(ioDispatcher) { setDataSource.addSet(set, languageCode) }
     }
-
 }

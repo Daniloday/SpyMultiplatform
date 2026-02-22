@@ -18,7 +18,6 @@ import kotlinx.coroutines.launch
 class SettingsViewModel(
     private val getOptionsUseCase: GetOptionsUseCase,
     private val setLanguageUseCase: SetLanguageUseCase,
-    private val wordRepo: WordRepo,
     private val languageRepo: LanguageRepo,
 ): ViewModel() {
 

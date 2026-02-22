@@ -5,12 +5,14 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.missclick.spy.core.model.Language
 
-@Entity(tableName = "language")
+@Entity(
+    tableName = "language"
+)
 internal data class LanguageEntity(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    @PrimaryKey
     @ColumnInfo(name = "code")
-    val code: String,
+    val code: String, // en, ru, uk
+
     @ColumnInfo(name = "name")
     val name: String,
 )

@@ -14,7 +14,6 @@ import com.missclick.spy.core.database.enity.WordEntity
 import com.missclick.spy.core.database.enity.SetEntity
 
 internal const val DB_NAME = "spy-database"
-internal const val PRELOAD_DB_NAME = "spy-database-preload.db"
 
 @Database(
     entities = [
@@ -22,10 +21,8 @@ internal const val PRELOAD_DB_NAME = "spy-database-preload.db"
         SetEntity::class,
         LanguageEntity::class,
     ],
-    version = 6,
-    autoMigrations = [
-
-    ],
+    version = 7,
+    autoMigrations = [],
     exportSchema = true,
 )
 @ConstructedBy(AppDatabaseConstructor::class)

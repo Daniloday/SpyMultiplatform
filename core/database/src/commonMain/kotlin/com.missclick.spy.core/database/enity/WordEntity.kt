@@ -14,29 +14,29 @@ import com.missclick.spy.core.model.Word
             entity = SetEntity::class,
             parentColumns = ["id"],
             childColumns = ["set_id"],
-            onDelete = ForeignKey.CASCADE,
-        ),
+            onDelete = ForeignKey.CASCADE
+        )
     ],
     indices = [
-        Index(value = ["set_id"]),
+        Index(value = ["set_id"])
     ]
 )
 internal data class WordEntity(
+
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
-    @ColumnInfo(name = "name")
-    val name: String,
+    val id: Long = 0,
+
+    @ColumnInfo(name = "text")
+    val text: String,
+
     @ColumnInfo(name = "set_id")
-    val setId: Int,
-    @ColumnInfo(name = "is_hidden")
-    val isHidden: Boolean = false,
+    val setId: Long,
 )
 
-internal fun Word.asEntity(collectionId: Int): WordEntity {
+internal fun Word.asEntity(collectionId: Long): WordEntity {
     return WordEntity(
-        name = wordName,
+        text = wordName,
         setId = collectionId,
-        isHidden = isHidden,
     )
 }
 

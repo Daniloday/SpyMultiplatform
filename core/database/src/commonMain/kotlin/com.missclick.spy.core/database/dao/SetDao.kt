@@ -10,43 +10,92 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 internal interface SetDao {
 
-    @Query("""
-       SELECT * FROM `set`
-        WHERE language_id IN (
-           SELECT id FROM language WHERE code = :languageCode
-       ) AND `set`.name = :setName
-    """)
-    suspend fun getSet(
+    @Query(
+        """
+        SELECT * FROM `set`
+        WHERE language_code = :languageCode
+          AND `key` = :setKey
+        LIMIT 1
+        """
+    )
+    suspend fun getSetByKey(
+        setKey: String,
+        languageCode: String,
+    ): SetEntity?
+
+    // ⚠️ Legacy: (languageCode + setName)
+    @Query(
+        """
+        SELECT * FROM `set`
+        WHERE language_code = :languageCode
+          AND name = :setName
+        LIMIT 1
+        """
+    )
+    suspend fun getSetByName(
         setName: String,
         languageCode: String,
-    ): SetEntity
+    ): SetEntity?
 
-    @Query("""
-       SELECT * FROM `set`
-        INNER JOIN language ON `set`.language_id = language.id
-        WHERE code = :languageCode
-    """)
+    @Query(
+        """
+        SELECT * FROM `set`
+        WHERE language_code = :languageCode
+        ORDER BY is_custom ASC, is_premium ASC, is_pro ASC, name COLLATE NOCASE ASC
+        """
+    )
     fun getSets(
         languageCode: String,
     ): Flow<List<SetEntity>>
 
-    @Query("""
-       SELECT DISTINCT `set`.name FROM `set`
-        INNER JOIN language ON `set`.language_id = language.id
-        WHERE code = :languageCode LIMIT 1
-    """)
-    suspend fun getDefaultSet(
+    // Раньше возвращал name, теперь лучше вернуть SetEntity или key.
+    // Оставляю "суть" (вернуть какое-то значение по умолчанию), но делаю безопасно.
+    @Query(
+        """
+        SELECT name FROM `set`
+        WHERE language_code = :languageCode
+        ORDER BY is_custom ASC, name COLLATE NOCASE ASC
+        LIMIT 1
+        """
+    )
+    suspend fun getDefaultSetName(
         languageCode: String,
-    ): String
-    
-    @Query("""
-       DELETE FROM `set`
-       WHERE language_id IN (
-           SELECT id FROM language WHERE code = :languageCode
-       ) AND `set`.name = :setName
-    """)
-    suspend fun deleteSet(setName: String, languageCode: String)
-    
+    ): String?
+
+    // ✅ Правильнее для новой архитектуры: дефолтный setKey
+    @Query(
+        """
+        SELECT `key` FROM `set`
+        WHERE language_code = :languageCode
+        ORDER BY is_custom ASC, `key` ASC
+        LIMIT 1
+        """
+    )
+    suspend fun getDefaultSetKey(
+        languageCode: String,
+    ): String?
+
+    @Query(
+        """
+        DELETE FROM `set`
+        WHERE language_code = :languageCode
+          AND `key` = :setKey
+        """
+    )
+    suspend fun deleteSetByKey(setKey: String, languageCode: String)
+
+    @Query(
+        """
+        DELETE FROM `set`
+        WHERE language_code = :languageCode
+          AND name = :setName
+        """
+    )
+    suspend fun deleteSetByName(setName: String, languageCode: String)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSet(set: SetEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertSets(sets: List<SetEntity>)
 }

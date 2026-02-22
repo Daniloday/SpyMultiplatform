@@ -25,9 +25,9 @@ class GameOptionsViewModel(
             playersCount = it.playersCount,
             spiesCount = it.spiesCount,
             time = it.time,
-            collectionName = it.collectionName,
+            collectionName = it.selectedSetName,
             isPremium = it.isPremium,
-            isSelectedCollectionPremium = it.isSelectedCollectionPremium,
+            isSelectedCollectionPremium = it.isSelectedSetPremium,
             isHardModeEnabled = it.isHardModeEnabled
         )
     }.stateIn(

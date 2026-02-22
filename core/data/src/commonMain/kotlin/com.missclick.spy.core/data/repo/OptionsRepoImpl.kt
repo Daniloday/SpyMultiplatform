@@ -1,13 +1,11 @@
 package com.missclick.spy.core.data.repo
 
-import com.missclick.spy.core.common.di.SpyDispatchers
 import com.missclick.spy.core.data.OptionsRepo
 import com.missclick.spy.core.datastore.OptionsDataSource
-import com.missclick.spy.core.model.Options
+import com.missclick.spy.core.model.OptionsStored
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
 internal class OptionsRepoImpl(
@@ -15,7 +13,7 @@ internal class OptionsRepoImpl(
     private val ioDispatcher: CoroutineDispatcher,
 ) : OptionsRepo {
 
-    override val options: Flow<Options> = optionsDataSource.options.flowOn(ioDispatcher)
+    override val options: Flow<OptionsStored> = optionsDataSource.options.flowOn(ioDispatcher)
 
     override suspend fun setPlayersCount(playersCount: Int) {
         withContext(ioDispatcher) {
@@ -35,16 +33,12 @@ internal class OptionsRepoImpl(
         }
     }
 
-    override suspend fun setCollectionName(
-        collectionName: String,
-        languageCode: String,
-        isCollectionPremium: Boolean,
+    override suspend fun setSelectedSet(
+        setKey: String
     ) {
         withContext(ioDispatcher) {
-            optionsDataSource.setCollectionName(
-                collectionName = collectionName,
-                languageCode = languageCode,
-                isCollectionPremium = isCollectionPremium
+            optionsDataSource.setSelectedSet(
+                setKey = setKey,
             )
         }
     }

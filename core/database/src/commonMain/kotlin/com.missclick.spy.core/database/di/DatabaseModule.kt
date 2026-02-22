@@ -11,8 +11,6 @@ import com.missclick.spy.core.database.dao.WordDao
 import com.missclick.spy.core.database.datasource.LanguageDataSourceImpl
 import com.missclick.spy.core.database.datasource.SetDataSourceImpl
 import com.missclick.spy.core.database.datasource.WordDataSourceImpl
-import com.missclick.spy.core.database.migration.DatabaseMigrations
-import com.missclick.spy.core.database.migration.NewSetsLoader
 import com.missclick.spy.core.database.room.SpyDatabase
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -21,9 +19,9 @@ internal expect fun platformModule(): Module
 
 val databaseModule = module {
     single<WordDataSource> { WordDataSourceImpl(get(), get()) }
-    single<SetDataSource> { SetDataSourceImpl(get(), get()) }
+    single<SetDataSource> { SetDataSourceImpl(get()) }
     single<LanguageDataSource> { LanguageDataSourceImpl(get()) }
-    single<SpyDatabase> { provideDatabase(get(), get()) }
+    single<SpyDatabase> { provideDatabase(get()) }
 
     single<WordDao> { provideWordDao(get()) }
     single<SetDao> { provideSetDao(get()) }
@@ -42,15 +40,8 @@ internal expect object AppDatabaseConstructor : RoomDatabaseConstructor<SpyDatab
 
 private fun provideDatabase(
     builder: RoomDatabase.Builder<SpyDatabase>,
-    newSetsLoader: NewSetsLoader,
 ): SpyDatabase {
     return builder
-        .addMigrations(
-            DatabaseMigrations.MIGRATION_1_2,
-            DatabaseMigrations.getMigration23(newSetsLoader),
-            DatabaseMigrations.MIGRATION_3_4,
-            DatabaseMigrations.getMigration45(newSetsLoader),
-            DatabaseMigrations.getMigration56(newSetsLoader),
-            )
+        .fallbackToDestructiveMigration(true)
         .build()
 }

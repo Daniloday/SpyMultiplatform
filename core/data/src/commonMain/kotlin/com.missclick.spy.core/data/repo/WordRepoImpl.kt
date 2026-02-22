@@ -20,22 +20,20 @@ internal class WordRepoImpl(
     private val ioDispatcher: CoroutineDispatcher,
 ) : WordRepo {
 
-    override fun getWords(setName: String, languageCode: String): Flow<List<String>> {
-        return wordDataSource.getWords(setName = setName, languageCode).flowOn(ioDispatcher)
-    }
+    override fun getWords(setKey: String, languageCode: String): Flow<List<String>> =
+        wordDataSource.getWords(setKey = setKey, languageCode).flowOn(ioDispatcher)
 
-    override suspend fun deleteWord(wordName: String) {
-        withContext(ioDispatcher){
-            wordDataSource.deleteWord(wordName)
+    override suspend fun deleteWord(wordText: String, setKey: String, languageCode: String) {
+        withContext(ioDispatcher) {
+            wordDataSource.deleteWord(wordText, setKey, languageCode)
         }
     }
 
-    override suspend fun addWord(word: Word, setName: String, languageCode: String) {
-        withContext(ioDispatcher){
-            wordDataSource.addWord(word, setName, languageCode)
+    override suspend fun addWord(word: Word, setKey: String, languageCode: String) {
+        withContext(ioDispatcher) {
+            wordDataSource.addWord(word, setKey, languageCode)
         }
     }
-
 }
 
 

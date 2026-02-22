@@ -4,17 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.missclick.spy.core.data.WordRepo
 import com.missclick.spy.core.domain.GetOptionsUseCase
-import com.missclick.spy.core.model.Options
-import kotlinx.coroutines.CoroutineScope
+import com.missclick.spy.core.model.OptionsResolved
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.ObsoleteCoroutinesApi
-import kotlinx.coroutines.channels.ReceiveChannel
-import kotlinx.coroutines.channels.SendChannel
-import kotlinx.coroutines.channels.consumeEach
-import kotlinx.coroutines.channels.produce
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -22,8 +15,6 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlin.coroutines.CoroutineContext
-import kotlin.coroutines.EmptyCoroutineContext
 import kotlin.random.Random
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
@@ -39,12 +30,16 @@ class GameViewModel(
     init {
         viewModelScope.launch(Dispatchers.IO) {
             val options = getOptionsUseCase().first()
-            val wordResult = wordRepo.getWords(options.collectionName, options.selectedLanguageCode)
-            initCards(options = options, words = wordResult.first())
+            val words = wordRepo.getWords(
+                setKey = options.selectedSetKey,
+                languageCode = options.selectedLanguageCode,
+            ).first()
+
+            initCards(options = options, words = words)
         }
     }
 
-    private fun initCards(options: Options, words: List<String>) {
+    private fun initCards(options: OptionsResolved, words: List<String>) {
         val shuffledWords = words.shuffled(Random(kotlin.time.Clock.System.now().toEpochMilliseconds()))
         val localWord = shuffledWords[0]
         val spyWord = shuffledWords[1]
