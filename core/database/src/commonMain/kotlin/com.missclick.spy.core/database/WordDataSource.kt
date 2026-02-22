@@ -5,6 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface WordDataSource {
     fun getWords(setKey: String, languageCode: String): Flow<List<String>>
-    suspend fun addWord(word: Word, setKey: String, languageCode: String)
-    suspend fun deleteWord(wordText: String, setKey: String, languageCode: String,)
+    suspend fun deleteWord(wordText: String, setKey: String, languageCode: String)
+    suspend fun addWord(word: Word, setKey: String, languageCode: String): Boolean
 }

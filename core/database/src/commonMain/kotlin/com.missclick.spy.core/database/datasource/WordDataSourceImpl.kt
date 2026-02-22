@@ -12,36 +12,23 @@ internal class WordDataSourceImpl(
     private val setDao: SetDao,
 ) : WordDataSource {
 
-    override fun getWords(setKey: String, languageCode: String): Flow<List<String>> {
-        return wordDao.getWordsByKey(setKey = setKey, languageCode = languageCode)
+    override fun getWords(setKey: String, languageCode: String): Flow<List<String>> =
+        wordDao.getWordsByKey(setKey = setKey, languageCode = languageCode)
+
+    override suspend fun deleteWord(wordText: String, setKey: String, languageCode: String) {
+        wordDao.deleteWordFromSet(wordText = wordText, setKey = setKey, languageCode = languageCode)
     }
 
-    override suspend fun deleteWord(
-        wordText: String,
-        setKey: String,
-        languageCode: String,
-    ) {
-        wordDao.deleteWordFromSet(
-            wordText = wordText,
-            setKey = setKey,
-            languageCode = languageCode,
-        )
-    }
+    override suspend fun addWord(word: Word, setKey: String, languageCode: String): Boolean {
+        val setEntity = setDao.getSetByKey(setKey = setKey, languageCode = languageCode) ?: return false
 
-    override suspend fun addWord(
-        word: Word,
-        setKey: String,
-        languageCode: String,
-    ) {
-        val setEntity = requireNotNull(
-            setDao.getSetByKey(setKey = setKey, languageCode = languageCode)
-        ) { "Set not found: key=$setKey lang=$languageCode" }
-
-        val entity = WordEntity(
-            id = 0,
-            text = word.wordName,
-            setId = setEntity.id,
+        wordDao.insertWord(
+            WordEntity(
+                id = 0,
+                text = word.wordName,
+                setId = setEntity.id,
+            )
         )
-        wordDao.insertWord(entity)
+        return true
     }
 }

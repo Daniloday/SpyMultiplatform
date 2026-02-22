@@ -31,10 +31,10 @@ class WordsViewModel(
     fun loadData(selectedCollectionKey: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val options = getOptionsUseCase().first()
-            val collection = setRepo.getSet(selectedCollectionKey, options.selectedLanguageCode)
+            val selectedSet = setRepo.getSetOrNull(selectedCollectionKey, options.selectedLanguageCode) ?: return@launch
             val getWordsResult = wordsRepo.getWords(selectedCollectionKey, options.selectedLanguageCode)
             getWordsResult.collect {
-                initSuccess(collection, it, options.selectedLanguageCode)
+                initSuccess(selectedSet, it, options.selectedLanguageCode)
             }
         }
     }

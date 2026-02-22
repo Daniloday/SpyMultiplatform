@@ -13,29 +13,24 @@ internal class SetDataSourceImpl(
     private val setDao: SetDao,
 ) : SetDataSource {
 
-    override fun getSets(languageCode: String): Flow<List<Set>> {
-        return setDao.getSets(languageCode).map { entities ->
-            entities.map(SetEntity::asModel)
-        }
-    }
+    override fun getSets(languageCode: String): Flow<List<Set>> =
+        setDao.getSets(languageCode).map { it.map(SetEntity::asModel) }
 
-    override suspend fun getSet(setKey: String, languageCode: String): Set {
-        return requireNotNull(
-            setDao.getSetByKey(setKey = setKey, languageCode = languageCode)
-        ) { "Set not found: key=$setKey lang=$languageCode" }.asModel()
-    }
+    override suspend fun getSetOrNull(setKey: String, languageCode: String): Set? =
+        setDao.getSetByKey(setKey = setKey, languageCode = languageCode)?.asModel()
 
-    override suspend fun getDefaultSet(languageCode: String): String {
-        return setDao.getDefaultSetKey(languageCode) ?: "basic"
-    }
+    override suspend fun getDefaultSetKey(languageCode: String): String =
+        setDao.getDefaultSetKey(languageCode) ?: BASIC_SET_KEY
 
     override suspend fun addSet(set: Set, languageCode: String) {
-        val entity = set.asEntity(languageCode)
-        return setDao.insertSet(entity)
+        setDao.insertSet(set.asEntity(languageCode))
     }
 
     override suspend fun deleteSet(setKey: String, languageCode: String) {
         setDao.deleteSetByKey(setKey = setKey, languageCode = languageCode)
     }
 
+    private companion object {
+        const val BASIC_SET_KEY = "basic"
+    }
 }

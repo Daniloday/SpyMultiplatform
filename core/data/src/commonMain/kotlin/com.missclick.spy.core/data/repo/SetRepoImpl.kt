@@ -16,19 +16,17 @@ internal class SetRepoImpl(
     override fun getSets(languageCode: String): Flow<List<Set>> =
         setDataSource.getSets(languageCode).flowOn(ioDispatcher)
 
-    override suspend fun getDefaultSet(languageCode: String): String = withContext(ioDispatcher) {
-        setDataSource.getDefaultSet(languageCode)
-    }
+    override suspend fun getDefaultSet(languageCode: String): String =
+        withContext(ioDispatcher) { setDataSource.getDefaultSetKey(languageCode) }
 
-    override suspend fun getSet(setKey: String, languageCode: String): Set = withContext(ioDispatcher) {
-        setDataSource.getSet(setKey, languageCode)
-    }
+    override suspend fun getSetOrNull(setKey: String, languageCode: String): Set? =
+        withContext(ioDispatcher) { setDataSource.getSetOrNull(setKey, languageCode) }
 
     override suspend fun deleteSet(setKey: String, languageCode: String) {
         withContext(ioDispatcher) { setDataSource.deleteSet(setKey, languageCode) }
     }
 
     override suspend fun addSet(set: Set, languageCode: String) {
-        return withContext(ioDispatcher) { setDataSource.addSet(set, languageCode) }
+        withContext(ioDispatcher) { setDataSource.addSet(set, languageCode) }
     }
 }
