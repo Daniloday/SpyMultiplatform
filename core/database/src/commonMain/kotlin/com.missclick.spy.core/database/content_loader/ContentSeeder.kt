@@ -8,7 +8,6 @@ import com.missclick.spy.core.database.enity.ContentMetaEntity
 import com.missclick.spy.core.database.enity.LanguageEntity
 import com.missclick.spy.core.database.enity.SetEntity
 import com.missclick.spy.core.database.enity.WordEntity
-import com.missclick.spy.core.database.room.SpyDatabase
 import kotlinx.serialization.json.Json
 
 internal class ContentSeeder(
@@ -18,6 +17,7 @@ internal class ContentSeeder(
     private val wordDao: WordDao,
     private val loader: ContentJsonLoader,
 ) {
+
     private val json = Json {
         ignoreUnknownKeys = true
         isLenient = true
@@ -25,73 +25,130 @@ internal class ContentSeeder(
     }
 
     suspend fun syncIfNeeded() {
-        val raw = loader.loadSpyContentJson()
-        val content = json.decodeFromString(SpyContentDto.serializer(), raw)
+
+        val indexRaw = runCatching {
+            loader.loadJson("spy-content-index.json")
+        }.getOrNull() ?: return
+
+        val index = runCatching {
+            json.decodeFromString(SpyContentIndexDto.serializer(), indexRaw)
+        }.getOrNull() ?: return
 
         val current = metaDao.get()?.contentVersion ?: 0
-        if (content.contentVersion <= current) return
+        if (index.contentVersion <= current) return
 
+        // 1️⃣ Languages
+        val languages = index.languages
+            .mapNotNull {
+                val code = it.code.trim()
+                val name = it.name.trim()
+                if (code.isBlank() || name.isBlank()) null
+                else code to name
+            }
+            .distinctBy { it.first }
 
-        // 1) Languages
         languageDao.insertLanguages(
-            content.languages
-                .filter { it.code.isNotBlank() }
-                .map { LanguageEntity(code = it.code, name = it.name) }
+            languages.map { (code, name) ->
+                LanguageEntity(code = code, name = name)
+            }
         )
 
-        // 2) Sets (only default, not user custom)
-        val defaultSets = content.sets
-            .filter { it.key.isNotBlank() && it.language.isNotBlank() }
-            .map { dto ->
-                SetEntity(
-                    id = 0,
-                    key = dto.key,
-                    name = dto.name,
-                    languageCode = dto.language,
-                    isCustom = false,
-                    isPremium = dto.flags?.premium ?: false,
-                    isPro = dto.flags?.pro ?: false,
-                )
-            }
+        val indexSets = index.sets
+            .mapNotNull { if (it.key.isBlank()) null else it.key to it }
+            .toMap()
 
-        setDao.insertSets(defaultSets)
+        // 2️⃣ Per language
+        for ((langCode, _) in languages) {
 
-        // 3) Words: replace only default words
-        val wordsGrouped = content.words
-            .filter { it.setKey.isNotBlank() && it.language.isNotBlank() }
-            .groupBy { it.language to it.setKey }
+            val langRaw = runCatching {
+                loader.loadJson("spy-content-$langCode.json")
+            }.getOrNull() ?: continue
 
-        for ((langAndKey, blocks) in wordsGrouped) {
-            val (lang, setKey) = langAndKey
-            val set = setDao.getSetByKey(setKey = setKey, languageCode = lang) ?: continue
+            val langDto = runCatching {
+                json.decodeFromString(SpyContentLangDto.serializer(), langRaw)
+            }.getOrNull() ?: continue
 
-            wordDao.deleteDefaultWordsBySetId(set.id)
+            if (langDto.language != langCode) continue
 
-            val items = blocks
-                .flatMap { it.items }
-                .map { it.trim() }
-                .filter { it.isNotBlank() }
-                .distinct()
+            val setNames = langDto.sets
+                .mapNotNull {
+                    val key = it.key.trim()
+                    val name = it.name.trim()
+                    if (key.isBlank() || name.isBlank()) null
+                    else key to name
+                }
+                .toMap()
 
-            wordDao.insertWords(
-                items.map { text ->
-                    WordEntity(
+            // 2a️⃣ Sets
+            val setsToInsert = indexSets.values
+                .asSequence()
+                .filter { it.onlyLanguages.isNullOrEmpty() || it.onlyLanguages.contains(langCode) }
+                .mapNotNull { indexSet ->
+                    val name = setNames[indexSet.key] ?: return@mapNotNull null
+
+                    SetEntity(
                         id = 0,
-                        text = text,
-                        setId = set.id,
+                        key = indexSet.key,
+                        name = name,
+                        languageCode = langCode,
+                        isCustom = false,
+                        isPremium = indexSet.flags?.premium ?: false,
+                        isPro = indexSet.flags?.pro ?: false,
                     )
                 }
-            )
+                .toList()
+
+            setDao.insertSets(setsToInsert)
+
+            // 2b️⃣ Words
+            val wordsBySet = langDto.words
+                .mapNotNull {
+                    val key = it.setKey.trim()
+                    if (key.isBlank()) null
+                    else key to it.items
+                }
+                .groupBy({ it.first }, { it.second })
+
+            for ((setKey, blocks) in wordsBySet) {
+
+                val indexSet = indexSets[setKey] ?: continue
+                if (!indexSet.onlyLanguages.isNullOrEmpty()
+                    && !indexSet.onlyLanguages.contains(langCode)
+                ) continue
+
+                val set = setDao.getSetByKey(setKey, langCode) ?: continue
+
+                wordDao.deleteDefaultWordsBySetId(set.id)
+
+                val words = blocks
+                    .flatten()
+                    .asSequence()
+                    .map { it.trim() }
+                    .filter { it.isNotBlank() }
+                    .distinct()
+                    .toList()
+
+                if (words.isEmpty()) continue
+
+                wordDao.insertWords(
+                    words.map {
+                        WordEntity(
+                            id = 0,
+                            text = it,
+                            setId = set.id,
+                        )
+                    }
+                )
+            }
         }
 
         metaDao.upsert(
             ContentMetaEntity(
-                schema = content.schema,
-                contentVersion = content.contentVersion,
-                generatedAt = content.generatedAt,
+                schema = index.schema,
+                contentVersion = index.contentVersion,
+                generatedAt = index.generatedAt,
                 updatedAtEpochMs = kotlin.time.Clock.System.now().toEpochMilliseconds(),
             )
         )
-
     }
 }

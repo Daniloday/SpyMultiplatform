@@ -7,10 +7,12 @@ import java.io.BufferedReader
 
 internal class ContentJsonLoaderAndroid(
     private val context: Context,
-): ContentJsonLoader {
-    override suspend fun loadSpyContentJson(): String = withContext(Dispatchers.IO) {
-        context.assets.open("spy-content.json").use { input ->
-            input.bufferedReader(Charsets.UTF_8).use(BufferedReader::readText)
+) : ContentJsonLoader {
+
+    override suspend fun loadJson(fileName: String): String =
+        withContext(Dispatchers.IO) {
+            context.assets.open(fileName).use { input ->
+                input.bufferedReader(Charsets.UTF_8).use(BufferedReader::readText)
+            }
         }
-    }
 }
