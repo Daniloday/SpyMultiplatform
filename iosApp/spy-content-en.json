@@ -1,0 +1,402 @@
+{
+  "schema": "spy-content@lang@1",
+  "contentVersion": 1,
+  "generatedAt": "2026-02-22T16:22:05Z",
+  "language": "en",
+  "sets": [
+    {
+      "key": "basic",
+      "name": "Basic"
+    },
+    {
+      "key": "city_life",
+      "name": "City Life"
+    },
+    {
+      "key": "countries",
+      "name": "Countries"
+    },
+    {
+      "key": "entertainment",
+      "name": "Entertainment"
+    },
+    {
+      "key": "epochs",
+      "name": "Epochs"
+    },
+    {
+      "key": "expert",
+      "name": "Expert"
+    },
+    {
+      "key": "extreme_places",
+      "name": "Extreme Places"
+    },
+    {
+      "key": "food_places",
+      "name": "Food Places"
+    },
+    {
+      "key": "nature",
+      "name": "Nature"
+    },
+    {
+      "key": "workplaces",
+      "name": "Workplaces"
+    },
+    {
+      "key": "transport",
+      "name": "Transport"
+    },
+    {
+      "key": "travel",
+      "name": "Travel"
+    }
+  ],
+  "words": [
+    {
+      "setKey": "basic",
+      "items": [
+        "Apartment",
+        "Supermarket",
+        "Market",
+        "Bunker",
+        "Landfill",
+        "Garage",
+        "Country house",
+        "Church",
+        "Elevator",
+        "Escalator",
+        "Park",
+        "Casino",
+        "Bank",
+        "School",
+        "Kindergarten",
+        "Hotel",
+        "Gas station",
+        "Bar",
+        "Restaurant",
+        "Beach",
+        "Desert",
+        "Embassy",
+        "Pharmacy",
+        "Library",
+        "Swimming pool",
+        "Prison",
+        "Airport",
+        "Train station",
+        "Subway station",
+        "Zoo",
+        "Cinema",
+        "Theater",
+        "Museum",
+        "Warehouse",
+        "Beauty salon",
+        "Gym",
+        "Stadium",
+        "Cemetery",
+        "Farm",
+        "Hospital",
+        "University",
+        "Hairdresser",
+        "Office",
+        "Bus stop",
+        "Shopping mall",
+        "Camp",
+        "Port",
+        "Bakery",
+        "Auto service",
+        "Post office",
+        "Concert hall",
+        "Go-karting",
+        "Military base",
+        "Mine",
+        "Stable",
+        "Circus",
+        "Gallery",
+        "Bowling"
+      ]
+    },
+    {
+      "setKey": "city_life",
+      "items": [
+        "Apartment Building",
+        "Courtyard",
+        "Entrance Hall",
+        "Bus Stop",
+        "Crosswalk",
+        "City Square",
+        "Residential Area",
+        "Business Center",
+        "Underpass",
+        "Embankment",
+        "Street Market",
+        "Parking Lot",
+        "Subway Station",
+        "City Park",
+        "Playground",
+        "Office Block",
+        "Residential Tower",
+        "City Hall",
+        "Library",
+        "Post Office"
+      ]
+    },
+    {
+      "setKey": "countries",
+      "items": [
+        "Ukraine",
+        "USA",
+        "Germany",
+        "Spain",
+        "Italy",
+        "France",
+        "Netherlands",
+        "United Kingdom",
+        "China",
+        "North Korea",
+        "Japan",
+        "Brazil",
+        "Mexico",
+        "Turkey",
+        "Australia",
+        "Kazakhstan",
+        "Egypt",
+        "Georgia",
+        "Somalia",
+        "Poland",
+        "Thailand"
+      ]
+    },
+    {
+      "setKey": "entertainment",
+      "items": [
+        "Cinema",
+        "Night Club",
+        "Circus",
+        "Water Park",
+        "Theater",
+        "Casino",
+        "Karaoke",
+        "Zoo",
+        "Bowling",
+        "Museum",
+        "Amusement Park",
+        "Planetarium",
+        "Billiards Room",
+        "Ice Rink",
+        "Concert Hall",
+        "Festival",
+        "Trampoline Center",
+        "Game Room",
+        "Escape Room"
+      ]
+    },
+    {
+      "setKey": "epochs",
+      "items": [
+        "Stone Age",
+        "Ancient Egypt",
+        "Ancient Greece",
+        "Ancient Rome",
+        "Early Middle Ages",
+        "High Middle Ages",
+        "Renaissance",
+        "Age of Discovery",
+        "Industrial Revolution",
+        "Victorian Era",
+        "World War I",
+        "World War II",
+        "Cold War",
+        "Space Race",
+        "Digital Age",
+        "Information Age",
+        "Modern Era",
+        "Near Future",
+        "Distant Future",
+        "Post-Apocalypse"
+      ]
+    },
+    {
+      "setKey": "expert",
+      "items": [
+        "Crypto Farm",
+        "Modern Art Museum",
+        "Sleep Lab",
+        "Interrogation Room",
+        "Drone Control Center",
+        "Skyscraper Roof",
+        "Private Jet",
+        "Truck Cabin",
+        "TV Center",
+        "Call Center",
+        "Recording Studio",
+        "Underground Parking",
+        "Haunted House",
+        "Data Center",
+        "Nuclear Bunker",
+        "Print Shop"
+      ]
+    },
+    {
+      "setKey": "extreme_places",
+      "items": [
+        "Prison",
+        "Interrogation Room",
+        "Military Base",
+        "Nuclear Bunker",
+        "Restricted Zone",
+        "Abandoned Building",
+        "Secret Laboratory",
+        "Smuggling Route",
+        "Border Outpost",
+        "Underground Shelter",
+        "Black Market",
+        "Crime Scene",
+        "High Security Vault",
+        "Private Island",
+        "Hostage Room",
+        "Surveillance Center",
+        "Sniper Position",
+        "Safe House",
+        "Emergency Command Center",
+        "Quarantine Zone"
+      ]
+    },
+    {
+      "setKey": "food_places",
+      "items": [
+        "Cafe",
+        "Restaurant",
+        "Fast Food",
+        "Canteen",
+        "Bakery",
+        "Coffee Shop",
+        "Pizzeria",
+        "Burger Place",
+        "Food Court",
+        "Street Food",
+        "Sushi Bar",
+        "Steakhouse",
+        "Buffet",
+        "Dessert Shop",
+        "Ice Cream Stand",
+        "Wine Bar",
+        "Tea House",
+        "Breakfast Cafe",
+        "Snack Bar",
+        "Diner"
+      ]
+    },
+    {
+      "setKey": "nature",
+      "items": [
+        "Beach",
+        "Forest",
+        "Mountains",
+        "Lake",
+        "Desert",
+        "Field",
+        "Island",
+        "Volcano",
+        "Cave",
+        "Savanna",
+        "River",
+        "Waterfall",
+        "Swamp",
+        "Jungle",
+        "Arctic",
+        "Tundra",
+        "Garden",
+        "Park",
+        "Steppe",
+        "Canyon"
+      ]
+    },
+    {
+      "setKey": "workplaces",
+      "items": [
+        "Hospital",
+        "Police Station",
+        "Fire Station",
+        "Construction Site",
+        "Office",
+        "Beauty Salon",
+        "Car Service",
+        "School Staff Room",
+        "University Department",
+        "Pharmacy",
+        "TV Studio",
+        "Radio Station",
+        "Bank Office",
+        "Design Studio",
+        "Law Firm",
+        "IT Office",
+        "Warehouse",
+        "Logistics Center",
+        "Printing House",
+        "Recruitment Agency"
+      ]
+    },
+    {
+      "setKey": "transport",
+      "items": [
+        "Tram",
+        "Trolleybus",
+        "Bus",
+        "Car",
+        "Truck",
+        "Trailer",
+        "Subway",
+        "Tractor",
+        "Excavator",
+        "Crane",
+        "Garbage truck",
+        "Carriage",
+        "Ship",
+        "Rocket",
+        "Airplane",
+        "Helicopter",
+        "Cable car",
+        "Train",
+        "Commuter train",
+        "Motorcycle",
+        "Scooter",
+        "Bicycle",
+        "Boat",
+        "Yacht",
+        "Hydrocycle",
+        "Tank",
+        "Limousine",
+        "Quad bike",
+        "Paramotor",
+        "Kayak"
+      ]
+    },
+    {
+      "setKey": "travel",
+      "items": [
+        "Hotel",
+        "Hostel",
+        "Airport",
+        "Airplane Cabin",
+        "Train Station",
+        "Railway Platform",
+        "Resort",
+        "Tour Bus",
+        "Cruise Ship",
+        "Border Control",
+        "Customs Office",
+        "Luggage Area",
+        "Travel Agency",
+        "City Tour",
+        "Mountain Lodge",
+        "Beach Resort",
+        "Observation Deck",
+        "Visa Center",
+        "Foreign Embassy",
+        "Transit Zone"
+      ]
+    }
+  ]
+}

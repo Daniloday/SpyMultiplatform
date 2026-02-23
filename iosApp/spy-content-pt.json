@@ -2,7 +2,7 @@
   "schema": "spy-content@lang@1",
   "contentVersion": 1,
   "generatedAt": "2026-02-22T16:22:05Z",
-  "language": "pt-BR",
+  "language": "pt",
   "sets": [
     { "key": "basic", "name": "Básico" },
     { "key": "city_life", "name": "Vida na cidade" },
