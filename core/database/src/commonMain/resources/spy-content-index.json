@@ -25,7 +25,7 @@
     { "key": "extreme_places", "flags": { "premium": true, "pro": true } },
     { "key": "food_places", "flags": { "premium": false, "pro": false } },
     { "key": "nature", "flags": { "premium": true, "pro": false } },
-    { "key": "professions", "flags": { "premium": true, "pro": false } },
+    { "key": "workplaces", "flags": { "premium": true, "pro": false } },
     { "key": "transport", "flags": { "premium": false, "pro": false } },
     { "key": "travel", "flags": { "premium": true, "pro": false } },
     {

@@ -34,15 +34,15 @@
     },
     {
       "key": "food_places",
-      "name": "Food & Places"
+      "name": "Food Places"
     },
     {
       "key": "nature",
       "name": "Nature"
     },
     {
-      "key": "professions",
-      "name": "Professions"
+      "key": "workplaces",
+      "name": "Workplaces"
     },
     {
       "key": "transport",
@@ -61,7 +61,7 @@
         "Supermarket",
         "Market",
         "Bunker",
-        "Dump",
+        "Landfill",
         "Garage",
         "Country house",
         "Church",
@@ -99,7 +99,6 @@
         "Hospital",
         "University",
         "Hairdresser",
-        "Hotel",
         "Office",
         "Bus stop",
         "Shopping mall",
@@ -234,7 +233,7 @@
         "Recording Studio",
         "Underground Parking",
         "Haunted House",
-        "Data Storage",
+        "Data Center",
         "Nuclear Bunker",
         "Print Shop"
       ]
@@ -315,7 +314,7 @@
       ]
     },
     {
-      "setKey": "professions",
+      "setKey": "workplaces",
       "items": [
         "Hospital",
         "Police Station",
@@ -325,7 +324,7 @@
         "Beauty Salon",
         "Car Service",
         "School Staff Room",
-        "University кафедра",
+        "University Department",
         "Pharmacy",
         "TV Studio",
         "Radio Station",
@@ -351,7 +350,7 @@
         "Subway",
         "Tractor",
         "Excavator",
-        "Cran",
+        "Crane",
         "Garbage truck",
         "Carriage",
         "Ship",
@@ -371,7 +370,6 @@
         "Limousine",
         "Quad bike",
         "Paramotor",
-        "SUP",
         "Kayak"
       ]
     },
