@@ -279,16 +279,6 @@ private fun CollectionCard(
                         contentDescription = null
                     )
                 }
-                if (isPro) {
-                    Icon(
-                        modifier = Modifier
-                            .padding(horizontal = 8.dp)
-                            .size(48.dp),
-                        tint = AppTheme.colors.tertiary,
-                        painter = painterResource(Res.drawable.ic_premium),
-                        contentDescription = null
-                    )
-                }
                 TriangleIcon(isSelected = isSelected)
             }
 
