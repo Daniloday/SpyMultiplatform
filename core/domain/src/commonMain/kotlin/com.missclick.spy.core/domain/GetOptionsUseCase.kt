@@ -138,6 +138,6 @@ class GetOptionsUseCase(
         const val BASIC_SET_KEY = "basic"
 
         fun normKey(v: String) = v.trim().lowercase()
-        fun normLang(v: String) = v.trim().lowercase()
+        fun normLang(v: String) = v
     }
 }
