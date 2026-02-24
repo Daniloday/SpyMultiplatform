@@ -458,6 +458,7 @@ private fun CardOpenedSpy(
         Text(
             text = stringResource(resource = Res.string.you_spy),
             style = AppTheme.types.h48,
+            textAlign = TextAlign.Center,
             color = AppTheme.colors.secondary
         )
         Text(
