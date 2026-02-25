@@ -5,6 +5,7 @@ import ComposeApp
 struct ComposeView: UIViewControllerRepresentable {
     
     func makeCoordinator() -> AdsCoordinator {
+        
            AdsCoordinator()
     }
     
