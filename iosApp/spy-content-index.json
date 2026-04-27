@@ -1,0 +1,37 @@
+{
+  "schema": "spy-content@index@1",
+  "contentVersion": 1,
+  "generatedAt": "2026-02-21T16:38:13Z",
+  "languages": [
+    { "key": "en", "name": "English" },
+    { "key": "ru", "name": "Русский" },
+    { "key": "uk", "name": "Українська" },
+    { "key": "de", "name": "Deutsch" },
+    { "key": "es", "name": "Español" },
+    { "key": "fr", "name": "Français" },
+    { "key": "pl", "name": "Polski" },
+    { "key": "pt", "name": "Português" },
+    { "key": "kk", "name": "Қазақша" },
+    { "key": "ky", "name": "Кыргызча" },
+    { "key": "be", "name": "Беларуская" }
+  ],
+  "sets": [
+    { "key": "basic", "flags": { "premium": false, "pro": false } },
+    { "key": "city_life", "flags": { "premium": false, "pro": false } },
+    { "key": "countries", "flags": { "premium": false, "pro": false } },
+    { "key": "entertainment", "flags": { "premium": true, "pro": false } },
+    { "key": "epochs", "flags": { "premium": true, "pro": true } },
+    { "key": "expert", "flags": { "premium": true, "pro": false } },
+    { "key": "extreme_places", "flags": { "premium": true, "pro": true } },
+    { "key": "food_places", "flags": { "premium": false, "pro": false } },
+    { "key": "nature", "flags": { "premium": true, "pro": false } },
+    { "key": "workplaces", "flags": { "premium": true, "pro": false } },
+    { "key": "transport", "flags": { "premium": false, "pro": false } },
+    { "key": "travel", "flags": { "premium": true, "pro": false } },
+    {
+      "key": "kyiv",
+      "flags": { "premium": true, "pro": false },
+      "onlyLanguages": ["uk"]
+    }
+  ]
+}

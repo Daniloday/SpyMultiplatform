@@ -1,0 +1,13 @@
+platform :ios, '15.3'
+
+target 'iosApp' do
+  use_frameworks!
+
+  pod 'Google-Mobile-Ads-SDK'
+  pod 'FirebaseAnalytics'
+  pod 'FirebaseCrashlytics'
+  # RevenueCat bridge for KMP (required for iOS)
+  pod 'PurchasesHybridCommon', '~> 17.33.1'
+  pod 'PurchasesHybridCommonUI', '~> 17.33.1'
+
+end
