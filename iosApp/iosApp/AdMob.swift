@@ -18,7 +18,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        MobileAds.shared.start(completionHandler: nil)
         return true
     }
 }
@@ -51,28 +51,28 @@ private func topMostViewController() -> UIViewController? {
 // MARK: - Banner
 
 private struct BannerAdView: UIViewRepresentable {
-    func makeUIView(context: Context) -> GADBannerView {
-        let view = GADBannerView(adSize: GADAdSizeBanner)
+    func makeUIView(context: Context) -> BannerView {
+        let view = BannerView(adSize: AdSizeBanner)
         view.adUnitID = AdMobIds.banner
         return view
     }
 
-    func updateUIView(_ uiView: GADBannerView, context: Context) {
+    func updateUIView(_ uiView: BannerView, context: Context) {
         if uiView.rootViewController == nil, let vc = topMostViewController() {
             uiView.rootViewController = vc
-            uiView.load(GADRequest())
+            uiView.load(Request())
         }
     }
 }
 
 // MARK: - Interstitial
 
-final class InterstitialAdManager: NSObject, GADFullScreenContentDelegate {
-    private var ad: GADInterstitialAd?
+final class InterstitialAdManager: NSObject, FullScreenContentDelegate {
+    private var ad: InterstitialAd?
     private var onClosed: (() -> Void)?
 
     func load() {
-        GADInterstitialAd.load(withAdUnitID: AdMobIds.interstitial, request: GADRequest()) { [weak self] ad, error in
+        InterstitialAd.load(with: AdMobIds.interstitial, request: Request()) { [weak self] ad, error in
             if let error {
                 print("Failed to load interstitial: \(error.localizedDescription)")
                 self?.ad = nil
@@ -97,10 +97,10 @@ final class InterstitialAdManager: NSObject, GADFullScreenContentDelegate {
             onClosed()
             return
         }
-        ad.present(fromRootViewController: vc)
+        ad.present(from: vc)
     }
 
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+    func adDidDismissFullScreenContent(_ ad: FullScreenPresentingAd) {
         print("Interstitial dismissed")
         self.ad = nil
         onClosed?()
@@ -108,7 +108,7 @@ final class InterstitialAdManager: NSObject, GADFullScreenContentDelegate {
         load() // optional: preload next
     }
 
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+    func ad(_ ad: FullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         print("Interstitial failed to present: \(error.localizedDescription)")
         self.ad = nil
         onClosed?()
@@ -118,13 +118,13 @@ final class InterstitialAdManager: NSObject, GADFullScreenContentDelegate {
 
 // MARK: - Rewarded
 
-final class RewardedAdManager: NSObject, GADFullScreenContentDelegate {
-    private var ad: GADRewardedAd?
+final class RewardedAdManager: NSObject, FullScreenContentDelegate {
+    private var ad: RewardedAd?
     private var onClosed: (() -> Void)?
-    private var onReward: ((GADAdReward) -> Void)?
+    private var onReward: ((AdReward) -> Void)?
 
     func load() {
-        GADRewardedAd.load(withAdUnitID: AdMobIds.rewarded, request: GADRequest()) { [weak self] ad, error in
+        RewardedAd.load(with: AdMobIds.rewarded, request: Request()) { [weak self] ad, error in
             if let error {
                 print("Failed to load rewarded: \(error.localizedDescription)")
                 self?.ad = nil
@@ -136,7 +136,7 @@ final class RewardedAdManager: NSObject, GADFullScreenContentDelegate {
         }
     }
 
-    func show(onReward: @escaping (GADAdReward) -> Void, onClosed: @escaping () -> Void) {
+    func show(onReward: @escaping (AdReward) -> Void, onClosed: @escaping () -> Void) {
         self.onReward = onReward
         self.onClosed = onClosed
 
@@ -151,13 +151,13 @@ final class RewardedAdManager: NSObject, GADFullScreenContentDelegate {
             return
         }
 
-        ad.present(fromRootViewController: vc) { [weak self] in
+        ad.present(from: vc) { [weak self] in
             guard let reward = self?.ad?.adReward else { return }
             self?.onReward?(reward)
         }
     }
 
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+    func adDidDismissFullScreenContent(_ ad: FullScreenPresentingAd) {
         print("Rewarded dismissed")
         self.ad = nil
         onClosed?()
@@ -166,7 +166,7 @@ final class RewardedAdManager: NSObject, GADFullScreenContentDelegate {
         load() // optional: preload next
     }
 
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+    func ad(_ ad: FullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         print("Rewarded failed to present: \(error.localizedDescription)")
         self.ad = nil
         onClosed?()
@@ -174,15 +174,15 @@ final class RewardedAdManager: NSObject, GADFullScreenContentDelegate {
         onReward = nil
     }
     
-    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+    func adWillPresentFullScreenContent(_ ad: FullScreenPresentingAd) {
         print("Rewarded will present")
     }
 
-    func adDidRecordImpression(_ ad: GADFullScreenPresentingAd) {
+    func adDidRecordImpression(_ ad: FullScreenPresentingAd) {
         print("Rewarded impression")
     }
 
-    func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {
+    func adDidRecordClick(_ ad: FullScreenPresentingAd) {
         print("Rewarded click")
     }
 }

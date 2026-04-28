@@ -11,12 +11,16 @@
 #import <UIKit/UIKit.h>
 
 /// Rendered app open ad.
+NS_SWIFT_NAME(MediationAppOpenAd)
 @protocol GADMediationAppOpenAd <GADMediationAd>
 
 /// Presents the receiver from the view controller.
-- (void)presentFromViewController:(nonnull UIViewController *)viewController;
+- (void)presentFromViewController:(nonnull UIViewController *)viewController
+    NS_SWIFT_NAME(present(from:));
+
 @end
 
 /// App open ad configuration.
+NS_SWIFT_NAME(MediationAppOpenAdConfiguration)
 @interface GADMediationAppOpenAdConfiguration : GADMediationAdConfiguration
 @end
