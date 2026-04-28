@@ -21,13 +21,34 @@ PODS:
     - FirebaseCoreInternal (~> 12.12.0)
     - GoogleUtilities/Environment (~> 8.1)
     - GoogleUtilities/Logger (~> 8.1)
+  - FirebaseCoreExtension (12.12.0):
+    - FirebaseCore (~> 12.12.0)
   - FirebaseCoreInternal (12.12.0):
     - "GoogleUtilities/NSData+zlib (~> 8.1)"
+  - FirebaseCrashlytics (12.12.1):
+    - FirebaseCore (~> 12.12.0)
+    - FirebaseInstallations (~> 12.12.0)
+    - FirebaseRemoteConfigInterop (~> 12.12.0)
+    - FirebaseSessions (~> 12.12.0)
+    - GoogleDataTransport (~> 10.1)
+    - GoogleUtilities/Environment (~> 8.1)
+    - nanopb (~> 3.30910.0)
+    - PromisesObjC (~> 2.4)
   - FirebaseInstallations (12.12.0):
     - FirebaseCore (~> 12.12.0)
     - GoogleUtilities/Environment (~> 8.1)
     - GoogleUtilities/UserDefaults (~> 8.1)
     - PromisesObjC (~> 2.4)
+  - FirebaseRemoteConfigInterop (12.12.0)
+  - FirebaseSessions (12.12.0):
+    - FirebaseCore (~> 12.12.0)
+    - FirebaseCoreExtension (~> 12.12.0)
+    - FirebaseInstallations (~> 12.12.0)
+    - GoogleDataTransport (~> 10.1)
+    - GoogleUtilities/Environment (~> 8.1)
+    - GoogleUtilities/UserDefaults (~> 8.1)
+    - nanopb (~> 3.30910.0)
+    - PromisesSwift (~> 2.1)
   - Google-Mobile-Ads-SDK (13.3.0):
     - GoogleUserMessagingPlatform (>= 1.1)
   - GoogleAdsOnDeviceConversion (3.5.0):
@@ -57,6 +78,9 @@ PODS:
     - GoogleUtilities/Network (~> 8.1)
     - "GoogleUtilities/NSData+zlib (~> 8.1)"
     - nanopb (~> 3.30910.0)
+  - GoogleDataTransport (10.1.0):
+    - nanopb (~> 3.30910.0)
+    - PromisesObjC (~> 2.4)
   - GoogleUserMessagingPlatform (3.1.0)
   - GoogleUtilities/AppDelegateSwizzler (8.1.0):
     - GoogleUtilities/Environment
@@ -91,6 +115,8 @@ PODS:
   - nanopb/decode (3.30910.0)
   - nanopb/encode (3.30910.0)
   - PromisesObjC (2.4.0)
+  - PromisesSwift (2.4.0):
+    - PromisesObjC (= 2.4.0)
   - PurchasesHybridCommon (17.33.1):
     - RevenueCat (= 5.57.2)
   - PurchasesHybridCommonUI (17.33.1):
@@ -102,6 +128,7 @@ PODS:
 
 DEPENDENCIES:
   - FirebaseAnalytics
+  - FirebaseCrashlytics
   - Google-Mobile-Ads-SDK
   - PurchasesHybridCommon (~> 17.33.1)
   - PurchasesHybridCommonUI (~> 17.33.1)
@@ -110,15 +137,21 @@ SPEC REPOS:
   trunk:
     - FirebaseAnalytics
     - FirebaseCore
+    - FirebaseCoreExtension
     - FirebaseCoreInternal
+    - FirebaseCrashlytics
     - FirebaseInstallations
+    - FirebaseRemoteConfigInterop
+    - FirebaseSessions
     - Google-Mobile-Ads-SDK
     - GoogleAdsOnDeviceConversion
     - GoogleAppMeasurement
+    - GoogleDataTransport
     - GoogleUserMessagingPlatform
     - GoogleUtilities
     - nanopb
     - PromisesObjC
+    - PromisesSwift
     - PurchasesHybridCommon
     - PurchasesHybridCommonUI
     - RevenueCat
@@ -127,20 +160,26 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   FirebaseAnalytics: a5f875a3cb86be4b4b5a8c0c4a8cb8d6d99d2de9
   FirebaseCore: 86241206e656f5c80c995e370e6c975913b9b284
+  FirebaseCoreExtension: ff6fd42eb5287e71d3e160450de6509733d9ead7
   FirebaseCoreInternal: 7c12fc3011d889085e765e317d7b9fd1cef97af9
+  FirebaseCrashlytics: 03f4e20d0c9b7fd6338cb9066f4bfb69d3f42fd0
   FirebaseInstallations: 4e6e162aa4abaaeeeb01dd00179dfc5ad9c2194e
+  FirebaseRemoteConfigInterop: 23996ab7397494722df4fdd1fd398024389d5da8
+  FirebaseSessions: 804bd321f2d2f2ddafe74ef7856062aa19f179c2
   Google-Mobile-Ads-SDK: 7692126a35ed859f20635af281c50a2162be8bea
   GoogleAdsOnDeviceConversion: 914d95386d0dd6815e8b1d70c465fe1d13312a1e
   GoogleAppMeasurement: f0781decd2e148270c47caec6cafb33775dbf657
+  GoogleDataTransport: aae35b7ea0c09004c3797d53c8c41f66f219d6a7
   GoogleUserMessagingPlatform: befe603da6501006420c206222acd449bba45a9c
   GoogleUtilities: 00c88b9a86066ef77f0da2fab05f65d7768ed8e1
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
+  PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
   PurchasesHybridCommon: 9031a433025f7a835f7002e132e3320f41c63b21
   PurchasesHybridCommonUI: 7145d23243a3cc88b21529e39c362d4aadf067c1
   RevenueCat: 85df7fb6409e6823e24768e8cabf55d03a497355
   RevenueCatUI: 14f85d0b998ceeaa405c6d785455fa9d1f11ee0f
 
-PODFILE CHECKSUM: 9c8cb63474ecda7e5e437a48708f8a906ab20bc5
+PODFILE CHECKSUM: 20f8154f574871678f6091d3d18b8893d868bce0
 
 COCOAPODS: 1.16.2
