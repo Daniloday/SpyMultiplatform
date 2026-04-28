@@ -46,6 +46,8 @@ Designed for small groups and fast sessions.
 <a href="https://play.google.com/store/apps/details?id=com.missclick.spy">
   <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" height="60">
 </a>
-
+<a href="https://apps.apple.com/ua/app/spy-party-game-for-friends/id6759662903">
+  <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" height="60">
+</a>
 
 
