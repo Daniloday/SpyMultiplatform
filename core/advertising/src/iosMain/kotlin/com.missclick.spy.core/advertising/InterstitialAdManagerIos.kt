@@ -2,7 +2,8 @@ package com.missclick.spy.core.advertising
 
 
 internal class InterstitialAdManagerIos(
-    private val adMobIos: AdMobIos
+    private val loadInterstitialAd: () -> Unit,
+    private val showInterstitialAd: (onAdClosed: () -> Unit) -> Unit,
 ): InterstitialAdManager {
 
     init {
@@ -10,12 +11,11 @@ internal class InterstitialAdManagerIos(
     }
 
     private fun loadAd() {
-        adMobIos.loadInterstitialAd()
+        loadInterstitialAd()
     }
 
     override fun showAd(onAdClosed: () -> Unit) {
-        adMobIos.showInterstitialAd(onAdClosed)
+        showInterstitialAd(onAdClosed)
     }
 }
-
 

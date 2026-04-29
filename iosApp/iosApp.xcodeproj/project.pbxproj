@@ -12,6 +12,8 @@
 		0F2FBAAF7F5C52F2A6A7F6F7 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FCC4A1675708A7E5ACC01E /* Pods_iosApp.framework */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
+		C0D3A002C0D3A002C0D3A002 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D3A001C0D3A001C0D3A001 /* AppDelegate.swift */; };
+		C0D3A004C0D3A004C0D3A004 /* AppLovin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D3A003C0D3A003C0D3A003 /* AppLovin.swift */; };
 		8F9C75EC2FA00DDC00EAE723 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F9C75EB2FA00DDC00EAE723 /* GoogleService-Info.plist */; };
 		8FA80BDF2CBAA3A3004961CB /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 8FA80BDE2CBAA3A3004961CB /* InfoPlist.xcstrings */; };
 		8FC7BBD12CB88DC1002AEFE7 /* AdMob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC7BBD02CB88DC1002AEFE7 /* AdMob.swift */; };
@@ -39,6 +41,8 @@
 		7555FF7B242A565900829871 /* Spy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		82E94E0054C8A2540902BDCF /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
+		C0D3A001C0D3A001C0D3A001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C0D3A003C0D3A003C0D3A003 /* AppLovin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLovin.swift; sourceTree = "<group>"; };
 		8F9C75EB2FA00DDC00EAE723 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8FA80BDD2CBAA31F004961CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8FA80BDE2CBAA3A3004961CB /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
@@ -132,11 +136,13 @@
 			children = (
 				8F9C75EB2FA00DDC00EAE723 /* GoogleService-Info.plist */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
+				C0D3A001C0D3A001C0D3A001 /* AppDelegate.swift */,
 				7555FF82242A565900829871 /* ContentView.swift */,
 				8FA80BDD2CBAA31F004961CB /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 				8FC7BBD02CB88DC1002AEFE7 /* AdMob.swift */,
+				C0D3A003C0D3A003C0D3A003 /* AppLovin.swift */,
 				8FA80BDE2CBAA3A3004961CB /* InfoPlist.xcstrings */,
 				8FD70FB12CBC211100D28FBA /* Launch Screen.storyboard */,
 			);
@@ -354,6 +360,8 @@
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				8FC7BBD12CB88DC1002AEFE7 /* AdMob.swift in Sources */,
+				C0D3A004C0D3A004C0D3A004 /* AppLovin.swift in Sources */,
+				C0D3A002C0D3A002C0D3A002 /* AppDelegate.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -5,23 +5,10 @@
 //  Created by Danylo Vladyka on 11.10.2024.
 //
 
-import Foundation
 import UIKit
 import SwiftUI
 import GoogleMobileAds
 import ComposeApp
-
-// MARK: - AppDelegate
-
-public final class AppDelegate: UIResponder, UIApplicationDelegate {
-    public func application(
-        _ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
-    ) -> Bool {
-        MobileAds.shared.start(completionHandler: nil)
-        return true
-    }
-}
 
 // MARK: - Helpers
 
@@ -29,6 +16,10 @@ private enum AdMobIds {
     static let banner = "ca-app-pub-6281392964919353/3902289086"
     static let interstitial = "ca-app-pub-6281392964919353/1291168690"
     static let rewarded = "ca-app-pub-6281392964919353/5038842012"
+}
+
+func initializeAdMobSdk() {
+    MobileAds.shared.start(completionHandler: nil)
 }
 
 private func topMostViewController() -> UIViewController? {
@@ -173,7 +164,7 @@ final class RewardedAdManager: NSObject, FullScreenContentDelegate {
         onClosed = nil
         onReward = nil
     }
-    
+
     func adWillPresentFullScreenContent(_ ad: FullScreenPresentingAd) {
         print("Rewarded will present")
     }
@@ -192,10 +183,9 @@ final class RewardedAdManager: NSObject, FullScreenContentDelegate {
 func getAdMob(context: ComposeView.Context) -> AdvertisingAdMobIos {
     let bannerController = UIHostingController(
         rootView: BannerAdView()
-            .frame(width: 320, height: 50)
+            .frame(width: UIScreen.main.bounds.width, height: 50)
             .background(Color.clear)
     )
-
 
     return AdvertisingAdMobIos(
         bannerViewController: { bannerController },

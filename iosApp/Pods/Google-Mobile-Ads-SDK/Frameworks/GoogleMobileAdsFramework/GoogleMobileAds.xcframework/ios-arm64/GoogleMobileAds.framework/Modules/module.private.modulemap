@@ -1,3 +1,0 @@
-framework module GoogleMobileAds_Private {
-    header "GoogleMobileAds_Beta.h"
-}

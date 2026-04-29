@@ -8,11 +8,6 @@ import java.util.Locale
 
 const val MIN_FETCH_INTERVAL = 7200L
 
-enum class AdsProvider {
-    ADMOB,
-    APPLOVIN
-}
-
 class AdsProviderResolver(
     private val context: Context,
     private val remoteConfig: FirebaseRemoteConfig,

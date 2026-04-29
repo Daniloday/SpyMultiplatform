@@ -5,16 +5,18 @@ import ComposeApp
 struct ComposeView: UIViewControllerRepresentable {
     
     func makeCoordinator() -> AdsCoordinator {
-        
-           AdsCoordinator()
+        AdsCoordinator()
     }
     
     func makeUIViewController(context: Context) -> UIViewController {
+        let adMob = getAdMob(context: context)
+        let appLovin = getAppLovin(context: context)
 
-            let adMob = getAdMob(context: context)
-        
-            return MainViewControllerKt.MainViewController(adMobIos: adMob)
-        }
+        return MainViewControllerKt.MainViewController(
+            adMobIos: adMob,
+            appLovinIos: appLovin
+        )
+    }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
@@ -28,9 +30,9 @@ struct ContentView: View {
 final class AdsCoordinator {
     let interstitial = InterstitialAdManager()
     let rewarded = RewardedAdManager()
+    let appLovinInterstitial = AppLovinInterstitialAdManager()
+    let appLovinRewarded = AppLovinRewardedAdManager()
 }
-
-
 
 
 
