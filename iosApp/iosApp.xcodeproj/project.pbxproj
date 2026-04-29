@@ -12,8 +12,6 @@
 		0F2FBAAF7F5C52F2A6A7F6F7 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FCC4A1675708A7E5ACC01E /* Pods_iosApp.framework */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
-		C0D3A002C0D3A002C0D3A002 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D3A001C0D3A001C0D3A001 /* AppDelegate.swift */; };
-		C0D3A004C0D3A004C0D3A004 /* AppLovin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D3A003C0D3A003C0D3A003 /* AppLovin.swift */; };
 		8F9C75EC2FA00DDC00EAE723 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F9C75EB2FA00DDC00EAE723 /* GoogleService-Info.plist */; };
 		8FA80BDF2CBAA3A3004961CB /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 8FA80BDE2CBAA3A3004961CB /* InfoPlist.xcstrings */; };
 		8FC7BBD12CB88DC1002AEFE7 /* AdMob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC7BBD02CB88DC1002AEFE7 /* AdMob.swift */; };
@@ -30,6 +28,8 @@
 		8FEEA3D42F4C936700CA0759 /* spy-content-fr.json in Resources */ = {isa = PBXBuildFile; fileRef = 8FEEA3C12F4C936700CA0759 /* spy-content-fr.json */; };
 		8FEEA3D72F4C95E200CA0759 /* spy-content-pt.json in Resources */ = {isa = PBXBuildFile; fileRef = 8FEEA3D62F4C95E200CA0759 /* spy-content-pt.json */; };
 		8FEEA3D82F4C95E200CA0759 /* spy-content-index.json in Resources */ = {isa = PBXBuildFile; fileRef = 8FEEA3D52F4C95E200CA0759 /* spy-content-index.json */; };
+		C0D3A002C0D3A002C0D3A002 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D3A001C0D3A001C0D3A001 /* AppDelegate.swift */; };
+		C0D3A004C0D3A004C0D3A004 /* AppLovin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D3A003C0D3A003C0D3A003 /* AppLovin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,8 +41,6 @@
 		7555FF7B242A565900829871 /* Spy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		82E94E0054C8A2540902BDCF /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
-		C0D3A001C0D3A001C0D3A001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C0D3A003C0D3A003C0D3A003 /* AppLovin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLovin.swift; sourceTree = "<group>"; };
 		8F9C75EB2FA00DDC00EAE723 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8FA80BDD2CBAA31F004961CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8FA80BDE2CBAA3A3004961CB /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
@@ -61,6 +59,8 @@
 		8FEEA3D52F4C95E200CA0759 /* spy-content-index.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "spy-content-index.json"; sourceTree = "<group>"; };
 		8FEEA3D62F4C95E200CA0759 /* spy-content-pt.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "spy-content-pt.json"; sourceTree = "<group>"; };
 		AB3632DC29227652001CCB65 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		C0D3A001C0D3A001C0D3A001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C0D3A003C0D3A003C0D3A003 /* AppLovin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLovin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,9 +262,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -324,9 +328,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -516,7 +524,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6.0;
+				MARKETING_VERSION = 2.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "${BUNDLE_ID}${TEAM_ID}";
 				PRODUCT_NAME = "${APP_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -546,7 +554,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6.0;
+				MARKETING_VERSION = 2.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "${BUNDLE_ID}${TEAM_ID}";
 				PRODUCT_NAME = "${APP_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "";
